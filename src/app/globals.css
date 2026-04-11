@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-carbon: #050505;
+  --color-surface: rgba(22, 22, 22, 0.2);
+  --color-copper: #897449;
+  --color-dim: #AAAAAA;
+  --font-sans: "Outfit", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+:root {
+  --carbon: #050505;
+  --surface: rgba(22, 22, 22, 0.2);
+  --copper: #897449;
+  --dim: #AAAAAA;
+}
+
+body {
+  background-color: #050505;
+  background-image: url('/images/carbon-texture-v4.webp');
+  background-repeat: repeat;
+  background-size: 500px; 
+  color: #FFFFFF;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+  outline: none;
+}
