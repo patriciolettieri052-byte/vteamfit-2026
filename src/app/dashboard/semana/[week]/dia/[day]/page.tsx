@@ -78,7 +78,32 @@ export default function DiaDetallePage({ params }: { params: Promise<{ week: str
         {/* Bifurcacion condicional si el dia en cuestion es el de Descanso o uno funcional */}
         {dayData.is_rest_day ? (
           <div className="flex flex-col items-center justify-center bg-surface border border-white/5 rounded-[2rem] mt-10 p-10 text-center shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-             <span className="text-7xl mb-6">🛌</span>
+             <div className="text-copper mb-8">
+                <svg 
+                  className="w-20 h-20 animate-[spin_3s_linear_infinite]" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle 
+                    cx="12" 
+                    cy="12" 
+                    r="10" 
+                    stroke="currentColor" 
+                    strokeWidth="1.5" 
+                    strokeDasharray="4 4" 
+                    className="opacity-20" 
+                  />
+                  <path 
+                    d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    className="drop-shadow-[0_0_12px_rgba(137,116,73,0.8)]"
+                  />
+                  <circle cx="12" cy="2" r="1.5" fill="currentColor" />
+                </svg>
+             </div>
              <h3 className="text-2xl font-black text-white italic uppercase mb-2">
                {lang === 'es' ? 'Día de Descanso' : 'Rest Day'}
              </h3>
