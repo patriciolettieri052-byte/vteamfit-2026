@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative w-full h-screen flex flex-col items-center justify-end md:justify-center pb-12 md:pb-0 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 w-full h-full">
         <Image
@@ -30,7 +30,7 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-[-10vh]">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-12 md:mt-0">
         <h1 className="text-5xl md:text-7xl font-black text-white italic uppercase mb-4 tracking-tight drop-shadow-xl text-balance">
           {lang === 'es' ? 'TU MEJOR VERSIÓN' : 'YOUR BEST VERSION'}
         </h1>

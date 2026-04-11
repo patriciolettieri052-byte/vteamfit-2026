@@ -34,7 +34,7 @@ export default function ExitoPage({ params }: { params: Promise<{ week: string, 
         lang={lang} 
       />
 
-      <div className="fixed bottom-0 left-0 w-full p-6 bg-carbon/90 backdrop-blur-xl border-t border-white/5 z-50 md:static md:bg-transparent md:border-none md:p-8 md:mt-10 md:flex md:justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-1000">
+      <div className="fixed bottom-[88px] left-0 w-full p-6 bg-carbon/90 backdrop-blur-xl border-t border-white/5 z-40 md:static md:bg-transparent md:border-none md:p-8 md:mt-10 md:flex md:justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-1000">
         <button 
           onClick={() => router.push('/dashboard')}
           className="w-full md:w-auto md:min-w-[400px] bg-white text-black font-black text-xl uppercase tracking-widest py-6 rounded-full shadow-[0_0_32px_rgba(255,255,255,0.1)] hover:bg-[#f0f0f0] transition-all hover:scale-105 active:scale-95"

@@ -70,7 +70,7 @@ export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 w-full p-6 bg-carbon/90 backdrop-blur-xl border-t border-white/5 z-50 md:static md:bg-transparent md:border-none md:p-0">
+      <div className="fixed bottom-[88px] left-0 w-full p-6 bg-carbon/90 backdrop-blur-xl border-t border-white/5 z-40 md:static md:bg-transparent md:border-none md:p-0">
         <button 
           onClick={handleSave}
           className="w-full bg-copper text-white font-black text-xl uppercase tracking-widest py-6 rounded-full shadow-[0_0_32px_rgba(255,107,74,0.3)] hover:bg-[#ff8566] transition-all active:scale-95"
