@@ -19,7 +19,7 @@ export default function SemanaHero({ week, lang }: { week: number, lang: 'es' | 
 
       {/* Content */}
       <div className="relative z-10 w-full text-center">
-        <h1 className="text-6xl font-black text-white italic uppercase tracking-tighter drop-shadow-xl">
+        <h1 className="text-4xl md:text-7xl font-black text-white italic uppercase tracking-tighter drop-shadow-2xl">
           {weekLabel}
         </h1>
       </div>

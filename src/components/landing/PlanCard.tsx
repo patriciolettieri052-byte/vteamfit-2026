@@ -37,7 +37,7 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
             href={isActive ? '/dashboard' : `/planes/${plan.slug}`}
             className={`w-full max-w-[240px] text-center py-4 px-8 rounded-full font-bold uppercase tracking-widest transition-all ${
               isActive 
-                ? 'bg-copper text-white shadow-[0_0_24px_rgba(255,107,74,0.3)] hover:bg-[#ff8566] hover:scale-105 active:scale-95' 
+                ? 'bg-copper text-white shadow-[0_0_24px_rgba(137,116,73,0.4)] hover:bg-[#a08a56] hover:scale-105 active:scale-95' 
                 : 'bg-zinc-800 text-zinc-300 border border-zinc-700 hover:bg-copper hover:text-white hover:border-transparent active:scale-95'
             }`}
           >

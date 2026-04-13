@@ -37,7 +37,7 @@ export default function PlanDetail({ params }: { params: Promise<{ slug: string 
       <PlanFeatures plan={plan} lang={lang} />
       
       {/* Call to Action */}
-      <StartButton lang={lang} />
+      <StartButton lang={lang} planSlug={plan.slug} />
     </main>
   )
 }

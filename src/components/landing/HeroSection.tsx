@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
   return (
@@ -28,6 +29,13 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
           />
         </div>
       </div>
+
+      <Link
+        href="/login"
+        className="absolute top-6 right-6 z-50 text-dim text-xs uppercase tracking-widest font-bold hover:text-white transition-colors"
+      >
+        Iniciar sesión
+      </Link>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 mt-12 md:mt-0">
