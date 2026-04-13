@@ -70,7 +70,7 @@ function RegistroContent() {
   return (
     <div className="w-full max-w-sm py-12">
       <div className="flex justify-center mb-10">
-        <Image src="/images/logo.svg" alt="VTeamFit" width={120} height={40} />
+        <Image src="/images/logo.svg" alt="VTeamFit" width={138} height={46} />
       </div>
 
       <h1 className="text-3xl font-black text-white italic uppercase tracking-tighter mb-2">

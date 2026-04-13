@@ -63,7 +63,7 @@ export default function OnboardingPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="flex justify-center mb-8">
-          <Image src="/images/logo.svg" alt="VTeamFit" width={100} height={34} />
+          <Image src="/images/logo.svg" alt="VTeamFit" width={115} height={39} />
         </div>
 
         {/* Progress */}

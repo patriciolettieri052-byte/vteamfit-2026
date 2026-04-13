@@ -19,7 +19,7 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
 
       {/* Logo */}
       <div className="absolute top-8 left-8 z-10">
-        <div className="relative w-48 h-16">
+        <div className="relative w-[220px] h-[74px]">
           <Image 
             src="/images/logo.svg" 
             alt="VTeamFit" 
