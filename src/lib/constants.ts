@@ -1,4 +1,4 @@
-export const BUNNY_CDN_BASE = 'https://vteamfitfull.b-cdn.net/'
+export const BUNNY_CDN_BASE = process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitfull.b-cdn.net'
 
 export const INTENSITY_COLORS = {
   FUERTE: 'bg-copper text-white',

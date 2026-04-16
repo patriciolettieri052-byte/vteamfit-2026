@@ -6,15 +6,23 @@ interface AppState {
   lang: 'es' | 'en'
   setLang: (lang: 'es' | 'en') => void
 
-  // Usuario mock
+  // Usuario Real (Supabase)
+  userId: string | null
   userName: string
-  userWeight: number
+  isTester: boolean
+  
+  // Plan Activo
+  currentPlanId: string | null
   currentPlanSlug: string
+  currentPlanName: string
+  startedAt: string | null
   
   // Progreso del plan activo
   progress: UserProgress
   
   // Acciones
+  setSession: (userId: string, name: string, isTester: boolean) => void
+  setActivePlan: (planId: string, slug: string, name: string, startedAt: string) => void
   completeDay: (dayNumber: number) => void
   completeExercise: (slug: string) => void
   saveExerciseRecord: (slug: string, sets: number, reps: string, weight: number) => void
@@ -41,11 +49,23 @@ export const useAppStore = create<AppState>((set) => ({
   lang: 'es',
   setLang: (lang) => set({ lang }),
 
-  userName: 'María',
-  userWeight: 66.5,
-  currentPlanSlug: 'gluteos-de-acero',
+  userId: null,
+  userName: 'Invitado',
+  isTester: false,
+  currentPlanId: null,
+  currentPlanSlug: '',
+  currentPlanName: '',
+  startedAt: null,
   progress: initialProgress,
   
+  setSession: (userId, name, isTester) => set({ userId, userName: name, isTester }),
+  setActivePlan: (planId, slug, name, startedAt) => set({ 
+    currentPlanId: planId, 
+    currentPlanSlug: slug, 
+    currentPlanName: name,
+    startedAt 
+  }),
+
   completeDay: (dayNumber) => set((state) => ({
     progress: {
       ...state.progress,
@@ -74,7 +94,6 @@ export const useAppStore = create<AppState>((set) => ({
   })),
   
   logWeight: (weight) => set((state) => ({
-    userWeight: weight,
     progress: {
       ...state.progress,
       weightHistory: [

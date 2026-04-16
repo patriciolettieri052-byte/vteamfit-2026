@@ -1,26 +1,61 @@
 'use client'
 
-import { use } from 'react'
-import { notFound } from 'next/navigation'
+import { use, useEffect, useState } from 'react'
+import { notFound, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { GLUTEOS_SCHEDULE } from '@/data/gluteos-schedule'
 import { useAppStore } from '@/store/appStore'
+import { getWeeks } from '@/lib/supabase/queries'
 import ExerciseList from '@/components/rutina/ExerciseList'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
 // Resolucion dinamica requerida por next 15+ App router pages
 export default function DiaDetallePage({ params }: { params: Promise<{ week: string, day: string }> }) {
   const resolvedParams = use(params)
   const weekNumber = parseInt(resolvedParams.week, 10)
   const dayNumber = parseInt(resolvedParams.day, 10)
-  const { lang, progress } = useAppStore()
+  const router = useRouter()
+  const { lang, progress, currentPlanId } = useAppStore()
+
+  const [dayData, setDayData] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchDayData() {
+      if (!currentPlanId) {
+        router.push('/dashboard')
+        return
+      }
+
+      try {
+        const weeks = await getWeeks(currentPlanId)
+        const week = weeks.find(w => w.week_number === weekNumber)
+        const day = week?.days.find((d: any) => d.day_number === dayNumber)
+        
+        if (day) {
+          setDayData(day)
+        } else {
+          setDayData(null)
+        }
+      } catch (error) {
+        console.error('Error fetching day:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchDayData()
+  }, [currentPlanId, weekNumber, dayNumber, router])
 
   if (isNaN(weekNumber) || isNaN(dayNumber)) {
     notFound()
   }
 
-  // Identificamos el plan
-  const weekData = GLUTEOS_SCHEDULE.find(w => w.week_number === weekNumber)
-  const dayData = weekData?.days.find(d => d.day_number === dayNumber)
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-carbon">
+        <LoadingSpinner />
+      </div>
+    )
+  }
 
   if (!dayData) {
     notFound()
@@ -115,8 +150,8 @@ export default function DiaDetallePage({ params }: { params: Promise<{ week: str
           </div>
         ) : (
           <ExerciseList 
+            dayId={dayData.id}
             dayNumber={dayNumber} 
-            exerciseSlugs={dayData.exercise_slugs} 
             weekNumber={weekNumber} 
           />
         )}

@@ -1,31 +1,63 @@
 'use client'
 
-import { use } from 'react'
-import { notFound } from 'next/navigation'
+import { use, useEffect, useState } from 'react'
+import { notFound, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { GLUTEOS_SCHEDULE } from '@/data/gluteos-schedule'
 import { useAppStore } from '@/store/appStore'
+import { getWeeks } from '@/lib/supabase/queries'
 import SemanaHero from '@/components/semana/SemanaHero'
 import DayList from '@/components/semana/DayList'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
 export default function SemanaPage({ params }: { params: Promise<{ week: string }> }) {
   const resolvedParams = use(params)
   const weekNumber = parseInt(resolvedParams.week, 10)
-  const { lang } = useAppStore()
+  const router = useRouter()
+  const { lang, currentPlanId } = useAppStore()
   
+  const [weekData, setWeekData] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchWeekData() {
+      if (!currentPlanId) {
+        // Si no hay plan en el store, probablemente entró directo. Redirigir al dashboard para hidratar.
+        router.push('/dashboard')
+        return
+      }
+
+      try {
+        const weeks = await getWeeks(currentPlanId)
+        const found = weeks.find(w => w.week_number === weekNumber)
+        if (found) {
+          setWeekData(found)
+        } else {
+          setWeekData(null)
+        }
+      } catch (error) {
+        console.error('Error fetching week:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchWeekData()
+  }, [currentPlanId, weekNumber, router])
+
   if (isNaN(weekNumber)) {
     notFound()
   }
 
-  // Obtenemos la semana en cuestion.
-  const weekData = GLUTEOS_SCHEDULE.find(w => w.week_number === weekNumber)
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-carbon">
+        <LoadingSpinner />
+      </div>
+    )
+  }
 
   if (!weekData) {
     notFound()
   }
-
-  // Notar que omitimos Layout inferior <BottomNav /> local acá si el usuario está enfocado
-  // Pero el dashboard/layout renderiza BottomNav automáticamente para todas sus subrutas.
 
   return (
     <main className="min-h-screen max-w-lg mx-auto w-full relative selection:bg-copper selection:text-white">

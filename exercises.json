@@ -1,0 +1,680 @@
+[
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "abductores-en-maquina",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "agarre-de-pinza-con-disco",
+    "inicio": 0,
+    "fin": 2
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "curl-con-barra",
+    "inicio": 0,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "curl-martillo-con-mancuernas",
+    "inicio": 0,
+    "fin": 3
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "dips",
+    "inicio": 0,
+    "fin": 4
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "dominadas",
+    "inicio": 3,
+    "fin": 8
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "ejercicio-de-gusano",
+    "inicio": 5,
+    "fin": 10
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "elevacion-de-gemelos",
+    "inicio": 0,
+    "fin": 2
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "elevacion-de-piernas-cruzadas",
+    "inicio": 0,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "elevaciones-frontales-con-mancuernas",
+    "inicio": 0,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "elevaciones-laterales-con-mancuernas",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "encogimiento-de-hombros",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "estocada-bulgara",
+    "inicio": 2,
+    "fin": 4
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "estocada",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "estocadas-en-maquina",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "extension-de-cadera",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "extension-de-cuadriceps-maquiana",
+    "inicio": 2,
+    "fin": 10
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "extension-de-espalda",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "extension-de-isquios-maquina",
+    "inicio": 3,
+    "fin": 12
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "extension-de-lumbar",
+    "inicio": 1,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "extension-de-triceps-con-banda",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "extension-de-triceps-con-mancuerna",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "extension-de-triceps-con-polea-alta",
+    "inicio": 1,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "femoral-al-suelo",
+    "inicio": 4,
+    "fin": 8
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "giros-con-disco",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "hip-thrust",
+    "inicio": 1,
+    "fin": 8
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "jalon-dorsal-pecho",
+    "inicio": 3,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "monster-walk",
+    "inicio": 10,
+    "fin": 16
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "movimiento-de-cintura-con-palo",
+    "inicio": 3,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "paso-arriba-o-step",
+    "inicio": 3,
+    "fin": 8
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "patada-trasera-ambas-piernas",
+    "inicio": 6,
+    "fin": 11
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "peso-muerto-a-una-pierna",
+    "inicio": 3,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "peso-muerto",
+    "inicio": 4,
+    "fin": 10
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "prensa-piernas-juntas",
+    "inicio": 1,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "prensa-piernas-separadas",
+    "inicio": 2,
+    "fin": 7
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "press-banca-agarre-estrecho",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "press-frontal-con-barra",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "press-sentado-con-mancuernas",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "puente-con-piernas-juntas",
+    "inicio": 4,
+    "fin": 7
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "puente-de-gluteos-a-una-pierna",
+    "inicio": 4,
+    "fin": 8
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "puente-de-ranita",
+    "inicio": 3,
+    "fin": 9
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "puente",
+    "inicio": 4,
+    "fin": 8
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "rana",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "remo-con-barra",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "remo-con-mancuerna",
+    "inicio": 4,
+    "fin": 11
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "remo-con-trx",
+    "inicio": 3,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "remo-en-polea-baja",
+    "inicio": 3,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "remo-inclinado-con-agarre",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "salto-con-sentadilla",
+    "inicio": 3,
+    "fin": 7
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "sentadilla-bulgara",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "sentadilla-con-barra-trasera",
+    "inicio": 3,
+    "fin": 7
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "sentadilla-con-elevacion-de-talones",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "sentadilla-con-salto",
+    "inicio": 9,
+    "fin": 12
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "sentadillas-peso-muerto",
+    "inicio": 3,
+    "fin": 5
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "sentadillas-piernas-juntas",
+    "inicio": 1,
+    "fin": 7
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "sentadillas-sumo",
+    "inicio": 1,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "sentadillas",
+    "inicio": 3,
+    "fin": 7
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "zancada-con-salto",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "zancada",
+    "inicio": 1,
+    "fin": 7
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "zancadas-con-elevacion-rodilla",
+    "inicio": 3,
+    "fin": 8
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "zancadas-estaticas",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "gluteos-de-acero",
+    "video": "zancadas-laterales",
+    "inicio": 12,
+    "fin": 19
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "abductores-en-polea",
+    "inicio": 2,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "activacion-en-step-a-max-velocidad-apoyando-2-pies",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "aduccion-en-polea",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "aductores-en-maquina",
+    "inicio": 1,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "apertura-con-mancuernas",
+    "inicio": 1,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "bicicleta",
+    "inicio": 3,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "con-pies-intercalados-subes-2-y-bajas-1",
+    "inicio": 3,
+    "fin": 8
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "curl-con-cable",
+    "inicio": 1,
+    "fin": 6
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "curl-de-concentracion",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "curl-de-muneca-inverso",
+    "inicio": 1,
+    "fin": 4
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "curl-inclinado-mancuernas",
+    "inicio": 1,
+    "fin": 8
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "desplazamientos-laterales-a-max-velocidad",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "desplazamientos-laterales-y-spreen",
+    "inicio": 3,
+    "fin": 11
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "dominadas-asistidas",
+    "inicio": 3,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "elevacion-de-gemelos-postura-sentada",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "eliptica",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "explosion-en-cajon-sentandote-con-una-pierna",
+    "inicio": 2,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "flexiones-con-pies-elevados",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "flexiones-con-rodillas-en-el-suelo",
+    "inicio": 5,
+    "fin": 8
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "gemelos",
+    "inicio": 3,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "jalon-vertical-con-polea",
+    "inicio": 3,
+    "fin": 6
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "press-banca-con-barra",
+    "inicio": 3,
+    "fin": 8
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "press-hombros-en-maquina",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "press-inclinado-con-barra",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "pull-over-con-mancuernas",
+    "inicio": 2,
+    "fin": 8
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "remo-al-cuello-con-barra",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "remo-al-cuello-con-mancuernas",
+    "inicio": 2,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "saltar-a-la-comba",
+    "inicio": 3,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "salto-en-cajon-a-2-pies",
+    "inicio": 6,
+    "fin": 10
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "salto-en-cajon-con-2-pies-y-caigo-con-2",
+    "inicio": 3,
+    "fin": 8
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "salto-lateral-salto-cajon",
+    "inicio": 6,
+    "fin": 10
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "salto-laterales-a-1-pierna-y-avanzando",
+    "inicio": 1,
+    "fin": 10
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "saltos-con-2-pies-juntos-de-2-en-2-escalones",
+    "inicio": 1,
+    "fin": 4
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "saltos-con-pies-juntos-subes-2-y-bajas-1",
+    "inicio": 3,
+    "fin": 9
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "saltos-en-step-abriendo-y-cerrando-piernas",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "saltos-laterales-2-piernas-juntas",
+    "inicio": 2,
+    "fin": 5
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "saltos-laterales",
+    "inicio": 1,
+    "fin": 9
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "sentadilla-clasica",
+    "inicio": 4,
+    "fin": 8
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "sentadilla-explosiva",
+    "inicio": 7,
+    "fin": 10
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "spreen-con-activacion-en-inicio",
+    "inicio": 2,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "spreen-max-velocidad",
+    "inicio": 2,
+    "fin": 8
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "spreen-media-velocidad",
+    "inicio": 2,
+    "fin": 7
+  },
+  {
+    "carpeta": "plan-padel",
+    "video": "velocidad-max-en-step-apoyando-1-pie",
+    "inicio": 2,
+    "fin": 6
+  },
+  {
+    "carpeta": "transforma-tu-cuerpo",
+    "video": "cinta",
+    "inicio": 1,
+    "fin": 3
+  },
+  {
+    "carpeta": "transforma-tu-cuerpo",
+    "video": "elevaciones-frontales-con-banda",
+    "inicio": 1,
+    "fin": 6
+  },
+  {
+    "carpeta": "transforma-tu-cuerpo",
+    "video": "elevaciones-laterales-con-banda",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "transforma-tu-cuerpo",
+    "video": "extension-de-triceps-con-polea alta",
+    "inicio": 1,
+    "fin": 5
+  },
+  {
+    "carpeta": "transforma-tu-cuerpo",
+    "video": "extension-lumbar",
+    "inicio": 2,
+    "fin": 7
+  },
+  {
+    "carpeta": "transforma-tu-cuerpo",
+    "video": "hiperextension-lumbares",
+    "inicio": 10,
+    "fin": 14
+  },
+  {
+    "carpeta": "transforma-tu-cuerpo",
+    "video": "sentadilla-con-barra-frontal",
+    "inicio": 3,
+    "fin": 8
+  },
+  {
+    "carpeta": "transforma-tu-cuerpo",
+    "video": "sentadillas-goblet",
+    "inicio": 3,
+    "fin": 8
+  }
+]

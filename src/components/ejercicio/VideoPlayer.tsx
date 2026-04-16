@@ -1,7 +1,9 @@
 import { BUNNY_CDN_BASE } from '@/lib/constants'
 
 export default function VideoPlayer({ videoUrl }: { videoUrl: string }) {
-  const fullUrl = `${BUNNY_CDN_BASE}${videoUrl}`
+  const fullUrl = videoUrl.startsWith('http') 
+    ? videoUrl 
+    : `${BUNNY_CDN_BASE.replace(/\/$/, '')}/${videoUrl.replace(/^\//, '')}`
 
   return (
     <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-carbon shadow-2xl ring-1 ring-white/10">

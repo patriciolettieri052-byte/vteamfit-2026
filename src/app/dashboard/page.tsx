@@ -1,19 +1,68 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { createClient } from '@/lib/supabase/client'
+import { getActivePlan } from '@/lib/supabase/queries'
 import { useAppStore } from '@/store/appStore'
 import WeekList from '@/components/dashboard/WeekList'
-import { getPlanBySlug } from '@/data/plans'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
 export default function DashboardPage() {
-  const { userName, currentPlanSlug, lang } = useAppStore()
-  const planInfo = getPlanBySlug(currentPlanSlug)
+  const router = useRouter()
+  const [loading, setLoading] = useState(true)
+  const { lang, userName, currentPlanName, setSession, setActivePlan } = useAppStore()
+  const supabase = createClient()
+
+  useEffect(() => {
+    async function loadDashboardData() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser()
+        
+        if (!user) {
+          router.push('/login')
+          return
+        }
+
+        const activePlan = await getActivePlan(user.id)
+        
+        if (!activePlan) {
+          router.push('/planes')
+          return
+        }
+
+        // Update Store
+        setSession(user.id, activePlan.user_name, activePlan.is_tester)
+        setActivePlan(
+          activePlan.plan_id, 
+          activePlan.slug, 
+          activePlan.name, 
+          activePlan.started_at
+        )
+      } catch (error) {
+        console.error('Error loading dashboard:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadDashboardData()
+  }, [supabase, router, setSession, setActivePlan])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-carbon">
+        <LoadingSpinner />
+      </div>
+    )
+  }
 
   return (
     <main className="min-h-screen max-w-lg mx-auto w-full px-6 pt-12 pb-6">
       {/* Header Profile */}
       <header className="flex items-center gap-5 mb-10">
-        <div className="w-16 h-16 bg-surface rounded-full border border-white/10 flex items-center justify-center font-black text-2xl text-copper shadow-lg">
-          {userName.charAt(0).toUpperCase()}
+        <div className="w-16 h-16 bg-surface rounded-full border border-white/10 flex items-center justify-center font-black text-2xl text-copper shadow-lg uppercase">
+          {userName.charAt(0)}
         </div>
         <div>
           <h1 className="text-3xl font-black text-white italic uppercase tracking-tighter">
@@ -33,7 +82,7 @@ export default function DashboardPage() {
           {lang === 'es' ? 'Plan Activo' : 'Active Plan'}
         </h2>
         <h3 className="text-3xl md:text-4xl font-black text-white italic uppercase leading-[1.1] relative z-10 text-balance">
-          {lang === 'es' ? planInfo?.name_es : planInfo?.name_en}
+          {currentPlanName}
         </h3>
       </section>
 

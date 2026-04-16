@@ -1,18 +1,39 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useAppStore } from '@/store/appStore'
-import { GLUTEOS_SCHEDULE } from '@/data/gluteos-schedule'
+import { getWeeks } from '@/lib/supabase/queries'
+import { isWeekUnlocked, getCurrentWeek } from '@/lib/utils/planUtils'
 import WeekRow from './WeekRow'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
 export default function WeekList() {
-  const { progress, lang } = useAppStore()
+  const { progress, lang, currentPlanId, startedAt, isTester } = useAppStore()
+  const [weeks, setWeeks] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
   
-  // En la demo asignamos GLUTEOS_SCHEDULE fijo para ilustrar estructura de UI
-  const schedule = GLUTEOS_SCHEDULE
+  useEffect(() => {
+    async function loadWeeks() {
+      if (!currentPlanId) return
+      try {
+        const data = await getWeeks(currentPlanId)
+        setWeeks(data)
+      } catch (error) {
+        console.error('Error fetching weeks:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadWeeks()
+  }, [currentPlanId])
 
-  // Lógica: Mostrar semanas donde el week_number es menor o igual a currentWeek.
-  // Las semanas futuras desaparecen de la vista.
-  const visibleWeeks = schedule.filter(w => w.week_number <= progress.currentWeek)
+  if (loading) return <div className="py-10 flex justify-center"><LoadingSpinner /></div>
+
+  // CURRENT WEEK: La más alta desbloqueada
+  const currentWeekNum = getCurrentWeek(weeks, startedAt, isTester)
+
+  // Solo mostrar semanas desbloqueadas (is_tester=true las desbloquea todas)
+  const visibleWeeks = weeks.filter(w => isWeekUnlocked(w.week_number, startedAt, isTester))
 
   return (
     <div className="w-full flex flex-col gap-5 mt-8">
@@ -20,13 +41,19 @@ export default function WeekList() {
         {lang === 'es' ? 'Tu Progreso' : 'Your Progress'}
       </h2>
       
+      {visibleWeeks.length === 0 && (
+        <p className="text-zinc-500 text-sm px-2 italic">
+          {lang === 'es' ? 'No hay semanas disponibles aún.' : 'No weeks available yet.'}
+        </p>
+      )}
+
       {/* Mostramos las semanas por orden cronológico */}
       {visibleWeeks.map(week => (
         <WeekRow 
-          key={week.week_number} 
+          key={week.id} 
           week={week} 
-          isActive={week.week_number === progress.currentWeek}
-          isPast={week.week_number < progress.currentWeek}
+          isActive={week.week_number === currentWeekNum}
+          isPast={week.week_number < currentWeekNum}
         />
       ))}
     </div>
