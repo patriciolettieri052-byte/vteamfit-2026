@@ -8,7 +8,8 @@ import { createClient } from '@/lib/supabase/client'
 function RegistroContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const planSlug = searchParams.get('plan') ?? 'gluteos-de-acero'
+  // Null cuando no hay ?plan= en la URL — el usuario elige plan después del onboarding
+  const planSlug = searchParams.get('plan')
 
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('')
@@ -23,6 +24,7 @@ function RegistroContent() {
 
     const supabase = createClient()
 
+    // 1. Crear usuario en Supabase Auth
     const { data, error: authError } = await supabase.auth.signUp({
       email,
       password,
@@ -35,15 +37,29 @@ function RegistroContent() {
       return
     }
 
-    if (data.user) {
-      // Crear perfil básico
-      await supabase.from('user_profiles').insert({
+    if (!data.user) {
+      setError('No se pudo crear la cuenta. Intentá de nuevo.')
+      setLoading(false)
+      return
+    }
+
+    // 2. Crear perfil básico
+    const { error: profileError } = await supabase
+      .from('user_profiles')
+      .insert({
         id: data.user.id,
         name: nombre,
         onboarding_complete: false,
       })
 
-      // Asignar plan activo (en beta se asigna directo, en producción será post-pago)
+    if (profileError) {
+      setError('Error al crear tu perfil. Por favor intentá de nuevo.')
+      setLoading(false)
+      return
+    }
+
+    // 3. Asignar plan solo si viene ?plan= en la URL
+    if (planSlug) {
       const { data: planData } = await supabase
         .from('plans')
         .select('id')
@@ -51,19 +67,27 @@ function RegistroContent() {
         .single()
 
       if (planData) {
-        await supabase.from('user_plans').insert({
-          user_id: data.user.id,
-          plan_id: planData.id,
-          status: 'active',
-          started_at: new Date().toISOString(),
-          // Beta: plan activo por 90 días
-          expires_at: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
-        })
+        const { error: planError } = await supabase
+          .from('user_plans')
+          .insert({
+            user_id: data.user.id,
+            plan_id: planData.id,
+            status: 'active',
+            started_at: new Date().toISOString(),
+            // Beta: plan activo por 90 días
+            expires_at: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+          })
+
+        if (planError) {
+          setError('Error al asignar el plan. Contactá soporte.')
+          setLoading(false)
+          return
+        }
       }
     }
 
-    // Ir al onboarding preservando el plan
-    router.push(`/onboarding?plan=${planSlug}`)
+    // 4. Redirigir siempre al onboarding
+    router.push('/onboarding')
     router.refresh()
   }
 

@@ -74,19 +74,29 @@ export async function proxy(request: NextRequest) {
 
   // Usuario con sesión en dashboard → verificar plan activo
   if (isDashboard && user) {
-    const { data: userPlan } = await supabase
+    // Obtener TODOS los planes del usuario (sin filtrar status/fecha) para distinguir casos
+    const { data: allPlans } = await supabase
       .from('user_plans')
       .select('id, status, expires_at')
       .eq('user_id', user.id)
-      .eq('status', 'active')
-      .gte('expires_at', new Date().toISOString())
-      .maybeSingle()
 
-    // Sin plan activo o plan vencido → redirigir al login con mensaje
-    if (!userPlan) {
+    const hasAnyPlan = allPlans && allPlans.length > 0
+
+    // Verificar si hay algún plan activo vigente
+    const hasActivePlan = hasAnyPlan && allPlans.some(
+      p => p.status === 'active' && new Date(p.expires_at) >= new Date()
+    )
+
+    if (!hasActivePlan) {
       const url = request.nextUrl.clone()
-      url.pathname = '/login'
-      url.searchParams.set('expired', 'true')
+      if (hasAnyPlan) {
+        // Tenía plan(es) pero todos vencidos → mensaje de expirado
+        url.pathname = '/login'
+        url.searchParams.set('expired', 'true')
+      } else {
+        // Nunca tuvo plan → mandarlo a elegir uno
+        url.pathname = '/planes'
+      }
       return NextResponse.redirect(url)
     }
   }
