@@ -3,7 +3,8 @@
 import { useAppStore } from '@/store/appStore'
 
 export default function UserCard({ lang }: { lang: 'es' | 'en' }) {
-  const { userName, userWeight } = useAppStore()
+  const { userName, progress } = useAppStore()
+  const currentWeight = progress.weightHistory[progress.weightHistory.length - 1]?.weight || 0
   const initial = userName.charAt(0).toUpperCase()
 
   return (
@@ -28,7 +29,7 @@ export default function UserCard({ lang }: { lang: 'es' | 'en' }) {
       {/* Stats Quick View */}
       <div className="grid grid-cols-2 gap-4 w-full pt-4">
         <div className="bg-carbon p-4 rounded-2xl border border-white/5 text-center">
-            <span className="text-xl font-black text-white italic block">{userWeight} <span className="text-[10px]">kg</span></span>
+            <span className="text-xl font-black text-white italic block">{currentWeight} <span className="text-[10px]">kg</span></span>
             <span className="text-zinc-500 text-[9px] font-black uppercase tracking-widest">{lang === 'es' ? 'Peso Actual' : 'Current Weight'}</span>
         </div>
         <div className="bg-carbon p-4 rounded-2xl border border-white/5 text-center">
