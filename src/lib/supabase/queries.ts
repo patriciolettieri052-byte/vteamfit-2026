@@ -3,46 +3,51 @@ import { createClient } from './client'
 export async function getActivePlan(userId: string) {
   const supabase = createClient()
   
-  // joining user_plans with plans and user_profiles to get is_tester
-  const { data, error } = await supabase
+  // 1. Obtener el registro del plan de usuario directamente (sin joins)
+  const { data: userPlan, error: planError } = await supabase
     .from('user_plans')
-    .select(`
-      plan_id,
-      started_at,
-      expires_at,
-      status,
-      plans (
-        slug,
-        name_es,
-        name_en
-      ),
-      user_profiles:user_id (
-        is_tester,
-        name
-      )
-    `)
+    .select('plan_id, started_at, expires_at, status')
     .eq('user_id', userId)
     .eq('status', 'active')
     .order('started_at', { ascending: false })
     .limit(1)
     .maybeSingle()
 
-  if (error) throw error
-  if (!data) return null
+  if (planError) throw planError
+  if (!userPlan) return null
+
+  // 2. Obtener el perfil del usuario de forma independiente (Fix 3: "Invitado")
+  const { data: profile, error: profileError } = await supabase
+    .from('user_profiles')
+    .select('name, is_tester')
+    .eq('id', userId)
+    .maybeSingle()
+
+  if (profileError) {
+    console.error('Error fetching profile:', profileError.message)
+  }
+
+  // 3. Obtener los detalles del plan de forma independiente
+  const { data: plan, error: planDetailsError } = await supabase
+    .from('plans')
+    .select('slug, name_es, name_en')
+    .eq('id', userPlan.plan_id)
+    .maybeSingle()
+
+  if (planDetailsError) {
+    console.error('Error fetching plan details:', planDetailsError.message)
+  }
 
   // Flatten the response to match the contract
-  const profile = Array.isArray(data.user_profiles) ? data.user_profiles[0] : data.user_profiles;
-  const plan = Array.isArray(data.plans) ? data.plans[0] : data.plans;
-
   return {
-    plan_id: data.plan_id,
+    plan_id: userPlan.plan_id,
     slug: plan?.slug,
     name: plan?.name_es, // default to ES
-    status: data.status,
-    started_at: data.started_at,
-    expires_at: data.expires_at,
-    is_tester: (profile as any)?.is_tester || false,
-    user_name: (profile as any)?.name || 'Usuario'
+    status: userPlan.status,
+    started_at: userPlan.started_at,
+    expires_at: userPlan.expires_at,
+    is_tester: profile?.is_tester || false,
+    user_name: profile?.name || 'Usuario'
   }
 }
 

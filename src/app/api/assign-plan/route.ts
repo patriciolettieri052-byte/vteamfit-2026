@@ -17,20 +17,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'planSlug es requerido' }, { status: 400 })
   }
 
-  // Verificar que no tenga ya un plan activo vigente
-  const { data: existingPlan } = await supabase
-    .from('user_plans')
-    .select('id')
-    .eq('user_id', user.id)
-    .eq('status', 'active')
-    .gte('expires_at', new Date().toISOString())
-    .maybeSingle()
-
-  if (existingPlan) {
-    return NextResponse.json({ error: 'Ya tenés un plan activo' }, { status: 400 })
-  }
-
-  // Buscar el plan por slug
+  // Buscar el plan por slug primero (necesitamos el ID)
   const { data: plan } = await supabase
     .from('plans')
     .select('id')
@@ -39,6 +26,35 @@ export async function POST(request: Request) {
 
   if (!plan) {
     return NextResponse.json({ error: 'Plan no encontrado' }, { status: 404 })
+  }
+
+  // Verificar si ya tiene ESTE plan específico activo y vigente
+  const { data: thisSpecificPlan } = await supabase
+    .from('user_plans')
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('plan_id', plan.id)
+    .eq('status', 'active')
+    .gte('expires_at', new Date().toISOString())
+    .maybeSingle()
+
+  if (thisSpecificPlan) {
+    // Ya tiene este plan → no es error, redirigir al dashboard
+    return NextResponse.json({ success: true, alreadyAssigned: true })
+  }
+
+  // Verificar si tiene CUALQUIER OTRO plan activo vigente
+  const { data: otherActivePlan } = await supabase
+    .from('user_plans')
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('status', 'active')
+    .gte('expires_at', new Date().toISOString())
+    .neq('plan_id', plan.id)
+    .maybeSingle()
+
+  if (otherActivePlan) {
+    return NextResponse.json({ error: 'Ya tenés un plan activo diferente' }, { status: 400 })
   }
 
   // Insertar el plan
@@ -56,5 +72,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Error al asignar el plan. Contactá soporte.' }, { status: 500 })
   }
 
-  return NextResponse.json({ success: true })
+  return NextResponse.json({ success: true, alreadyAssigned: false })
 }
+

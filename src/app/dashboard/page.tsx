@@ -8,11 +8,12 @@ import { useAppStore } from '@/store/appStore'
 import WeekList from '@/components/dashboard/WeekList'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
+const supabase = createClient()
+
 export default function DashboardPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const { lang, userName, currentPlanName, setSession, setActivePlan } = useAppStore()
-  const supabase = createClient()
 
   useEffect(() => {
     async function loadDashboardData() {
@@ -47,7 +48,7 @@ export default function DashboardPage() {
     }
 
     loadDashboardData()
-  }, [supabase, router, setSession, setActivePlan])
+  }, [router, setSession, setActivePlan])
 
   if (loading) {
     return (

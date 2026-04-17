@@ -3,6 +3,7 @@
 import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
 function RegistroContent() {
@@ -32,7 +33,13 @@ function RegistroContent() {
     })
 
     if (authError) {
-      setError(authError.message)
+      if (authError.message.toLowerCase().includes('already registered') ||
+          authError.message.toLowerCase().includes('already been registered') ||
+          authError.code === 'user_already_exists') {
+        setError('__already_registered__')
+      } else {
+        setError(authError.message)
+      }
       setLoading(false)
       return
     }
@@ -142,9 +149,16 @@ function RegistroContent() {
           />
         </div>
 
-        {error && (
+        {error === '__already_registered__' ? (
+          <p className="text-amber-400 text-sm text-center">
+            Este email ya está registrado.{' '}
+            <Link href="/login" className="underline font-bold hover:text-amber-300 transition-colors">
+              ¿Querés iniciar sesión?
+            </Link>
+          </p>
+        ) : error ? (
           <p className="text-red-400 text-sm text-center">{error}</p>
-        )}
+        ) : null}
 
         <button
           type="submit"
