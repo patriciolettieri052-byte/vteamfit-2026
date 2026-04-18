@@ -48,6 +48,7 @@ export async function getActivePlan(userId: string) {
     started_at: userPlan.started_at,
     expires_at: userPlan.expires_at,
     is_tester: profile?.is_tester || false,
+    user_name: profile?.name || 'Usuario'
   }
 }
 
