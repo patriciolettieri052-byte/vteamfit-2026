@@ -30,7 +30,6 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
 
     checkPlan()
   }, [plan.id])
-  const name = lang === 'es' ? plan.name_es : plan.name_en
   
   return (
     <div className={`relative flex flex-col bg-surface rounded-3xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-2 ${hasPlan ? 'border-[3px] border-copper ring-4 ring-copper/10' : 'border border-white/5'}`}>
