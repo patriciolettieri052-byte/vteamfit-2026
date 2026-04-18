@@ -71,8 +71,8 @@ async function main() {
   console.log('Headers:', headers);
 
   // We assume there's a column for "ejercicio" and a column for "categoria" or "zona" or "grupo muscular"
-  let ejIdx = headers.findIndex(h => h.includes('ejercicio') || h.includes('nombre'));
-  let catIdx = headers.findIndex(h => h.includes('categoria') || h.includes('musculo') || h.includes('zona'));
+  let ejIdx = headers.findIndex((h: string) => h.includes('ejercicio') || h.includes('nombre'));
+  let catIdx = headers.findIndex((h: string) => h.includes('categoria') || h.includes('musculo') || h.includes('zona'));
   
   // If not found, let's just log first few rows
   console.log('Detected Ejercicio index:', ejIdx);
