@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { getActivePlan, getAllActivePlans, loadUserProgress, loadExerciseRecords, loadWeightHistory } from '@/lib/supabase/queries'
 import { useAppStore } from '@/store/appStore'
