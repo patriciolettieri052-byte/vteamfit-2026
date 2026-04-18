@@ -39,7 +39,7 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           src={plan.cover_image}
           alt={name}
           fill
-          className="object-cover"
+          className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_10%]' : 'object-center'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent" />
       </div>

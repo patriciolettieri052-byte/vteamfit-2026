@@ -145,7 +145,7 @@ export default function DashboardPage() {
             {lang === 'es' ? '¿Querés empezar a entrenar?' : 'Want to start training?'}
           </span>
           <Link 
-            href="/planes" 
+            href="/#planes" 
             className="text-copper text-sm font-black uppercase tracking-widest hover:text-white transition-colors"
           >
             {lang === 'es' ? 'Ver planes →' : 'See plans →'}

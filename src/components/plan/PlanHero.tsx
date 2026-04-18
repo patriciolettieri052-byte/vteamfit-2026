@@ -13,7 +13,7 @@ export default function PlanHero({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           alt={name}
           fill
           priority
-          className="object-cover object-[center_top]"
+          className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_40%]' : 'object-[center_top]'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/80 to-transparent" />
       </div>

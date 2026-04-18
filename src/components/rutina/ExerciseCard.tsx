@@ -24,6 +24,7 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
           src={exercise.thumbnail_url || '/thumbnails/default.jpg'}
           alt={exercise.name_es}
           fill
+          unoptimized={true}
           className="object-cover"
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black/10">

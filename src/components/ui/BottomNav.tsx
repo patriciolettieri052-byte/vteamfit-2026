@@ -19,7 +19,7 @@ export default function BottomNav() {
     },
     {
       name: 'Planes',
-      href: '/planes',
+      href: '/#planes',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="3" width="7" height="7"/>
@@ -56,8 +56,8 @@ export default function BottomNav() {
     <nav className="fixed bottom-0 left-0 w-full bg-black/40 backdrop-blur-xl border-t border-white/5 z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] pb-safe-offset-2">
       <div className="flex justify-around items-center h-[88px] pb-4 pt-2 max-w-md mx-auto px-2">
         {navItems.map((item) => {
-          const isActive = item.href === '/planes' 
-            ? pathname === '/planes' || pathname.startsWith('/planes/')
+          const isActive = item.href === '/#planes' 
+            ? pathname === '/' || pathname.startsWith('/planes/')
             : pathname === item.href
             
           return (

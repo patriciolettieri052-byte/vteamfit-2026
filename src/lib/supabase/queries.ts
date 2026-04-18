@@ -76,13 +76,21 @@ export async function getAllActivePlans(userId: string) {
     return []
   }
 
-  return (data || []).map(up => ({
-    plan_id: up.plan_id,
-    slug: (up.plans as any)?.slug,
-    name: (up.plans as any)?.name_es,
-    started_at: up.started_at,
-    status: up.status
-  }))
+  const uniquePlans = new Map()
+  
+  ;(data || []).forEach(up => {
+    if (!uniquePlans.has(up.plan_id)) {
+      uniquePlans.set(up.plan_id, {
+        plan_id: up.plan_id,
+        slug: (up.plans as any)?.slug,
+        name: (up.plans as any)?.name_es,
+        started_at: up.started_at,
+        status: up.status
+      })
+    }
+  })
+
+  return Array.from(uniquePlans.values())
 }
 
 export async function getWeeks(planId: string) {

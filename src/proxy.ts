@@ -95,7 +95,8 @@ export async function proxy(request: NextRequest) {
         url.searchParams.set('expired', 'true')
       } else {
         // Nunca tuvo plan → mandarlo a elegir uno
-        url.pathname = '/planes'
+        url.pathname = '/'
+        url.hash = 'planes'
       }
       return NextResponse.redirect(url)
     }

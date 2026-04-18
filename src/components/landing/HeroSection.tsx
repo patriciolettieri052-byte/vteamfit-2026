@@ -18,8 +18,8 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
       </div>
 
       {/* Header Container (Logo + Login) */}
-      <div className="absolute top-8 left-8 z-50 flex items-center md:items-end pb-4 gap-4 md:gap-6">
-        <div className="relative w-[286px] h-[96px] shrink-0">
+      <div className="absolute top-6 left-6 md:top-8 md:left-8 z-50 flex items-center md:items-end pb-2 md:pb-4 gap-2 md:gap-6">
+        <div className="relative w-[150px] h-[50px] md:w-[240px] md:h-[80px] shrink-0">
           <Image 
             src="/images/logo.svg" 
             alt="VTeamFit" 
@@ -31,7 +31,7 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
 
         <Link
           href="/login"
-          className="text-dim text-xs uppercase tracking-widest font-bold hover:text-white transition-colors pb-2 md:pb-6"
+          className="text-dim text-[10px] md:text-xs uppercase tracking-widest font-bold hover:text-white transition-colors pb-0 md:pb-4 -ml-4 md:-ml-12 shrink-0"
         >
           {lang === 'es' ? 'Iniciar sesión' : 'Login'}
         </Link>
