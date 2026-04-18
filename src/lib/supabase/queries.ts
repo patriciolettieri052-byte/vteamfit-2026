@@ -92,8 +92,14 @@ export async function getDayExercises(dayId: string) {
         slug,
         name_es,
         name_en,
+        description_es,
         video_url,
-        thumbnail_url
+        thumbnail_url,
+        sets,
+        reps,
+        rest_seconds,
+        intensity,
+        categoria
       )
     `)
     .eq('day_id', dayId)
@@ -106,4 +112,105 @@ export async function getDayExercises(dayId: string) {
     position: row.position,
     exercise: Array.isArray(row.exercise) ? row.exercise[0] : row.exercise
   }))
+}
+
+// ── Progress persistence queries ────────────────────────────
+
+export async function loadUserProgress(userId: string, planSlug: string) {
+  const supabase = createClient()
+  const { data, error } = await supabase
+    .from('user_progress')
+    .select('day_number, completed_at')
+    .eq('user_id', userId)
+    .eq('plan_slug', planSlug)
+
+  if (error) {
+    console.error('Error loading user progress:', error.message)
+    return []
+  }
+  return data || []
+}
+
+export async function loadExerciseRecords(userId: string) {
+  const supabase = createClient()
+  const { data, error } = await supabase
+    .from('user_exercise_records')
+    .select('exercise_slug, sets, reps, weight')
+    .eq('user_id', userId)
+
+  if (error) {
+    console.error('Error loading exercise records:', error.message)
+    return []
+  }
+  return data || []
+}
+
+export async function loadWeightHistory(userId: string) {
+  const supabase = createClient()
+  const { data, error } = await supabase
+    .from('user_weight_history')
+    .select('weight, recorded_at')
+    .eq('user_id', userId)
+    .order('recorded_at', { ascending: true })
+
+  if (error) {
+    console.error('Error loading weight history:', error.message)
+    return []
+  }
+  return data || []
+}
+
+export async function persistDayComplete(userId: string, planSlug: string, dayNumber: number) {
+  const supabase = createClient()
+  const { error } = await supabase
+    .from('user_progress')
+    .upsert({
+      user_id: userId,
+      plan_slug: planSlug,
+      day_number: dayNumber,
+      completed_at: new Date().toISOString(),
+    }, { onConflict: 'user_id,plan_slug,day_number' })
+
+  if (error) {
+    console.error('Error persisting day completion:', error.message)
+  }
+}
+
+export async function persistExerciseRecord(
+  userId: string, 
+  exerciseSlug: string, 
+  sets: number, 
+  reps: string, 
+  weightKg: number
+) {
+  const supabase = createClient()
+  const { error } = await supabase
+    .from('user_exercise_records')
+    .upsert({
+      user_id: userId,
+      exercise_slug: exerciseSlug,
+      sets,
+      reps,
+      weight: weightKg,
+      recorded_at: new Date().toISOString(),
+    }, { onConflict: 'user_id,exercise_slug' })
+
+  if (error) {
+    console.error('Error persisting exercise record:', error.message)
+  }
+}
+
+export async function persistWeight(userId: string, weightKg: number) {
+  const supabase = createClient()
+  const { error } = await supabase
+    .from('user_weight_history')
+    .insert({
+      user_id: userId,
+      weight: weightKg,
+      recorded_at: new Date().toISOString(),
+    })
+
+  if (error) {
+    console.error('Error persisting weight:', error.message)
+  }
 }

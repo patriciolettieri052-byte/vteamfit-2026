@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { useAppStore } from '@/store/appStore'
+import { persistWeight } from '@/lib/supabase/queries'
 
 export default function WeightPrompt({ lang }: { lang: 'es' | 'en' }) {
-  const { progress, logWeight } = useAppStore()
+  const { progress, logWeight, userId } = useAppStore()
   const [show, setShow] = useState(false)
   const [newWeight, setNewWeight] = useState(0)
 
@@ -29,7 +30,14 @@ export default function WeightPrompt({ lang }: { lang: 'es' | 'en' }) {
 
   const handleLog = () => {
     if (newWeight > 0) {
+      // 1. Zustand inmediato
       logWeight(newWeight)
+      // 2. Supabase background
+      if (userId) {
+        persistWeight(userId, newWeight).catch(err =>
+          console.error('Failed to persist weight:', err)
+        )
+      }
       setShow(false)
     }
   }

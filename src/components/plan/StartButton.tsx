@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/client'
 export default function StartButton({ lang, planSlug }: { lang: 'es' | 'en', planSlug: string }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [isProcessing, setIsProcessing] = useState(false)
   const [error, setError] = useState('')
   // null = cargando, false = sin sesión, true = con sesión
   const [hasSession, setHasSession] = useState<boolean | null>(null)
@@ -56,42 +57,49 @@ export default function StartButton({ lang, planSlug }: { lang: 'es' | 'en', pla
   }, [planSlug])
 
   async function handleComenzar() {
+    if (isProcessing) return  // bloquear doble click
+    setIsProcessing(true)
     setLoading(true)
     setError('')
 
-    const supabase = createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    try {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
 
-    if (user) {
-      // Usuario ya logueado → asignar plan directo vía API
-      const res = await fetch('/api/assign-plan', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ planSlug }),
-      })
+      if (user) {
+        // Usuario ya logueado → asignar plan directo vía API
+        const res = await fetch('/api/assign-plan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ planSlug }),
+        })
 
-      if (res.ok) {
-        router.push('/dashboard')
-        router.refresh()
-      } else {
-        const body = await res.json()
-        // Si ya tiene plan activo (propio o de otro plan), mandarlo al dashboard igual
-        if (res.status === 400) {
+        if (res.ok) {
           router.push('/dashboard')
           router.refresh()
         } else {
-          setError(body.error ?? 'No se pudo asignar el plan')
-          setLoading(false)
+          const body = await res.json()
+          // Si ya tiene plan activo (alreadyAssigned), mandarlo al dashboard igual
+          if (res.status === 400 && body.alreadyAssigned) {
+            router.push('/dashboard')
+            router.refresh()
+          } else {
+            setError(body.error ?? 'No se pudo asignar el plan')
+          }
         }
+      } else {
+        // No logueado → flujo de registro normal
+        router.push(`/registro?plan=${planSlug}`)
       }
-    } else {
-      // No logueado → flujo de registro normal
-      router.push(`/registro?plan=${planSlug}`)
+    } finally {
+      setIsProcessing(false)
+      setLoading(false)
     }
   }
 
   // Derivar el label según el estado de sesión y plan
   const getLabel = () => {
+    if (isProcessing) return lang === 'es' ? 'Procesando...' : 'Processing...'
     if (loading) return lang === 'es' ? 'Cargando...' : 'Loading...'
     // Mientras carga el estado inicial, mostrar label neutro
     if (hasSession === null) return lang === 'es' ? 'Comenzar Ahora' : 'Start Now'
@@ -108,7 +116,7 @@ export default function StartButton({ lang, planSlug }: { lang: 'es' | 'en', pla
       )}
       <button
         onClick={handleComenzar}
-        disabled={loading}
+        disabled={isProcessing || loading}
         className="w-max bg-copper text-white font-black text-lg uppercase tracking-widest py-4 px-8 rounded-full shadow-[0_0_32px_rgba(255,107,74,0.3)] hover:shadow-[0_0_48px_rgba(255,107,74,0.6)] hover:bg-[#ff8566] transition-all hover:-translate-y-2 active:scale-95 duration-300 disabled:opacity-50 flex items-center justify-center"
       >
         {getLabel()}

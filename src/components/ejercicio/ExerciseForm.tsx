@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useAppStore } from '@/store/appStore'
 import { useRouter } from 'next/navigation'
+import { persistExerciseRecord } from '@/lib/supabase/queries'
 
 interface ExerciseFormProps {
   slug: string
@@ -14,7 +15,7 @@ interface ExerciseFormProps {
 }
 
 export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day, lang }: ExerciseFormProps) {
-  const { saveExerciseRecord } = useAppStore()
+  const { saveExerciseRecord, userId } = useAppStore()
   const router = useRouter()
   
   const [sets, setSets] = useState(defaultSets)
@@ -22,7 +23,16 @@ export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day
   const [weight, setWeight] = useState(0)
 
   const handleSave = () => {
+    // 1. Guardar en Zustand inmediatamente (UX rápida)
     saveExerciseRecord(slug, sets, reps, weight)
+
+    // 2. Persistir en Supabase en background (fire-and-forget)
+    if (userId) {
+      persistExerciseRecord(userId, slug, sets, reps, weight).catch(err =>
+        console.error('Failed to persist exercise record:', err)
+      )
+    }
+
     router.push(`/dashboard/semana/${week}/dia/${day}`)
   }
 

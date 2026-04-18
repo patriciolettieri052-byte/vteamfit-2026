@@ -23,6 +23,8 @@ interface AppState {
   // Acciones
   setSession: (userId: string, name: string, isTester: boolean) => void
   setActivePlan: (planId: string, slug: string, name: string, startedAt: string) => void
+  clearSession: () => void
+  hydrateProgress: (completedDays: number[], exerciseRecords: Record<string, { sets: number; reps: string; weight: number }>, weightHistory: { date: string; weight: number }[]) => void
   completeDay: (dayNumber: number) => void
   completeExercise: (slug: string) => void
   saveExerciseRecord: (slug: string, sets: number, reps: string, weight: number) => void
@@ -32,16 +34,11 @@ interface AppState {
 }
 
 const initialProgress: UserProgress = {
-  planSlug: 'gluteos-de-acero',
+  planSlug: '',
   currentWeek: 1,
   completedDays: [],
   exerciseRecords: {},
-  weightHistory: [
-    { date: '2024-01-01', weight: 68 },
-    { date: '2024-01-08', weight: 67.5 },
-    { date: '2024-01-15', weight: 67 },
-    { date: '2024-01-22', weight: 66.5 },
-  ],
+  weightHistory: [],
   sessionDuration: {},
 }
 
@@ -65,11 +62,32 @@ export const useAppStore = create<AppState>((set) => ({
     currentPlanName: name,
     startedAt 
   }),
+  clearSession: () => set({
+    userId: null,
+    userName: 'Invitado',
+    isTester: false,
+    currentPlanId: null,
+    currentPlanSlug: '',
+    currentPlanName: '',
+    startedAt: null,
+    progress: initialProgress,
+  }),
 
+  // Hidrata el store con datos reales de Supabase (llamado al cargar el dashboard)
+  hydrateProgress: (completedDays, exerciseRecords, weightHistory) => set((state) => ({
+    progress: {
+      ...state.progress,
+      completedDays,
+      exerciseRecords,
+      weightHistory,
+    }
+  })),
+
+  // Previene duplicados con Set
   completeDay: (dayNumber) => set((state) => ({
     progress: {
       ...state.progress,
-      completedDays: [...state.progress.completedDays, dayNumber],
+      completedDays: [...new Set([...state.progress.completedDays, dayNumber])],
     }
   })),
   

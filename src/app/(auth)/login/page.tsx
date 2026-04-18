@@ -37,7 +37,7 @@ function LoginContent() {
   return (
     <div className="w-full max-w-sm py-12">
       <div className="flex justify-center mb-10">
-        <Image src="/images/logo.svg" alt="VTeamFit" width={138} height={46} />
+        <Image src="/images/logo.svg" alt="VTeamFit" width={166} height={55} />
       </div>
 
       {expired && (

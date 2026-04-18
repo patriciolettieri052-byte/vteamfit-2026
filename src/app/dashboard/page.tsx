@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { getActivePlan } from '@/lib/supabase/queries'
+import { getActivePlan, loadUserProgress, loadExerciseRecords, loadWeightHistory } from '@/lib/supabase/queries'
 import { useAppStore } from '@/store/appStore'
 import WeekList from '@/components/dashboard/WeekList'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
@@ -13,7 +13,7 @@ const supabase = createClient()
 export default function DashboardPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
-  const { lang, userName, currentPlanName, setSession, setActivePlan } = useAppStore()
+  const { lang, userName, currentPlanName, setSession, setActivePlan, hydrateProgress } = useAppStore()
 
   useEffect(() => {
     async function loadDashboardData() {
@@ -40,6 +40,29 @@ export default function DashboardPage() {
           activePlan.name, 
           activePlan.started_at
         )
+
+        // Hydrate progress from Supabase
+        const [progressData, exerciseData, weightData] = await Promise.all([
+          loadUserProgress(user.id, activePlan.slug),
+          loadExerciseRecords(user.id),
+          loadWeightHistory(user.id),
+        ])
+
+        const completedDays = progressData.map(p => p.day_number)
+        const exerciseRecords: Record<string, { sets: number; reps: string; weight: number }> = {}
+        exerciseData.forEach(r => {
+          exerciseRecords[r.exercise_slug] = {
+            sets: r.sets,
+            reps: String(r.reps),
+            weight: r.weight,
+          }
+        })
+        const weightHistory = weightData.map(w => ({
+          date: w.recorded_at.split('T')[0],
+          weight: w.weight,
+        }))
+
+        hydrateProgress(completedDays, exerciseRecords, weightHistory)
       } catch (error) {
         console.error('Error loading dashboard:', error)
       } finally {
@@ -48,7 +71,7 @@ export default function DashboardPage() {
     }
 
     loadDashboardData()
-  }, [router, setSession, setActivePlan])
+  }, [router, setSession, setActivePlan, hydrateProgress])
 
   if (loading) {
     return (

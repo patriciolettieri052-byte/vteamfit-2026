@@ -28,33 +28,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Plan no encontrado' }, { status: 404 })
   }
 
-  // Verificar si ya tiene ESTE plan específico activo y vigente
-  const { data: thisSpecificPlan } = await supabase
+  // Verificar si ya tiene CUALQUIER plan activo vigente (no importa cuál)
+  const { data: anyActivePlan } = await supabase
     .from('user_plans')
-    .select('id')
+    .select('id, plan_id')
     .eq('user_id', user.id)
-    .eq('plan_id', plan.id)
     .eq('status', 'active')
     .gte('expires_at', new Date().toISOString())
     .maybeSingle()
 
-  if (thisSpecificPlan) {
-    // Ya tiene este plan → no es error, redirigir al dashboard
-    return NextResponse.json({ success: true, alreadyAssigned: true })
-  }
-
-  // Verificar si tiene CUALQUIER OTRO plan activo vigente
-  const { data: otherActivePlan } = await supabase
-    .from('user_plans')
-    .select('id')
-    .eq('user_id', user.id)
-    .eq('status', 'active')
-    .gte('expires_at', new Date().toISOString())
-    .neq('plan_id', plan.id)
-    .maybeSingle()
-
-  if (otherActivePlan) {
-    return NextResponse.json({ error: 'Ya tenés un plan activo diferente' }, { status: 400 })
+  if (anyActivePlan) {
+    // Ya tiene un plan activo — no asignar otro
+    return NextResponse.json(
+      { error: 'Ya tenés un plan activo', alreadyAssigned: true },
+      { status: 400 }
+    )
   }
 
   // Insertar el plan

@@ -1,7 +1,5 @@
 import { Exercise } from '@/types'
 import IntensityBar from '@/components/rutina/IntensityBar'
-import { getGrupoMuscular } from '@/lib/trainingUtils'
-import { GLUTEOS_EXERCISES } from '@/data/gluteos-exercises'
 
 export default function ExerciseInfo({ 
   exercise, 
@@ -12,7 +10,8 @@ export default function ExerciseInfo({
   lang: 'es' | 'en',
   dayNumber: number
 }) {
-  const grupo = getGrupoMuscular(exercise.slug, dayNumber, GLUTEOS_EXERCISES, lang)
+  // Usar categoria real del ejercicio desde Supabase — sin mock lookup
+  const grupo = (exercise.categoria || (lang === 'es' ? 'General' : 'General')).toUpperCase()
 
   return (
     <div className="w-full flex flex-col gap-4">

@@ -22,6 +22,7 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 const MASTER_PATH = path.join(process.cwd(), 'VTEAMFIT_MASTER.json');
+const BUNNY_CDN_BASE = env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitfull.b-cdn.net';
 
 async function main() {
   console.log('🚀 Starting ingestion process with UUID mapping...');
@@ -56,13 +57,14 @@ async function main() {
     combinedSource.forEach((ex: any) => {
       if (!ex.slug) return;
       if (!allExercises.has(ex.slug)) {
+        const videoFilename = ex.archivo_destino || ex.slug + '.mp4';
         allExercises.set(ex.slug, {
           slug: ex.slug,
           name_es: ex.nombre_oficial || ex.slug,
           name_en: ex.nombre_oficial || ex.slug,
           description_es: '', 
-          video_url: `${ex.archivo_destino || ex.slug + '.mp4'}`,
-          thumbnail_url: `/images/thumbnails/${ex.slug}.jpg`
+          video_url: videoFilename,
+          thumbnail_url: `${BUNNY_CDN_BASE}/${videoFilename}?thumbnail=1`
         });
       }
     });

@@ -101,7 +101,7 @@ function RegistroContent() {
   return (
     <div className="w-full max-w-sm py-12">
       <div className="flex justify-center mb-10">
-        <Image src="/images/logo.svg" alt="VTeamFit" width={138} height={46} />
+        <Image src="/images/logo.svg" alt="VTeamFit" width={166} height={55} />
       </div>
 
       <h1 className="text-3xl font-black text-white italic uppercase tracking-tighter mb-2">
@@ -168,6 +168,13 @@ function RegistroContent() {
           {loading ? 'Creando cuenta...' : 'Crear cuenta'}
         </button>
       </form>
+
+      <p className="text-center text-dim text-sm mt-4">
+        ¿Ya tenés cuenta?{' '}
+        <a href="/login" className="text-copper underline">
+          Iniciá sesión
+        </a>
+      </p>
 
       <p className="text-center text-dim text-xs mt-6">
         Al registrarte aceptás nuestros términos y condiciones
