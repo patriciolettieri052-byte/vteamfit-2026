@@ -14,7 +14,10 @@ export default function WeekList() {
   
   useEffect(() => {
     async function loadWeeks() {
-      if (!currentPlanId) return
+      if (!currentPlanId) {
+        setLoading(false)
+        return
+      }
       try {
         const data = await getWeeks(currentPlanId)
         setWeeks(data)

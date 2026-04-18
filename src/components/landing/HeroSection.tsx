@@ -17,9 +17,9 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-carbon" />
       </div>
 
-      {/* Logo */}
-      <div className="absolute top-8 left-8 z-10">
-        <div className="relative w-[286px] h-[96px]">
+      {/* Header Container (Logo + Login) */}
+      <div className="absolute top-8 left-8 z-50 flex items-center md:items-end pb-4 gap-4 md:gap-6">
+        <div className="relative w-[286px] h-[96px] shrink-0">
           <Image 
             src="/images/logo.svg" 
             alt="VTeamFit" 
@@ -28,14 +28,14 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
             priority
           />
         </div>
-      </div>
 
-      <Link
-        href="/login"
-        className="absolute top-6 right-6 z-50 text-dim text-xs uppercase tracking-widest font-bold hover:text-white transition-colors"
-      >
-        Iniciar sesión
-      </Link>
+        <Link
+          href="/login"
+          className="text-dim text-xs uppercase tracking-widest font-bold hover:text-white transition-colors pb-2 md:pb-6"
+        >
+          {lang === 'es' ? 'Iniciar sesión' : 'Login'}
+        </Link>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 mt-12 md:mt-0">

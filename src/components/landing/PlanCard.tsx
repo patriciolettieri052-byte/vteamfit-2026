@@ -1,13 +1,39 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Plan } from '@/types'
+import { createClient } from '@/lib/supabase/client'
 
 export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en' }) {
-  const isActive = plan.status === 'active'
+  const [hasPlan, setHasPlan] = useState<boolean>(false)
+  const name = lang === 'es' ? plan.name_es : plan.name_en
+
+  useEffect(() => {
+    async function checkPlan() {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) return
+
+      const { data: userPlan } = await supabase
+        .from('user_plans')
+        .select('id')
+        .eq('user_id', user.id)
+        .eq('plan_id', plan.id)
+        .eq('status', 'active')
+        .gte('expires_at', new Date().toISOString())
+        .maybeSingle()
+
+      setHasPlan(!!userPlan)
+    }
+
+    checkPlan()
+  }, [plan.id])
   const name = lang === 'es' ? plan.name_es : plan.name_en
   
   return (
-    <div className={`relative flex flex-col bg-surface rounded-3xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-2 ${isActive ? 'border-[3px] border-copper ring-4 ring-copper/10' : 'border border-white/5'}`}>
+    <div className={`relative flex flex-col bg-surface rounded-3xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-2 ${hasPlan ? 'border-[3px] border-copper ring-4 ring-copper/10' : 'border border-white/5'}`}>
       {/* Cover Image */}
       <div className="relative w-full aspect-[4/3]">
         <Image
@@ -34,14 +60,14 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           </div>
 
           <Link
-            href={isActive ? '/dashboard' : `/planes/${plan.slug}`}
+            href={hasPlan ? '/dashboard' : `/planes/${plan.slug}`}
             className={`w-full max-w-[240px] text-center py-4 px-8 rounded-full font-bold uppercase tracking-widest transition-all ${
-              isActive 
+              hasPlan 
                 ? 'bg-copper text-white shadow-[0_0_24px_rgba(137,116,73,0.4)] hover:bg-[#a08a56] hover:scale-105 active:scale-95' 
                 : 'bg-zinc-800 text-zinc-300 border border-zinc-700 hover:bg-copper hover:text-white hover:border-transparent active:scale-95'
             }`}
           >
-            {isActive 
+            {hasPlan 
               ? (lang === 'es' ? 'Continuar' : 'Continue') 
               : (lang === 'es' ? 'Ver plan' : 'See plan')
             }

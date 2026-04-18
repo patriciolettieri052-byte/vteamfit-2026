@@ -102,11 +102,11 @@ export default function StartButton({ lang, planSlug }: { lang: 'es' | 'en', pla
     if (isProcessing) return lang === 'es' ? 'Procesando...' : 'Processing...'
     if (loading) return lang === 'es' ? 'Cargando...' : 'Loading...'
     // Mientras carga el estado inicial, mostrar label neutro
-    if (hasSession === null) return lang === 'es' ? 'Comenzar Ahora' : 'Start Now'
+    if (hasSession === null) return lang === 'es' ? 'Comprar Plan' : 'Buy Plan'
     // Tiene sesión Y ya tiene este plan asignado
     if (hasSession && hasPlan) return lang === 'es' ? 'Continuar' : 'Continue'
     // Cualquier otro caso (sin sesión, o sesión sin este plan)
-    return lang === 'es' ? 'Comenzar Ahora' : 'Start Now'
+    return lang === 'es' ? 'Comprar Plan' : 'Buy Plan'
   }
 
   return (

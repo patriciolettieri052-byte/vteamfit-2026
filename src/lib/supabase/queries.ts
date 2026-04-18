@@ -10,6 +10,7 @@ export async function getActivePlan(userId: string) {
     .eq('user_id', userId)
     .eq('status', 'active')
     .order('started_at', { ascending: false })
+    .order('plan_id', { ascending: true })
     .limit(1)
     .maybeSingle()
 
@@ -47,8 +48,40 @@ export async function getActivePlan(userId: string) {
     started_at: userPlan.started_at,
     expires_at: userPlan.expires_at,
     is_tester: profile?.is_tester || false,
-    user_name: profile?.name || 'Usuario'
   }
+}
+
+export async function getAllActivePlans(userId: string) {
+  const supabase = createClient()
+  
+  const { data, error } = await supabase
+    .from('user_plans')
+    .select(`
+      plan_id,
+      started_at,
+      status,
+      plans (
+        slug,
+        name_es,
+        name_en
+      )
+    `)
+    .eq('user_id', userId)
+    .eq('status', 'active')
+    .order('started_at', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching all user plans:', error.message)
+    return []
+  }
+
+  return (data || []).map(up => ({
+    plan_id: up.plan_id,
+    slug: (up.plans as any)?.slug,
+    name: (up.plans as any)?.name_es,
+    started_at: up.started_at,
+    status: up.status
+  }))
 }
 
 export async function getWeeks(planId: string) {
