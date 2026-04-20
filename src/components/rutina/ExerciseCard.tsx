@@ -20,13 +20,23 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
     >
       {/* PulseFit Style Thumbnail with Video Overlay */}
       <div className="relative w-[100px] h-[100px] rounded-[1rem] overflow-hidden shrink-0 bg-carbon shadow-inner">
-        <Image
-          src={exercise.thumbnail_url || '/thumbnails/default.jpg'}
-          alt={exercise.name_es}
-          fill
-          unoptimized={true}
-          className="object-cover"
-        />
+        {exercise.thumbnail_url?.includes('.mp4') ? (
+          <video
+            src={`${exercise.thumbnail_url}#t=0.001`}
+            className="w-[100px] h-[100px] object-cover"
+            muted
+            playsInline
+            preload="metadata"
+          />
+        ) : (
+          <Image
+            src={exercise.thumbnail_url || '/thumbnails/default.jpg'}
+            alt={exercise.name_es}
+            fill
+            unoptimized={true}
+            className="object-cover"
+          />
+        )}
         <div className="absolute inset-0 flex items-center justify-center bg-black/10">
           <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-0.5">

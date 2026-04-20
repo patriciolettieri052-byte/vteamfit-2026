@@ -53,16 +53,18 @@ async function updateThumbnails() {
     };
   });
 
-  // Bulk update
-  const { error: updateError } = await supabase
-    .from('exercises')
-    .upsert(updates, { onConflict: 'id' });
+  for (const ex of updates) {
+    const { error: updateError } = await supabase
+      .from('exercises')
+      .update({ thumbnail_url: ex.thumbnail_url })
+      .eq('id', ex.id);
 
-  if (updateError) {
-    console.error('❌ Error updating exercises:', updateError);
-  } else {
-    console.log('✅ All thumbnails updated successfully to Bunny CDN!');
+    if (updateError) {
+      console.error(`❌ Error updating exercise ${ex.id}:`, updateError);
+    }
   }
+
+  console.log('✅ All thumbnails updated successfully to Bunny CDN!');
 }
 
 updateThumbnails();
