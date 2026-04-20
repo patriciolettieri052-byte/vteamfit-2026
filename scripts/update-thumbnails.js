@@ -14,7 +14,7 @@ envFile.split('\n').forEach(line => {
 
 const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = env.SUPABASE_SERVICE_ROLE_KEY;
-const BUNNY_CDN_BASE = env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitfull.b-cdn.net';
+const BUNNY_CDN_BASE = env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfit-app.b-cdn.net';
 
 if (!supabaseUrl || !supabaseKey) {
   console.error('Missing Supabase environment variables');

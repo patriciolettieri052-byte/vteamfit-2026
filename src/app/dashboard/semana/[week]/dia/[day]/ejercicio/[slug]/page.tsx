@@ -83,7 +83,7 @@ export default function EjercicioPage({ params }: { params: Promise<{ week: stri
   }
 
   // Construct Bunny URL
-  const bunnyBase = process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitfull.b-cdn.net'
+  const bunnyBase = process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfit-app.b-cdn.net'
   const finalVideoUrl = exercise.video_url.startsWith('http') 
     ? exercise.video_url 
     : `${bunnyBase}/${exercise.video_url}`
@@ -100,10 +100,10 @@ export default function EjercicioPage({ params }: { params: Promise<{ week: stri
         </svg>
       </Link>
 
-      <div className="p-6 flex flex-col gap-8 pt-24">
-        <VideoPlayer videoUrl={finalVideoUrl} />
-        
+      <div className="p-6 flex flex-col gap-6 pt-24">
         <ExerciseInfo exercise={exercise} lang={lang} dayNumber={dayNum} />
+
+        <VideoPlayer videoUrl={finalVideoUrl} />
         
         <SetsRepsDisplay 
           sets={exercise.sets || 3} 

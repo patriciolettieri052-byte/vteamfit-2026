@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { DiscountData } from '@/components/plan/DiscountCode'
 
-export default function StartButton({ lang, planSlug }: { lang: 'es' | 'en', planSlug: string }) {
+export default function StartButton({ lang, planSlug, discountData = null }: { lang: 'es' | 'en', planSlug: string, discountData?: DiscountData | null }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
@@ -67,24 +68,52 @@ export default function StartButton({ lang, planSlug }: { lang: 'es' | 'en', pla
       const { data: { user } } = await supabase.auth.getUser()
 
       if (user) {
-        // Usuario ya logueado → asignar plan directo vía API
-        const res = await fetch('/api/assign-plan', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ planSlug }),
-        })
+        if (discountData?.type === 'free') {
+          // Código FREE → bypasseo, directo a assign-plan
+          const res = await fetch('/api/assign-plan', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ planSlug }),
+          })
 
-        if (res.ok) {
-          router.push('/dashboard')
-          router.refresh()
-        } else {
-          const body = await res.json()
-          // Si ya tiene plan activo (alreadyAssigned), mandarlo al dashboard igual
-          if (res.status === 400 && body.alreadyAssigned) {
+          if (res.ok) {
+            // Plan gratis asignado -> subir count
+            await fetch('/api/apply-discount', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ discountId: discountData.discountId }),
+            })
             router.push('/dashboard')
             router.refresh()
           } else {
-            setError(body.error ?? 'No se pudo asignar el plan')
+            const body = await res.json()
+            if (res.status === 400 && body.alreadyAssigned) {
+              router.push('/dashboard')
+              router.refresh()
+            } else {
+              setError(body.error ?? 'No se pudo asignar el plan gratuito')
+            }
+          }
+        } else {
+          // Usuario ya logueado → asignar plan directo vía API (Hoy directo, futuro paypal)
+          const res = await fetch('/api/assign-plan', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ planSlug }),
+          })
+
+          if (res.ok) {
+            router.push('/dashboard')
+            router.refresh()
+          } else {
+            const body = await res.json()
+            // Si ya tiene plan activo (alreadyAssigned), mandarlo al dashboard igual
+            if (res.status === 400 && body.alreadyAssigned) {
+              router.push('/dashboard')
+              router.refresh()
+            } else {
+              setError(body.error ?? 'No se pudo asignar el plan')
+            }
           }
         }
       } else {

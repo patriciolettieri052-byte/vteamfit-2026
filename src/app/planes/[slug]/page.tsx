@@ -1,6 +1,6 @@
 'use client'
 
-import { use } from 'react'
+import { use, useState } from 'react'
 import { notFound } from 'next/navigation'
 import { getPlanBySlug } from '@/data/plans'
 import PlanHero from '@/components/plan/PlanHero'
@@ -9,11 +9,13 @@ import StartButton from '@/components/plan/StartButton'
 import LanguageSelector from '@/components/ui/LanguageSelector'
 import { useAppStore } from '@/store/appStore'
 import Link from 'next/link'
+import DiscountCode, { DiscountData } from '@/components/plan/DiscountCode'
 
 export default function PlanDetail({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = use(params)
   const plan = getPlanBySlug(resolvedParams.slug)
   const { lang } = useAppStore()
+  const [discountData, setDiscountData] = useState<DiscountData | null>(null)
   
   if (!plan) {
     notFound()
@@ -36,8 +38,31 @@ export default function PlanDetail({ params }: { params: Promise<{ slug: string 
       <PlanHero plan={plan} lang={lang} />
       <PlanFeatures plan={plan} lang={lang} />
       
-      {/* Call to Action */}
-      <StartButton lang={lang} planSlug={plan.slug} />
+      {/* Call to Action & Discount */}
+      <div className="w-full flex-col items-center justify-center pt-8 pb-10">
+        {discountData ? (
+          <div className="text-center mb-4">
+            <span className="text-dim line-through text-sm">${plan.price} USD</span>
+            <span className="text-copper font-bold text-2xl ml-2">
+              {discountData.type === 'free' ? 'GRATIS' : `$${discountData.finalPrice} USD`}
+            </span>
+          </div>
+        ) : (
+          <div className="text-center mb-4">
+            <span className="text-copper font-bold text-2xl">${plan.price} USD</span>
+          </div>
+        )}
+
+        {/* StartButton fixed on mobile, static on desktop */}
+        <StartButton lang={lang} planSlug={plan.slug} discountData={discountData} />
+
+        <DiscountCode
+          planSlug={plan.slug}
+          planPrice={plan.price}
+          onDiscountApplied={setDiscountData}
+          lang={lang}
+        />
+      </div>
     </main>
   )
 }

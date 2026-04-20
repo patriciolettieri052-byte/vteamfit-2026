@@ -37,13 +37,21 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
       </div>
 
       {/* Info Group */}
-      <div className="flex-1 pl-5 pr-2 py-1 flex flex-col justify-center gap-1.5">
+      <div className="flex-1 pl-5 pr-2 py-1 flex flex-col justify-center">
         <h3 className="text-lg font-black text-white italic uppercase leading-tight line-clamp-2 pr-1">
           {exercise.name_es}
         </h3>
-        <p className="text-copper font-bold text-[13px] tracking-widest uppercase">
-          {sets} Series × {reps}
-        </p>
+        
+        <div className="flex flex-col gap-1 mt-1">
+          {exercise.categoria && exercise.categoria.toLowerCase() !== 'general' && (
+            <span className="text-[10px] text-copper/70 uppercase tracking-widest font-bold">
+              {exercise.categoria.replace('-', ' ')}
+            </span>
+          )}
+          <p className="text-dim font-bold text-[11px] tracking-widest uppercase">
+            {sets} Series × {reps}
+          </p>
+        </div>
       </div>
 
       {/* Trailing components block */}
