@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-end md:justify-center pb-12 md:pb-0 overflow-hidden">
+    <section className="relative w-full h-screen flex flex-col items-center justify-center pb-12 md:pb-0 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 w-full h-full">
         <Image
@@ -11,15 +11,15 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
           alt="Hero background"
           fill
           priority
-          className="object-cover object-[center_15%]"
+          className="object-cover object-[center_10%] md:object-[center_15%]"
         />
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-carbon" />
       </div>
 
       {/* Header Container (Logo + Login) */}
-      <div className="absolute top-6 left-6 md:top-8 md:left-8 z-50 flex items-center md:items-end pb-2 md:pb-4 gap-1 md:gap-2">
-        <div className="relative w-[180px] h-[60px] md:w-[288px] md:h-[96px] shrink-0">
+      <div className="absolute top-4 left-4 md:top-8 md:left-8 z-50 flex items-center md:items-end gap-0">
+        <div className="relative w-[220px] h-[74px] md:w-[288px] md:h-[96px] shrink-0">
           <Image 
             src="/images/logo.svg" 
             alt="VTeamFit" 
@@ -31,14 +31,14 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
 
         <Link
           href="/login"
-          className="text-dim text-[10px] md:text-xs uppercase tracking-widest font-bold hover:text-white transition-colors pb-0 md:pb-5 -ml-1 md:-ml-2 shrink-0"
+          className="text-dim text-[10px] md:text-xs uppercase tracking-widest font-bold hover:text-white transition-colors pb-0 md:pb-5 -ml-6 md:-ml-2 shrink-0"
         >
           {lang === 'es' ? 'Iniciar sesión' : 'Login'}
         </Link>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-12 md:mt-48">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-64 md:mt-48">
         <h1 className="text-5xl md:text-7xl font-black text-white italic uppercase mb-4 tracking-tight drop-shadow-xl text-balance">
           {lang === 'es' ? 'TU MEJOR VERSIÓN' : 'YOUR BEST VERSION'}
         </h1>
