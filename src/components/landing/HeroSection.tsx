@@ -7,7 +7,7 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
       {/* Background */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/images/fotos/hero-landing-principal.jpg"
+          src="/images/fotos/inicio.webp"
           alt="Hero background"
           fill
           priority

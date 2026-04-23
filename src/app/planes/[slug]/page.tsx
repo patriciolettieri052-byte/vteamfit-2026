@@ -41,15 +41,15 @@ export default function PlanDetail({ params }: { params: Promise<{ slug: string 
       {/* Call to Action & Discount */}
       <div className="w-full flex-col items-center justify-center pt-8 pb-10">
         {discountData ? (
-          <div className="text-center mb-4">
-            <span className="text-dim line-through text-sm">${plan.price} USD</span>
+          <div className="text-center mb-4 uppercase">
+            <span className="text-dim line-through text-sm">${plan.price} {lang === 'es' ? plan.billing_cycle_es : plan.billing_cycle_en}</span>
             <span className="text-copper font-bold text-2xl ml-2">
-              {discountData.type === 'free' ? 'GRATIS' : `$${discountData.finalPrice} USD`}
+              {discountData.type === 'free' ? 'GRATIS' : `$${discountData.finalPrice} ${lang === 'es' ? plan.billing_cycle_es : plan.billing_cycle_en}`}
             </span>
           </div>
         ) : (
-          <div className="text-center mb-4">
-            <span className="text-copper font-bold text-2xl">${plan.price} USD</span>
+          <div className="text-center mb-4 uppercase">
+            <span className="text-copper font-bold text-2xl">${plan.price} {lang === 'es' ? plan.billing_cycle_es : plan.billing_cycle_en}</span>
           </div>
         )}
 

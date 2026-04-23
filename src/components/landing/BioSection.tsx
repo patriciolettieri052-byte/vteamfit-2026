@@ -9,7 +9,7 @@ export default function BioSection({ lang }: { lang: 'es' | 'en' }) {
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20 relative z-10">
         <div className="w-56 h-56 md:w-72 md:h-72 shrink-0 rounded-full overflow-hidden border-[6px] border-carbon relative shadow-[0_0_40px_rgba(0,0,0,0.5)]">
           <Image 
-            src="/images/fotos/hero-landing-principal.jpg" 
+            src="/images/fotos/vicky-torres.webp" 
             alt="Vicky Torres" 
             fill
             className="object-cover object-[center_top]"

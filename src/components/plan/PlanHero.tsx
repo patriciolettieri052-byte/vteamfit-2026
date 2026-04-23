@@ -13,7 +13,7 @@ export default function PlanHero({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           alt={name}
           fill
           priority
-          className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_40%]' : 'object-[center_top]'}`}
+          className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_55%]' : 'object-[center_top]'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/80 to-transparent" />
       </div>
@@ -31,7 +31,7 @@ export default function PlanHero({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           {plan.status !== 'active' && (
             <div className="flex items-center gap-2 text-copper drop-shadow-md">
               <span className="text-4xl font-black">${plan.price}</span>
-              <span className="text-lg font-sans text-dim mt-1">USD</span>
+              <span className="text-lg font-sans text-dim mt-1 uppercase">{lang === 'es' ? plan.billing_cycle_es : plan.billing_cycle_en}</span>
             </div>
           )}
         </div>

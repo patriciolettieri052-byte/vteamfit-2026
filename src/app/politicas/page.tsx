@@ -54,6 +54,16 @@ export default function PoliticasPage() {
         </div>
       </section>
 
+      {/* Responsabilidad y Salud */}
+      <section className="flex flex-col gap-3">
+        <h2 className="text-xs font-bold text-copper uppercase tracking-widest">Responsabilidad y Salud</h2>
+        <div className="bg-surface rounded-2xl p-5 border border-white/5 flex flex-col gap-3">
+          <PolicyItem text="VTeamFit no se hace responsable de ninguna lesión que pueda sufrir el cliente durante la realización de los entrenamientos." />
+          <PolicyItem text="No nos hacemos responsables si el cliente no percibe cambios físicos o mejoras; cada usuario es responsable de su propio progreso y de la correcta ejecución de los ejercicios." />
+          <PolicyItem text="Recomendamos consultar con un profesional de la salud antes de comenzar cualquier programa de ejercicio intenso." />
+        </div>
+      </section>
+
       {/* Pagos y Reembolsos */}
       <section className="flex flex-col gap-3">
         <h2 className="text-xs font-bold text-copper uppercase tracking-widest">Pagos y Reembolsos</h2>

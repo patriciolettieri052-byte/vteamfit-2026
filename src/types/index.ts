@@ -14,6 +14,8 @@ export interface Plan {
   duration_days: number
   plan_type: PlanType
   cover_image: string
+  billing_cycle_es?: string
+  billing_cycle_en?: string
   status: PlanStatus
 }
 

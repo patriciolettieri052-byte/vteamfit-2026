@@ -39,7 +39,7 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           src={plan.cover_image}
           alt={name}
           fill
-          className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_10%]' : 'object-center'}`}
+          className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_25%]' : 'object-center'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent" />
       </div>
@@ -54,7 +54,7 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
         <div className="mt-auto w-full flex flex-col items-center">
           <div className="h-[60px] flex items-center justify-center mb-6">
             <p className="text-copper font-black text-3xl tracking-tighter">
-              ${plan.price} <span className="text-sm font-sans tracking-normal opacity-70">USD</span>
+              ${plan.price} <span className="text-sm font-sans tracking-normal opacity-70 uppercase">{lang === 'es' ? plan.billing_cycle_es : plan.billing_cycle_en}</span>
             </p>
           </div>
 
