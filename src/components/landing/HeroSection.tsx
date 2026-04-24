@@ -11,7 +11,7 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
           alt="Hero background"
           fill
           priority
-          className="object-cover object-[center_10%] md:object-[center_15%]"
+          className="object-cover object-[50%_15%] md:object-[50%_35%]"
         />
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-carbon" />
@@ -31,14 +31,14 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
 
         <Link
           href="/login"
-          className="text-dim text-[10px] md:text-xs uppercase tracking-widest font-bold hover:text-white transition-colors pb-0 md:pb-5 -ml-6 md:-ml-2 shrink-0"
+          className="text-dim text-[10px] md:text-xs uppercase tracking-widest font-bold hover:text-white transition-colors pb-0 md:pb-5 -ml-24 md:-ml-12 shrink-0"
         >
           {lang === 'es' ? 'Iniciar sesión' : 'Login'}
         </Link>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-64 md:mt-48">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-80 md:mt-64">
         <h1 className="text-5xl md:text-7xl font-black text-white italic uppercase mb-4 tracking-tight drop-shadow-xl text-balance">
           {lang === 'es' ? 'TU MEJOR VERSIÓN' : 'YOUR BEST VERSION'}
         </h1>
@@ -53,7 +53,7 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
           {lang === 'es' ? 'VER PLANES' : 'SEE PLANS'}
         </button>
 
-        <p className="text-dim text-xl text-center max-w-2xl mx-auto leading-relaxed mt-10 px-4 font-medium opacity-80">
+        <p className="text-white text-sm md:text-base text-center max-w-2xl mx-auto leading-relaxed mt-10 px-4 font-medium">
           {lang === 'es' ? (
             <>
               VTeamFit es una aplicación de fitness creada por Victoria Torres junto a Tito Allemandi, 

@@ -12,7 +12,7 @@ export default function BioSection({ lang }: { lang: 'es' | 'en' }) {
             src="/images/fotos/vicky-torres.webp" 
             alt="Vicky Torres" 
             fill
-            className="object-cover object-[center_top]"
+            className="object-cover object-[40%_top] md:object-center"
           />
         </div>
         
