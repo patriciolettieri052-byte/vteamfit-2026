@@ -1,7 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAppStore } from '@/store/appStore'
 
-export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
+export default function HeroSection() {
+  const { lang, setLang } = useAppStore()
+
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center pb-12 md:pb-0 overflow-hidden">
       {/* Background */}
@@ -17,23 +22,37 @@ export default function HeroSection({ lang }: { lang: 'es' | 'en' }) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-carbon" />
       </div>
 
-      {/* Header Container (Logo + Login) */}
-      <div className="absolute top-4 left-4 md:top-8 md:left-8 z-50 flex items-center md:items-end gap-0">
-        <div className="relative w-[220px] h-[74px] md:w-[288px] md:h-[96px] shrink-0">
+      {/* Header Container (Logo) */}
+      <div className="absolute -top-1 -left-6 md:-top-4 md:-left-12 z-50 pointer-events-none">
+        <div className="relative w-[160px] h-[92px] md:w-[306px] md:h-[153px]">
           <Image 
             src="/images/logo.svg" 
             alt="VTeamFit" 
             fill 
-            className="object-contain object-left" 
+            className="object-contain object-top-left pointer-events-auto" 
             priority
           />
         </div>
+      </div>
 
+      {/* Header Right (Language + Login) */}
+      <div className="absolute top-6 right-4 md:right-6 z-[60] flex items-center gap-2">
+        {/* Language Toggle */}
+        <button
+          onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
+          className="flex items-center gap-1.5 bg-black/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 font-black text-[10px] tracking-tight hover:bg-black/30 cursor-pointer"
+        >
+          <span className={lang === 'es' ? 'text-copper' : 'text-zinc-500'}>ES</span>
+          <span className="text-zinc-700">|</span>
+          <span className={lang !== 'es' ? 'text-copper' : 'text-zinc-500'}>EN</span>
+        </button>
+
+        {/* Login Button */}
         <Link
           href="/login"
-          className="text-dim text-[10px] md:text-xs uppercase tracking-widest font-bold hover:text-white transition-colors pb-0 md:pb-5 -ml-24 md:-ml-12 shrink-0"
+          className="bg-black/40 backdrop-blur-xl px-4 py-1.5 rounded-full border border-white/10 text-white text-[10px] md:text-xs uppercase tracking-widest font-black hover:bg-copper hover:border-transparent transition-all shadow-xl active:scale-95"
         >
-          {lang === 'es' ? 'Iniciar sesión' : 'Login'}
+          {lang === 'es' ? 'Inicia sesión' : 'Login'}
         </Link>
       </div>
 
