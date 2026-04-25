@@ -2,7 +2,7 @@ import { Plan } from '@/types'
 
 export const PLANS: Plan[] = [
   {
-    id: '4',
+    id: '3ee172b1-b9fb-4acc-91a3-f636df52cb83',
     slug: 'transforma-tu-cuerpo',
     name_es: 'TRANSFORMA TU CUERPO',
     name_en: 'TRANSFORM YOUR BODY',
@@ -17,7 +17,7 @@ export const PLANS: Plan[] = [
     status: 'not_purchased',
   },
   {
-    id: '2',
+    id: '3be46d16-ae87-4391-810e-6ddd60f8d320',
     slug: 'plan-padel',
     name_es: 'PLAN PÁDEL',
     name_en: 'PADEL PLAN',
@@ -32,7 +32,7 @@ export const PLANS: Plan[] = [
     status: 'not_purchased',
   },
   {
-    id: '1',
+    id: 'a265e358-c6e9-4a53-b203-0cdaf17cc2e3',
     slug: 'gluteos-de-acero',
     name_es: 'GLÚTEOS DE ACERO',
     name_en: 'STEEL GLUTES',
@@ -44,10 +44,27 @@ export const PLANS: Plan[] = [
     duration_days: 84,
     plan_type: 'weeks_days',
     cover_image: '/images/fotos/gluteos.jpg',
-    status: 'active',
+    status: 'not_purchased',
   },
   {
-    id: '3',
+    id: '6e86eb30-20f2-4920-8b65-cb807c158ed3',
+    slug: 'entrena-conmigo',
+    name_es: 'ENTRENA CONMIGO',
+    name_en: 'TRAIN WITH ME',
+    description_es: 'Plan de entrenamiento 100% personalizado diseñado por Vicky Torres según tus objetivos, disponibilidad y condición física. Comunicación directa con Vicky vía WhatsApp y ajustes mensuales según tu progreso.',
+    description_en: '100% personalized training plan designed by Vicky Torres based on your goals, availability and physical condition. Direct communication with Vicky via WhatsApp and monthly adjustments based on your progress.',
+    price: 390,
+    billing_cycle_es: 'mensual',
+    billing_cycle_en: 'monthly',
+    duration_days: 30,
+    plan_type: 'custom',
+    cover_image: '/images/fotos/vicky-personalizado.jpg',
+    badge_es: 'PERSONALIZADO',
+    badge_en: 'PERSONALIZED',
+    status: 'not_purchased',
+  },
+  {
+    id: '1e93aea5-779a-4a4e-bff0-c6d7a5c36a72',
     slug: 'fisico-en-pista-padel',
     name_es: 'CURSO DE FÍSICO EN PISTA DE PÁDEL',
     name_en: 'COURT FITNESS COURSE FOR PADEL',

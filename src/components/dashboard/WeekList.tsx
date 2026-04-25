@@ -3,24 +3,31 @@
 import { useEffect, useState } from 'react'
 import { useAppStore } from '@/store/appStore'
 import { getWeeks } from '@/lib/supabase/queries'
+import { getCustomPlanWeeks } from '@/lib/supabase/customPlanQueries'
 import { isWeekUnlocked, getCurrentWeek } from '@/lib/utils/planUtils'
 import WeekRow from './WeekRow'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
 export default function WeekList() {
-  const { progress, lang, currentPlanId, startedAt, isTester } = useAppStore()
+  const { progress, lang, currentPlanId, currentPlanSlug, userId, startedAt, isTester } = useAppStore()
   const [weeks, setWeeks] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   
   useEffect(() => {
     async function loadWeeks() {
-      if (!currentPlanId) {
+      if (!currentPlanId && currentPlanSlug !== 'entrena-conmigo') {
         setLoading(false)
         return
       }
       try {
-        const data = await getWeeks(currentPlanId)
-        setWeeks(data)
+        // Plan personalizado: usa user_custom_plan_days
+        if (currentPlanSlug === 'entrena-conmigo' && userId) {
+          const data = await getCustomPlanWeeks(userId)
+          setWeeks(data)
+        } else if (currentPlanId) {
+          const data = await getWeeks(currentPlanId)
+          setWeeks(data)
+        }
       } catch (error) {
         console.error('Error fetching weeks:', error)
       } finally {
@@ -28,15 +35,22 @@ export default function WeekList() {
       }
     }
     loadWeeks()
-  }, [currentPlanId])
+  }, [currentPlanId, currentPlanSlug, userId])
 
   if (loading) return <div className="py-10 flex justify-center"><LoadingSpinner /></div>
 
-  // CURRENT WEEK: La más alta desbloqueada
-  const currentWeekNum = getCurrentWeek(weeks, startedAt, isTester)
+  // Para el plan custom, todas las semanas están desbloqueadas (Vicky controla el contenido)
+  const isCustomPlan = currentPlanSlug === 'entrena-conmigo'
 
-  // Solo mostrar semanas desbloqueadas (is_tester=true las desbloquea todas)
-  const visibleWeeks = weeks.filter(w => isWeekUnlocked(w.week_number, startedAt, isTester))
+  // CURRENT WEEK: La más alta desbloqueada
+  const currentWeekNum = isCustomPlan
+    ? (weeks[weeks.length - 1]?.week_number ?? 1)
+    : getCurrentWeek(weeks, startedAt, isTester)
+
+  // Solo mostrar semanas desbloqueadas (custom → todas; normal → por tiempo)
+  const visibleWeeks = isCustomPlan
+    ? weeks
+    : weeks.filter(w => isWeekUnlocked(w.week_number, startedAt, isTester))
 
   return (
     <div className="w-full flex flex-col gap-5 mt-8">

@@ -101,6 +101,21 @@ export default function DashboardPage() {
           activePlan.started_at
         )
 
+        // Si el plan activo es 'entrena-conmigo', verificar si Vicky ya subió el plan
+        if (activePlan.slug === 'entrena-conmigo') {
+          const { count } = await supabase
+            .from('user_custom_plan_days')
+            .select('*', { count: 'exact', head: true })
+            .eq('user_id', user.id)
+
+          if (!count || count === 0) {
+            // Vicky todavía no subió el plan → pantalla de espera
+            router.push('/dashboard/entrena-conmigo/espera')
+            return
+          }
+          // Si hay datos → continuar con hidratación normal (TICKET-CUSTOM-03)
+        }
+
         // Initial hydration
         await hydratePlanData(user.id, activePlan.slug)
       } catch (error) {

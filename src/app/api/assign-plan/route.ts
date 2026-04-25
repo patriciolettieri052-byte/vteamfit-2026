@@ -46,6 +46,15 @@ export async function POST(request: Request) {
   }
 
   // Insertar el plan
+  const PLAN_DURATION_DAYS: Record<string, number> = {
+    'transforma-tu-cuerpo': 30,
+    'plan-padel': 30,
+    'gluteos-de-acero': 84,
+    'entrena-conmigo': 30,
+    'fisico-en-pista-padel': 3650,
+  }
+  const durationDays = PLAN_DURATION_DAYS[planSlug] ?? 30
+
   const { error: insertError } = await supabase
     .from('user_plans')
     .insert({
@@ -53,7 +62,7 @@ export async function POST(request: Request) {
       plan_id: plan.id,
       status: 'active',
       started_at: new Date().toISOString(),
-      expires_at: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+      expires_at: new Date(Date.now() + durationDays * 24 * 60 * 60 * 1000).toISOString(),
     })
 
   if (insertError) {

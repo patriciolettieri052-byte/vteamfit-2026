@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Exercise } from '@/types'
 import IntensityBar from './IntensityBar'
 
-export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exercise: Exercise, isCompleted: boolean, slugInfo: { week: number, day: number, slug: string } }) {
+export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exercise: Exercise & { vickyNotes?: string }, isCompleted: boolean, slugInfo: { week: number, day: number, slug: string } }) {
   // Fallbacks per requirement if sets/reps were absent
   const sets = exercise.sets || 3
   const reps = exercise.reps || '12'
@@ -62,6 +62,18 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
             {sets} Series × {reps}
           </p>
         </div>
+
+        {/* Nota de Vicky — solo para planes personalizados */}
+        {exercise.vickyNotes && (
+          <div className="border border-copper/30 rounded-lg px-3 py-2 mt-2 bg-copper/5">
+            <p className="text-[9px] text-copper uppercase tracking-wider font-black mb-0.5">
+              Nota de Vicky
+            </p>
+            <p className="text-zinc-400 text-[11px] font-medium leading-snug line-clamp-2">
+              {exercise.vickyNotes}
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Trailing components block */}

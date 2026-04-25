@@ -7,16 +7,27 @@ import ExerciseCard from './ExerciseCard'
 import CompleteDayButton from './CompleteDayButton'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
-export default function ExerciseList({ dayNumber, dayId, weekNumber }: {
+interface Props {
   dayNumber: number
   dayId: string
   weekNumber: number
-}) {
+  /** Para planes custom (Entrena Conmigo): ejercicios ya cargados desde la página padre */
+  customExercises?: { position: number; exercise: any }[] | null
+}
+
+export default function ExerciseList({ dayNumber, dayId, weekNumber, customExercises = null }: Props) {
   const { progress, lang } = useAppStore()
   const [exercisesData, setExercisesData] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(customExercises === null)
 
   useEffect(() => {
+    // Si ya tenemos ejercicios custom pre-cargados, no hacer fetch
+    if (customExercises !== null) {
+      setExercisesData(customExercises)
+      setLoading(false)
+      return
+    }
+
     async function fetchExercises() {
       try {
         const data = await getDayExercises(dayId)
@@ -28,7 +39,7 @@ export default function ExerciseList({ dayNumber, dayId, weekNumber }: {
       }
     }
     fetchExercises()
-  }, [dayId])
+  }, [dayId, customExercises])
 
   if (loading) return <div className="py-10 flex justify-center"><LoadingSpinner /></div>
 

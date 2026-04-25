@@ -5,6 +5,7 @@ import { notFound, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAppStore } from '@/store/appStore'
 import { getWeeks } from '@/lib/supabase/queries'
+import { getCustomPlanWeeks } from '@/lib/supabase/customPlanQueries'
 import SemanaHero from '@/components/semana/SemanaHero'
 import DayList from '@/components/semana/DayList'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
@@ -13,27 +14,29 @@ export default function SemanaPage({ params }: { params: Promise<{ week: string 
   const resolvedParams = use(params)
   const weekNumber = parseInt(resolvedParams.week, 10)
   const router = useRouter()
-  const { lang, currentPlanId } = useAppStore()
+  const { lang, currentPlanId, currentPlanSlug, userId } = useAppStore()
   
   const [weekData, setWeekData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchWeekData() {
-      if (!currentPlanId) {
-        // Si no hay plan en el store, probablemente entró directo. Redirigir al dashboard para hidratar.
+      const isCustomPlan = currentPlanSlug === 'entrena-conmigo'
+
+      if (!currentPlanId && !isCustomPlan) {
         router.push('/dashboard')
         return
       }
 
       try {
-        const weeks = await getWeeks(currentPlanId)
-        const found = weeks.find(w => w.week_number === weekNumber)
-        if (found) {
-          setWeekData(found)
+        let weeks: any[]
+        if (isCustomPlan && userId) {
+          weeks = await getCustomPlanWeeks(userId)
         } else {
-          setWeekData(null)
+          weeks = await getWeeks(currentPlanId!)
         }
+        const found = weeks.find(w => w.week_number === weekNumber)
+        setWeekData(found ?? null)
       } catch (error) {
         console.error('Error fetching week:', error)
       } finally {
@@ -41,7 +44,7 @@ export default function SemanaPage({ params }: { params: Promise<{ week: string 
       }
     }
     fetchWeekData()
-  }, [currentPlanId, weekNumber, router])
+  }, [currentPlanId, currentPlanSlug, userId, weekNumber, router])
 
   if (isNaN(weekNumber)) {
     notFound()

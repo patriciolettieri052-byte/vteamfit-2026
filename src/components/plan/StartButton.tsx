@@ -57,6 +57,11 @@ export default function StartButton({ lang, planSlug, discountData = null }: { l
     checkSessionAndPlan()
   }, [planSlug])
 
+  // Destino post-compra: onboarding si es plan custom, dashboard para el resto
+  const postPurchaseRedirect = planSlug === 'entrena-conmigo'
+    ? '/dashboard/entrena-conmigo/onboarding'
+    : '/dashboard'
+
   async function handleComenzar() {
     if (isProcessing) return  // bloquear doble click
     setIsProcessing(true)
@@ -83,12 +88,12 @@ export default function StartButton({ lang, planSlug, discountData = null }: { l
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ discountId: discountData.discountId }),
             })
-            router.push('/dashboard')
+            router.push(postPurchaseRedirect)
             router.refresh()
           } else {
             const body = await res.json()
             if (res.status === 400 && body.alreadyAssigned) {
-              router.push('/dashboard')
+              router.push(postPurchaseRedirect)
               router.refresh()
             } else {
               setError(body.error ?? 'No se pudo asignar el plan gratuito')
@@ -103,13 +108,13 @@ export default function StartButton({ lang, planSlug, discountData = null }: { l
           })
 
           if (res.ok) {
-            router.push('/dashboard')
+            router.push(postPurchaseRedirect)
             router.refresh()
           } else {
             const body = await res.json()
             // Si ya tiene plan activo (alreadyAssigned), mandarlo al dashboard igual
             if (res.status === 400 && body.alreadyAssigned) {
-              router.push('/dashboard')
+              router.push(postPurchaseRedirect)
               router.refresh()
             } else {
               setError(body.error ?? 'No se pudo asignar el plan')

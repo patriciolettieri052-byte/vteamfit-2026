@@ -42,6 +42,12 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_25%]' : 'object-center'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent" />
+        {/* Badge especial (ej: PERSONALIZADO) */}
+        {plan.badge_es && (
+          <span className="absolute top-4 right-4 bg-copper text-white text-[10px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg z-10">
+            {lang === 'es' ? plan.badge_es : (plan.badge_en ?? plan.badge_es)}
+          </span>
+        )}
       </div>
 
       {/* Content */}

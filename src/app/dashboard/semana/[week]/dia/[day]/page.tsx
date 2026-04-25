@@ -5,6 +5,7 @@ import { notFound, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAppStore } from '@/store/appStore'
 import { getWeeks } from '@/lib/supabase/queries'
+import { getCustomPlanDayExercises } from '@/lib/supabase/customPlanQueries'
 import ExerciseList from '@/components/rutina/ExerciseList'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
@@ -14,27 +15,40 @@ export default function DiaDetallePage({ params }: { params: Promise<{ week: str
   const weekNumber = parseInt(resolvedParams.week, 10)
   const dayNumber = parseInt(resolvedParams.day, 10)
   const router = useRouter()
-  const { lang, progress, currentPlanId } = useAppStore()
+  const { lang, progress, currentPlanId, currentPlanSlug, userId } = useAppStore()
 
   const [dayData, setDayData] = useState<any>(null)
+  // Para plan custom: ejercicios ya cargados con notas de Vicky
+  const [customExercises, setCustomExercises] = useState<any[] | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchDayData() {
-      if (!currentPlanId) {
+      const isCustomPlan = currentPlanSlug === 'entrena-conmigo'
+
+      if (!currentPlanId && !isCustomPlan) {
         router.push('/dashboard')
         return
       }
 
       try {
-        const weeks = await getWeeks(currentPlanId)
-        const week = weeks.find(w => w.week_number === weekNumber)
-        const day = week?.days.find((d: any) => d.day_number === dayNumber)
-        
-        if (day) {
-          setDayData(day)
+        if (isCustomPlan && userId) {
+          // Plan personalizado: cargar ejercicios directamente desde user_custom_plan_days
+          const exercises = await getCustomPlanDayExercises(userId, weekNumber, dayNumber)
+          setCustomExercises(exercises)
+          setDayData({
+            id: `custom-${userId}-w${weekNumber}-d${dayNumber}`,
+            day_number: dayNumber,
+            is_rest_day: exercises.length === 0,
+            title: `Día ${dayNumber}`,
+            recommended: 'Entrenamiento personalizado de Vicky',
+            intensity: null,
+          })
         } else {
-          setDayData(null)
+          const weeks = await getWeeks(currentPlanId!)
+          const week = weeks.find(w => w.week_number === weekNumber)
+          const day = week?.days.find((d: any) => d.day_number === dayNumber)
+          setDayData(day ?? null)
         }
       } catch (error) {
         console.error('Error fetching day:', error)
@@ -43,7 +57,7 @@ export default function DiaDetallePage({ params }: { params: Promise<{ week: str
       }
     }
     fetchDayData()
-  }, [currentPlanId, weekNumber, dayNumber, router])
+  }, [currentPlanId, currentPlanSlug, userId, weekNumber, dayNumber, router])
 
   if (isNaN(weekNumber) || isNaN(dayNumber)) {
     notFound()
@@ -152,7 +166,8 @@ export default function DiaDetallePage({ params }: { params: Promise<{ week: str
           <ExerciseList 
             dayId={dayData.id}
             dayNumber={dayNumber} 
-            weekNumber={weekNumber} 
+            weekNumber={weekNumber}
+            customExercises={customExercises}
           />
         )}
       </section>
