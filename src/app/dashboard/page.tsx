@@ -16,7 +16,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
   const [availablePlans, setAvailablePlans] = useState<any[]>([])
   const [isHydrating, setIsHydrating] = useState(false)
-  const { lang, userName, currentPlanId, currentPlanName, isTester, setSession, setActivePlan, hydrateProgress } = useAppStore()
+  const { lang, userName, currentPlanId, currentPlanName, isTester, setSession, setActivePlan, hydrateProgress, clearSession } = useAppStore()
 
   // Reusable function to fetch and hydrate progress for a specific plan
   const hydratePlanData = async (userId: string, planSlug: string) => {
@@ -69,6 +69,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     async function loadDashboardData() {
+      clearSession()
       try {
         const { data: { user } } = await supabase.auth.getUser()
         
@@ -126,7 +127,7 @@ export default function DashboardPage() {
     }
 
     loadDashboardData()
-  }, [router, setSession, setActivePlan, hydrateProgress])
+  }, [router, setSession, setActivePlan, clearSession])
 
   if (loading) {
     return (

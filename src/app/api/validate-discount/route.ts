@@ -41,6 +41,6 @@ export async function POST(request: Request) {
     code: discount.code,
     message: discount.type === 'free'
       ? '🎉 ¡Acceso gratuito activado!'
-      : `✅ Descuento aplicado — Pagás $${roundedPrice.toFixed(2)} USD`,
+      : `✅ Descuento aplicado — Pagas $${roundedPrice.toFixed(2)} USD`,
   })
 }

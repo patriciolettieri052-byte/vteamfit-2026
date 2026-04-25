@@ -57,7 +57,7 @@ export default function EntrenConmigoPage() {
             alt="Entrena Conmigo — Vicky Torres"
             fill
             priority
-            className="object-cover object-top"
+            className="object-cover object-[center_15%]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/80 to-transparent" />
         </div>

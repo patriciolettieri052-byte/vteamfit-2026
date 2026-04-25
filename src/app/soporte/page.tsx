@@ -30,7 +30,7 @@ export default function SoportePage() {
         <h2 className="text-xs font-bold text-copper uppercase tracking-widest">Contacto</h2>
         <div className="bg-surface rounded-2xl p-5 border border-white/5">
           <p className="text-dim text-sm leading-relaxed">
-            Para consultas, escribinos a:
+            Para consultas, escríbenos a:
           </p>
           <a
             href="mailto:soporte@vteamfit.app"
@@ -47,15 +47,15 @@ export default function SoportePage() {
         <div className="flex flex-col gap-3">
           <FaqItem
             question="¿Cómo accedo a mi plan de entrenamiento?"
-            answer="Ingresá con tu usuario y contraseña. Tu plan estará disponible en tu dashboard personal."
+            answer="Ingresa con tu usuario y contraseña. Tu plan estará disponible en tu dashboard personal."
           />
           <FaqItem
             question="¿Puedo pausar mi plan?"
-            answer="Por el momento los planes no se pueden pausar. Si tenés inconvenientes, escribinos a soporte@vteamfit.app."
+            answer="Una vez activado el plan, no se realizan reembolsos. Si tienes un problema, contáctanos a soporte@vteamfit.app."
           />
           <FaqItem
             question="¿Cómo registro mi progreso?"
-            answer="Desde tu dashboard podés registrar tu peso semanal y marcar los días completados."
+            answer="Desde tu dashboard puedes registrar tu peso semanal y marcar los días completados."
           />
         </div>
       </section>

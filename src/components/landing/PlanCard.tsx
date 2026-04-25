@@ -8,13 +8,18 @@ import { createClient } from '@/lib/supabase/client'
 
 export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en' }) {
   const [hasPlan, setHasPlan] = useState<boolean>(false)
+  const [checkingPlan, setCheckingPlan] = useState<boolean>(true)
   const name = lang === 'es' ? plan.name_es : plan.name_en
 
   useEffect(() => {
     async function checkPlan() {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return
+      if (!user) {
+        setHasPlan(false)
+        setCheckingPlan(false)
+        return
+      }
 
       const { data: userPlan } = await supabase
         .from('user_plans')
@@ -26,6 +31,7 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
         .maybeSingle()
 
       setHasPlan(!!userPlan)
+      setCheckingPlan(false)
     }
 
     checkPlan()
@@ -39,7 +45,11 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           src={plan.cover_image}
           alt={name}
           fill
-          className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_25%]' : 'object-center'}`}
+          className={`object-cover ${
+            plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_25%]' : 
+            plan.slug === 'entrena-conmigo' ? 'object-top' : 
+            'object-center'
+          }`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent" />
         {/* Badge especial (ej: PERSONALIZADO) */}
@@ -67,14 +77,18 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           <Link
             href={hasPlan ? '/dashboard' : `/planes/${plan.slug}`}
             className={`w-full max-w-[240px] text-center py-4 px-8 rounded-full font-bold uppercase tracking-widest transition-all ${
-              hasPlan 
-                ? 'bg-copper text-white shadow-[0_0_24px_rgba(137,116,73,0.4)] hover:bg-[#a08a56] hover:scale-105 active:scale-95' 
-                : 'bg-zinc-800 text-zinc-300 border border-zinc-700 hover:bg-copper hover:text-white hover:border-transparent active:scale-95'
+              checkingPlan
+                ? 'bg-zinc-800 text-zinc-600 border border-zinc-700 pointer-events-none'
+                : hasPlan 
+                  ? 'bg-copper text-white shadow-[0_0_24px_rgba(137,116,73,0.4)] hover:bg-[#a08a56] hover:scale-105 active:scale-95' 
+                  : 'bg-zinc-800 text-zinc-300 border border-zinc-700 hover:bg-copper hover:text-white hover:border-transparent active:scale-95'
             }`}
           >
-            {hasPlan 
-              ? (lang === 'es' ? 'Continuar' : 'Continue') 
-              : (lang === 'es' ? 'Ver plan' : 'See plan')
+            {checkingPlan
+              ? '...'
+              : hasPlan 
+                ? (lang === 'es' ? 'Continuar' : 'Continue') 
+                : (lang === 'es' ? 'Ver plan' : 'See plan')
             }
           </Link>
         </div>
