@@ -8,7 +8,7 @@ export default function PlanHero({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
     : plan.cover_image
   
   return (
-    <section className="relative w-full h-[60vh] min-h-[450px] flex flex-col justify-end pb-12 px-6">
+    <section className="relative w-full h-[60vh] min-h-[450px] flex flex-col justify-end pb-10 px-6">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
@@ -16,9 +16,13 @@ export default function PlanHero({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           alt={name}
           fill
           priority
-          className={`object-cover ${plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_55%]' : 'object-[center_top]'}`}
+          className={`object-cover ${
+            plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_55%]' :
+            plan.slug === 'entrena-conmigo' ? 'object-center' :
+            'object-[center_top]'
+          }`}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-carbon from-30% via-carbon/80 via-50% to-transparent" />
       </div>
 
       {/* Content */}
