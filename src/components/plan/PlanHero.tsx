@@ -3,13 +3,16 @@ import { Plan } from '@/types'
 
 export default function PlanHero({ plan, lang }: { plan: Plan; lang: 'es' | 'en' }) {
   const name = lang === 'es' ? plan.name_es : plan.name_en
+  const heroImage = plan.slug === 'entrena-conmigo'
+    ? '/images/fotos/portada-interna-entrena-conmigo.webp'
+    : plan.cover_image
   
   return (
     <section className="relative w-full h-[60vh] min-h-[450px] flex flex-col justify-end pb-12 px-6">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src={plan.cover_image}
+          src={heroImage}
           alt={name}
           fill
           priority

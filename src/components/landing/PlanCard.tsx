@@ -46,7 +46,7 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
           alt={name}
           fill
           className={`object-cover ${
-            plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_25%]' : 
+            plan.slug === 'transforma-tu-cuerpo' ? 'object-[center_15%]' : 
             plan.slug === 'entrena-conmigo' ? 'object-top' : 
             'object-center'
           }`}
@@ -63,9 +63,7 @@ export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en'
       {/* Content */}
       <div className="relative px-6 pb-8 -mt-16 flex flex-col flex-grow items-center text-center z-10">
         <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tight mb-2 text-balance leading-tight">{name}</h3>
-        <p className="text-zinc-400 font-medium text-sm md:text-base uppercase tracking-widest mb-6">
-          {plan.duration_days} {lang === 'es' ? 'días' : 'days'}
-        </p>
+
         
         <div className="mt-auto w-full flex flex-col items-center">
           <div className="h-[60px] flex items-center justify-center mb-6">
