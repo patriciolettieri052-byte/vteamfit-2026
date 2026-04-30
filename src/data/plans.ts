@@ -58,7 +58,7 @@ export const PLANS: Plan[] = [
     billing_cycle_en: 'monthly',
     duration_days: 30,
     plan_type: 'custom',
-    cover_image: '/images/fotos/entrena-conmigo.webp',
+    cover_image: '/images/fotos/entrena-conmigo2.webp',
     badge_es: 'PERSONALIZADO',
     badge_en: 'PERSONALIZED',
     status: 'not_purchased',

@@ -19,17 +19,17 @@ export default function HeroSection() {
           className="object-cover object-[50%_15%] md:object-[50%_35%]"
         />
         {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-carbon" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-carbon" />
       </div>
 
       {/* Header Container (Logo) */}
       <div className="absolute -top-1 -left-6 md:-top-4 md:-left-12 z-50 pointer-events-none">
         <div className="relative w-[160px] h-[92px] md:w-[306px] md:h-[153px]">
-          <Image 
-            src="/images/logo.svg" 
-            alt="VTeamFit" 
-            fill 
-            className="object-contain object-top-left pointer-events-auto" 
+          <Image
+            src="/images/logo.svg"
+            alt="VTeamFit"
+            fill
+            className="object-contain object-top-left pointer-events-auto"
             priority
           />
         </div>
@@ -57,7 +57,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-80 md:mt-64">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 mt-100 md:mt-64">
         <h1 className="text-5xl md:text-7xl font-black text-white italic uppercase mb-4 tracking-tight drop-shadow-xl text-balance">
           {lang === 'es' ? 'TU MEJOR VERSIÓN' : 'YOUR BEST VERSION'}
         </h1>
@@ -75,14 +75,14 @@ export default function HeroSection() {
         <p className="text-white text-sm md:text-base text-center max-w-2xl mx-auto leading-relaxed mt-10 px-4 font-medium">
           {lang === 'es' ? (
             <>
-              VTeamFit es una aplicación de fitness creada por Victoria Torres junto a Tito Allemandi, 
-              bicampeón de pádel mundial con más de 20 años de experiencia en el mundo de la competición. 
+              VTeamFit es una aplicación de fitness creada por Victoria Torres junto a Tito Allemandi,
+              bicampeón de pádel mundial con más de 20 años de experiencia en el mundo de la competición.
               Construida desde la constancia y conocimiento real.
             </>
           ) : (
             <>
-              VTeamFit is a fitness app created by Victoria Torres along with Tito Allemandi, 
-              world padel double champion with over 20 years of competition experience. 
+              VTeamFit is a fitness app created by Victoria Torres along with Tito Allemandi,
+              world padel double champion with over 20 years of competition experience.
               Built from consistency and real knowledge.
             </>
           )}

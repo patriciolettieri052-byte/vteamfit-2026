@@ -5,17 +5,17 @@ export default function BioSection({ lang }: { lang: 'es' | 'en' }) {
     <section className="bg-surface py-24 md:py-32 px-6 border-t border-white/5 relative overflow-hidden">
       {/* Ambient background flair */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-copper/5 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      
+
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20 relative z-10">
         <div className="w-56 h-56 md:w-72 md:h-72 shrink-0 rounded-full overflow-hidden border-[6px] border-carbon relative shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-          <Image 
-            src="/images/fotos/vicky-torres.webp" 
-            alt="Vicky Torres" 
+          <Image
+            src="/images/fotos/vicky-torres2.webp"
+            alt="Vicky Torres"
             fill
-            className="object-cover object-[40%_top] md:object-center"
+            className="object-cover object-[0%_top] md:object-[30%_center] scale-110"
           />
         </div>
-        
+
         <div className="flex flex-col text-center md:text-left md:items-start max-w-2xl">
           <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter mb-8">
             Vicky Torres
