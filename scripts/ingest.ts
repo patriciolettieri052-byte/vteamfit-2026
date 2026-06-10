@@ -22,7 +22,7 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 const MASTER_PATH = path.join(process.cwd(), 'VTEAMFIT_MASTER.json');
-const BUNNY_CDN_BASE = env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfit2026.b-cdn.net';
+const BUNNY_CDN_BASE = env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfit-june-2026.b-cdn.net';
 
 async function main() {
   console.log('🚀 Starting ingestion process with UUID mapping...');
