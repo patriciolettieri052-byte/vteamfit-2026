@@ -1,179 +1,176 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { use, useEffect, useState } from 'react'
+import { notFound, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/client'
 import { useAppStore } from '@/store/appStore'
+import { getWeeks } from '@/lib/supabase/queries'
+import { getCustomPlanDayExercises } from '@/lib/supabase/customPlanQueries'
+import ExerciseList from '@/components/rutina/ExerciseList'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
-interface UserProfile {
-  name: string
-  email: string
-  weight_kg: number | null
-  height_cm: number | null
-  age: number | null
-  gender: string | null
-}
-
-export default function PerfilPage() {
+// Resolucion dinamica requerida por next 15+ App router pages
+export default function DiaDetallePage({ params }: { params: Promise<{ week: string, day: string }> }) {
+  const resolvedParams = use(params)
+  const weekNumber = parseInt(resolvedParams.week, 10)
+  const dayNumber = parseInt(resolvedParams.day, 10)
   const router = useRouter()
-  const { clearSession } = useAppStore()
-  const [profile, setProfile] = useState<UserProfile | null>(null)
+  const { lang, progress, currentPlanId, currentPlanSlug, userId } = useAppStore()
+
+  const [dayData, setDayData] = useState<any>(null)
+  // Para plan custom: ejercicios ya cargados con notas de Vicky
+  const [customExercises, setCustomExercises] = useState<any[] | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    async function loadProfile() {
-      const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) {
-        router.push('/login')
+    async function fetchDayData() {
+      const isCustomPlan = currentPlanSlug === 'entrena-conmigo'
+
+      if (!currentPlanId && !isCustomPlan) {
+        router.push('/dashboard')
         return
       }
 
-      const { data } = await supabase
-        .from('user_profiles')
-        .select('name, weight_kg, height_cm, age, gender')
-        .eq('id', user.id)
-        .maybeSingle()
-
-      setProfile({
-        name: data?.name || user.email?.split('@')[0] || 'Usuario',
-        email: user.email || '',
-        weight_kg: data?.weight_kg ?? null,
-        height_cm: data?.height_cm ?? null,
-        age: data?.age ?? null,
-        gender: data?.gender ?? null,
-      })
-      setLoading(false)
+      try {
+        if (isCustomPlan && userId) {
+          // Plan personalizado: cargar ejercicios directamente desde user_custom_plan_days
+          const exercises = await getCustomPlanDayExercises(userId, weekNumber, dayNumber)
+          setCustomExercises(exercises)
+          setDayData({
+            id: `custom-${userId}-w${weekNumber}-d${dayNumber}`,
+            day_number: dayNumber,
+            is_rest_day: exercises.length === 0,
+            title: `Día ${dayNumber}`,
+            recommended: 'Entrenamiento personalizado de Vicky',
+            intensity: null,
+          })
+        } else {
+          const weeks = await getWeeks(currentPlanId!)
+          const week = weeks.find(w => w.week_number === weekNumber)
+          const day = week?.days.find((d: any) => d.day_number === dayNumber)
+          setDayData(day ?? null)
+        }
+      } catch (error) {
+        console.error('Error fetching day:', error)
+      } finally {
+        setLoading(false)
+      }
     }
+    fetchDayData()
+  }, [currentPlanId, currentPlanSlug, userId, weekNumber, dayNumber, router])
 
-    loadProfile()
-  }, [router])
-
-  const handleCerrarSesion = async () => {
-    const confirmar = window.confirm('Â¿QuerÃ©s cerrar sesiÃ³n?')
-    if (!confirmar) return
-
-    // 1. Limpiar store primero
-    clearSession()
-
-    // 2. Cerrar sesiÃ³n en Supabase
-    const supabase = createClient()
-    await supabase.auth.signOut()
-
-    // 3. Redirigir a landing
-    router.push('/')
+  if (isNaN(weekNumber) || isNaN(dayNumber)) {
+    notFound()
   }
-
-  const getInitial = (name: string) => name.charAt(0).toUpperCase()
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-copper border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-carbon">
+        <LoadingSpinner />
       </div>
     )
   }
 
+  if (!dayData) {
+    notFound()
+  }
+
+  // Estética para el header
+  const dayName = lang === 'es' 
+    ? (dayData.title.includes('·') ? dayData.title.split('·')[1].trim() : dayData.title)
+    : `Day ${dayNumber}`
+  const weekName = lang === 'es' ? `Semana ${weekNumber}` : `Week ${weekNumber}`
+
+  // ¿El día completo entero está en la DB del usuario?
+  const isDayCompletedInStore = progress.completedDays.includes(dayNumber)
+
   return (
-    <main className="min-h-screen max-w-md mx-auto w-full px-6 pt-14 pb-8 flex flex-col gap-8">
-      {/* Avatar + Nombre */}
-      <div className="flex flex-col items-center gap-4 pt-4">
-        <div className="w-20 h-20 rounded-full bg-copper flex items-center justify-center shadow-[0_0_32px_rgba(255,107,74,0.3)]">
-          <span className="text-white font-black text-3xl italic">
-            {getInitial(profile?.name || 'U')}
-          </span>
-        </div>
-        <div className="text-center">
-          <h1 className="text-2xl font-black text-white italic uppercase tracking-tight">
-            {profile?.name}
-          </h1>
-          <p className="text-dim text-sm mt-1">{profile?.email}</p>
-        </div>
-      </div>
-
-      {/* Datos fÃ­sicos */}
-      <div className="bg-surface rounded-[1.5rem] border border-white/5 p-6 flex flex-col gap-4">
-        <h2 className="text-xs font-bold text-dim uppercase tracking-widest">Mis datos</h2>
-        <div className="grid grid-cols-3 gap-4">
-          <StatItem label="Peso" value={profile?.weight_kg ? `${profile.weight_kg} kg` : 'â€”'} />
-          <StatItem label="Altura" value={profile?.height_cm ? `${profile.height_cm} cm` : 'â€”'} />
-          <StatItem label="Edad" value={profile?.age ? `${profile.age} aÃ±os` : 'â€”'} />
-        </div>
-        {profile?.gender && (
-          <div className="border-t border-white/5 pt-4">
-            <StatItem label="GÃ©nero" value={profile.gender} />
-          </div>
-        )}
-      </div>
-
-      {/* MenÃº â€” solo Soporte y PolÃ­ticas */}
-      <div className="flex flex-col gap-1">
-        <p className="text-xs font-bold text-dim uppercase tracking-widest px-1 mb-2">
-          Cuenta y Preferencias
-        </p>
-
-        <MenuItem
-          href="/soporte"
-          icon={
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          }
-          label="Soporte y Ayuda"
-        />
-
-        <MenuItem
-          href="/politicas"
-          icon={
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <polyline points="10 9 9 9 8 9"/>
-            </svg>
-          }
-          label="PolÃ­ticas Legales"
-        />
-      </div>
-
-      {/* Cerrar sesiÃ³n */}
-      <div className="mt-auto pt-2">
-        <button
-          id="btn-cerrar-sesion"
-          onClick={handleCerrarSesion}
-          className="w-full py-3 border border-dim/40 text-dim rounded-2xl text-sm uppercase tracking-widest hover:border-copper hover:text-copper transition-colors duration-300"
+    <main className="min-h-screen max-w-md mx-auto w-full relative selection:bg-copper selection:text-white pb-safe">
+      {/* Floating Header sticky */}
+      <header className="sticky top-0 z-40 bg-black/40 backdrop-blur-xl border-b border-white/5 py-4 px-6 flex items-center justify-between shadow-2xl">
+        <Link 
+          href={`/dashboard/semana/${weekNumber}`}
+          className="w-12 h-12 flex items-center justify-center rounded-full bg-surface border border-white/10 text-white hover:bg-copper hover:border-copper transition-colors shadow-lg active:scale-95"
+          aria-label="Volver a la semana"
         >
-          Cerrar sesiÃ³n
-        </button>
-      </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+        </Link>
+        <div className="text-center">
+          <span className="text-copper text-[10px] font-black tracking-[0.2em] uppercase block mb-0.5">
+            {weekName}
+          </span>
+          <h1 className="text-2xl font-black text-white italic uppercase">{dayName}</h1>
+        </div>
+        <div className="w-12 h-12 flex items-center justify-center">
+          {isDayCompletedInStore && (
+            <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/50">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+          )}
+        </div>
+      </header>
+
+      <section className="px-6 relative">
+        <div className="mt-8 mb-4">
+          <h2 className="text-sm font-black text-zinc-500 uppercase tracking-widest pl-1 mb-1">
+            {lang === 'es' ? 'Circuitos del Día' : 'Daily Circuits'}
+          </h2>
+          <p className="text-zinc-400 text-sm font-medium pl-1">
+            {lang === 'es' ? dayData.recommended : (dayData.recommended_en || dayData.recommended)}
+          </p>
+        </div>
+
+        {/* Bifurcacion condicional si el dia en cuestion es el de Descanso o uno funcional */}
+        {dayData.is_rest_day ? (
+          <div className="flex flex-col items-center justify-center bg-surface border border-white/5 rounded-[2rem] mt-10 p-10 text-center shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+             <div className="text-copper mb-8">
+                <svg 
+                  className="w-20 h-20 animate-[spin_3s_linear_infinite]" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle 
+                    cx="12" 
+                    cy="12" 
+                    r="10" 
+                    stroke="currentColor" 
+                    strokeWidth="1.5" 
+                    strokeDasharray="4 4" 
+                    className="opacity-20" 
+                  />
+                  <path 
+                    d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    className="drop-shadow-[0_0_12px_rgba(137,116,73,0.8)]"
+                  />
+                  <circle cx="12" cy="2" r="1.5" fill="currentColor" />
+                </svg>
+             </div>
+             <h3 className="text-2xl font-black text-white italic uppercase mb-2">
+               {lang === 'es' ? 'Día de Descanso' : 'Rest Day'}
+             </h3>
+             <p className="text-zinc-500 font-medium text-[15px] leading-relaxed">
+               {lang === 'es' 
+                ? 'El músculo crece cuando descansas. Tómate el día libre, hidrátate y come bien.' 
+                : 'Muscles grow when you rest. Take the day off, hydrate and eat well.'}
+             </p>
+          </div>
+        ) : (
+          <ExerciseList 
+            dayId={dayData.id}
+            dayNumber={dayNumber} 
+            weekNumber={weekNumber}
+            customExercises={customExercises}
+          />
+        )}
+      </section>
     </main>
-  )
-}
-
-function MenuItem({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
-  return (
-    <Link
-      href={href}
-      className="flex items-center justify-between bg-surface rounded-2xl px-5 py-4 border border-white/5 hover:border-copper/30 transition-colors group"
-    >
-      <div className="flex items-center gap-3 text-dim group-hover:text-white transition-colors">
-        {icon}
-        <span className="text-sm font-bold">{label}</span>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-dim/50 group-hover:text-copper transition-colors">
-        <path d="m9 18 6-6-6-6"/>
-      </svg>
-    </Link>
-  )
-}
-
-function StatItem({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col gap-1">
-      <span className="text-[10px] font-bold text-dim uppercase tracking-widest">{label}</span>
-      <span className="text-white font-bold text-base">{value}</span>
-    </div>
   )
 }

@@ -1,179 +1,82 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { use, useEffect, useState } from 'react'
+import { notFound, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/client'
 import { useAppStore } from '@/store/appStore'
+import { getWeeks } from '@/lib/supabase/queries'
+import { getCustomPlanWeeks } from '@/lib/supabase/customPlanQueries'
+import SemanaHero from '@/components/semana/SemanaHero'
+import DayList from '@/components/semana/DayList'
+import LoadingSpinner from '@/components/ui/LoadingSpinner'
 
-interface UserProfile {
-  name: string
-  email: string
-  weight_kg: number | null
-  height_cm: number | null
-  age: number | null
-  gender: string | null
-}
-
-export default function PerfilPage() {
+export default function SemanaPage({ params }: { params: Promise<{ week: string }> }) {
+  const resolvedParams = use(params)
+  const weekNumber = parseInt(resolvedParams.week, 10)
   const router = useRouter()
-  const { clearSession } = useAppStore()
-  const [profile, setProfile] = useState<UserProfile | null>(null)
+  const { lang, currentPlanId, currentPlanSlug, userId } = useAppStore()
+  
+  const [weekData, setWeekData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    async function loadProfile() {
-      const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) {
-        router.push('/login')
+    async function fetchWeekData() {
+      const isCustomPlan = currentPlanSlug === 'entrena-conmigo'
+
+      if (!currentPlanId && !isCustomPlan) {
+        router.push('/dashboard')
         return
       }
 
-      const { data } = await supabase
-        .from('user_profiles')
-        .select('name, weight_kg, height_cm, age, gender')
-        .eq('id', user.id)
-        .maybeSingle()
-
-      setProfile({
-        name: data?.name || user.email?.split('@')[0] || 'Usuario',
-        email: user.email || '',
-        weight_kg: data?.weight_kg ?? null,
-        height_cm: data?.height_cm ?? null,
-        age: data?.age ?? null,
-        gender: data?.gender ?? null,
-      })
-      setLoading(false)
+      try {
+        let weeks: any[]
+        if (isCustomPlan && userId) {
+          weeks = await getCustomPlanWeeks(userId)
+        } else {
+          weeks = await getWeeks(currentPlanId!)
+        }
+        const found = weeks.find(w => w.week_number === weekNumber)
+        setWeekData(found ?? null)
+      } catch (error) {
+        console.error('Error fetching week:', error)
+      } finally {
+        setLoading(false)
+      }
     }
+    fetchWeekData()
+  }, [currentPlanId, currentPlanSlug, userId, weekNumber, router])
 
-    loadProfile()
-  }, [router])
-
-  const handleCerrarSesion = async () => {
-    const confirmar = window.confirm('Â¿QuerÃ©s cerrar sesiÃ³n?')
-    if (!confirmar) return
-
-    // 1. Limpiar store primero
-    clearSession()
-
-    // 2. Cerrar sesiÃ³n en Supabase
-    const supabase = createClient()
-    await supabase.auth.signOut()
-
-    // 3. Redirigir a landing
-    router.push('/')
+  if (isNaN(weekNumber)) {
+    notFound()
   }
-
-  const getInitial = (name: string) => name.charAt(0).toUpperCase()
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-copper border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-carbon">
+        <LoadingSpinner />
       </div>
     )
   }
 
+  if (!weekData) {
+    notFound()
+  }
+
   return (
-    <main className="min-h-screen max-w-md mx-auto w-full px-6 pt-14 pb-8 flex flex-col gap-8">
-      {/* Avatar + Nombre */}
-      <div className="flex flex-col items-center gap-4 pt-4">
-        <div className="w-20 h-20 rounded-full bg-copper flex items-center justify-center shadow-[0_0_32px_rgba(255,107,74,0.3)]">
-          <span className="text-white font-black text-3xl italic">
-            {getInitial(profile?.name || 'U')}
-          </span>
-        </div>
-        <div className="text-center">
-          <h1 className="text-2xl font-black text-white italic uppercase tracking-tight">
-            {profile?.name}
-          </h1>
-          <p className="text-dim text-sm mt-1">{profile?.email}</p>
-        </div>
-      </div>
-
-      {/* Datos fÃ­sicos */}
-      <div className="bg-surface rounded-[1.5rem] border border-white/5 p-6 flex flex-col gap-4">
-        <h2 className="text-xs font-bold text-dim uppercase tracking-widest">Mis datos</h2>
-        <div className="grid grid-cols-3 gap-4">
-          <StatItem label="Peso" value={profile?.weight_kg ? `${profile.weight_kg} kg` : 'â€”'} />
-          <StatItem label="Altura" value={profile?.height_cm ? `${profile.height_cm} cm` : 'â€”'} />
-          <StatItem label="Edad" value={profile?.age ? `${profile.age} aÃ±os` : 'â€”'} />
-        </div>
-        {profile?.gender && (
-          <div className="border-t border-white/5 pt-4">
-            <StatItem label="GÃ©nero" value={profile.gender} />
-          </div>
-        )}
-      </div>
-
-      {/* MenÃº â€” solo Soporte y PolÃ­ticas */}
-      <div className="flex flex-col gap-1">
-        <p className="text-xs font-bold text-dim uppercase tracking-widest px-1 mb-2">
-          Cuenta y Preferencias
-        </p>
-
-        <MenuItem
-          href="/soporte"
-          icon={
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          }
-          label="Soporte y Ayuda"
-        />
-
-        <MenuItem
-          href="/politicas"
-          icon={
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <polyline points="10 9 9 9 8 9"/>
-            </svg>
-          }
-          label="PolÃ­ticas Legales"
-        />
-      </div>
-
-      {/* Cerrar sesiÃ³n */}
-      <div className="mt-auto pt-2">
-        <button
-          id="btn-cerrar-sesion"
-          onClick={handleCerrarSesion}
-          className="w-full py-3 border border-dim/40 text-dim rounded-2xl text-sm uppercase tracking-widest hover:border-copper hover:text-copper transition-colors duration-300"
-        >
-          Cerrar sesiÃ³n
-        </button>
-      </div>
+    <main className="min-h-screen max-w-lg mx-auto w-full relative selection:bg-copper selection:text-white">
+      {/* Back button */}
+      <Link 
+        href="/dashboard" 
+        className="absolute top-6 left-6 z-50 bg-black/40 backdrop-blur-xl w-14 h-14 flex items-center justify-center rounded-full border border-white/10 text-white hover:bg-white/10 hover:-translate-x-1 transition-all shadow-xl"
+        aria-label="Volver"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </Link>
+      
+      <SemanaHero week={weekData.week_number} lang={lang} />
+      <DayList weekData={weekData} />
     </main>
-  )
-}
-
-function MenuItem({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
-  return (
-    <Link
-      href={href}
-      className="flex items-center justify-between bg-surface rounded-2xl px-5 py-4 border border-white/5 hover:border-copper/30 transition-colors group"
-    >
-      <div className="flex items-center gap-3 text-dim group-hover:text-white transition-colors">
-        {icon}
-        <span className="text-sm font-bold">{label}</span>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-dim/50 group-hover:text-copper transition-colors">
-        <path d="m9 18 6-6-6-6"/>
-      </svg>
-    </Link>
-  )
-}
-
-function StatItem({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col gap-1">
-      <span className="text-[10px] font-bold text-dim uppercase tracking-widest">{label}</span>
-      <span className="text-white font-bold text-base">{value}</span>
-    </div>
   )
 }

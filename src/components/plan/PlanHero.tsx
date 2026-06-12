@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Plan } from '@/types'
 
-export default function PlanHero({ plan, lang }: { plan: Plan; lang: string }) {
+export default function PlanHero({ plan, lang }: { plan: Plan; lang: 'es' | 'en' }) {
   const name = lang === 'es' ? plan.name_es : plan.name_en
   const heroImage = plan.slug === 'entrena-conmigo'
     ? '/images/fotos/portada-interna-entrena-conmigo.webp'
@@ -33,7 +33,7 @@ export default function PlanHero({ plan, lang }: { plan: Plan; lang: string }) {
         
         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 font-bold tracking-widest uppercase">
           <span className="bg-surface/80 backdrop-blur-sm px-6 py-3 rounded-full border border-white/10 text-zinc-200">
-            {plan.duration_days} {lang === 'es' ? 'dÃ­as' : 'days'}
+            {plan.duration_days} {lang === 'es' ? 'días' : 'days'}
           </span>
           {plan.status !== 'active' && (
             <div className="flex items-center gap-2 text-copper drop-shadow-md">

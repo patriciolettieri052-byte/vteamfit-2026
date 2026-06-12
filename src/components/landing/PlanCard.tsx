@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Plan } from '@/types'
 import { createClient } from '@/lib/supabase/client'
 
-export default function PlanCard({ plan, lang }: { plan: Plan; lang: string }) {
+export default function PlanCard({ plan, lang }: { plan: Plan; lang: 'es' | 'en' }) {
   const [hasPlan, setHasPlan] = useState<boolean>(false)
   const [checkingPlan, setCheckingPlan] = useState<boolean>(true)
   const name = lang === 'es' ? plan.name_es : plan.name_en

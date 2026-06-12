@@ -2,7 +2,7 @@
 
 import { useAppStore } from '@/store/appStore'
 
-export default function ActivityCalendar({ lang }: { lang: string }) {
+export default function ActivityCalendar({ lang }: { lang: 'es' | 'en' }) {
   const { progress } = useAppStore()
   const TOTAL_DAYS = 84 // 12 weeks
   const daysArray = Array.from({ length: TOTAL_DAYS }, (_, i) => i + 1)
@@ -46,12 +46,12 @@ export default function ActivityCalendar({ lang }: { lang: string }) {
       
       {progress.completedDays.length === 0 && (
         <p className="text-copper text-[11px] font-black text-center mt-6 animate-pulse uppercase tracking-wider">
-          {lang === 'es' ? 'Â¡CompletÃ¡ tu primer dÃ­a para ver tu progreso! ðŸ’ª' : 'Complete your first day to see your progress! ðŸ’ª'}
+          {lang === 'es' ? '¡Completá tu primer día para ver tu progreso! 💪' : 'Complete your first day to see your progress! 💪'}
         </p>
       )}
       
       <p className="mt-8 text-center text-zinc-500 text-[10px] font-black uppercase tracking-[0.2em]">
-        {lang === 'es' ? '12 Semanas de TransformaciÃ³n' : '12 Weeks Transformation'}
+        {lang === 'es' ? '12 Semanas de Transformación' : '12 Weeks Transformation'}
       </p>
     </div>
   )

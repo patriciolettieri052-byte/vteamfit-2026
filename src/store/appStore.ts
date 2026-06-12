@@ -2,9 +2,9 @@ import { create } from 'zustand'
 import { UserProgress } from '@/types'
 
 interface AppState {
-  // ConfiguraciÃ³n global
-  lang: string | 'pt' | 'it' | 'ru'
-  setLang: (lang: string | 'pt' | 'it' | 'ru') => void
+  // Configuración global
+  lang: 'es' | 'en' | 'pt' | 'it' | 'ru'
+  setLang: (lang: 'es' | 'en' | 'pt' | 'it' | 'ru') => void
 
   // Usuario Real (Supabase)
   userId: string | null

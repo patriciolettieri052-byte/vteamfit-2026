@@ -3,7 +3,7 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { useAppStore } from '@/store/appStore'
 
-export default function WeightChart({ lang }: { lang: string }) {
+export default function WeightChart({ lang }: { lang: 'es' | 'en' }) {
   const { progress } = useAppStore()
   
   // Transform weightHistory dates for better labels
@@ -28,10 +28,10 @@ export default function WeightChart({ lang }: { lang: string }) {
     <div className="w-full bg-surface p-6 rounded-[2.5rem] border border-white/5 shadow-2xl flex flex-col gap-6 overflow-hidden">
       <div className="flex justify-between items-center px-2">
         <h3 className="text-xl font-black text-white italic uppercase tracking-tight">
-          {lang === 'es' ? 'EvoluciÃ³n de Peso' : 'Weight Progress'}
+          {lang === 'es' ? 'Evolución de Peso' : 'Weight Progress'}
         </h3>
         <span className="text-zinc-500 text-[10px] font-black uppercase tracking-widest">
-            {lang === 'es' ? 'Ãšltimos registros' : 'Latest logs'}
+            {lang === 'es' ? 'Últimos registros' : 'Latest logs'}
         </span>
       </div>
 

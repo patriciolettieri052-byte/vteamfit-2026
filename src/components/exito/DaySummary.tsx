@@ -1,6 +1,6 @@
 import { useAppStore } from '@/store/appStore'
 
-export default function DaySummary({ dayNum, exercisesCount, lang }: { dayNum: number, exercisesCount: number, lang: string }) {
+export default function DaySummary({ dayNum, exercisesCount, lang }: { dayNum: number, exercisesCount: number, lang: 'es' | 'en' }) {
   const { progress } = useAppStore()
   const duration = progress.sessionDuration[dayNum] || 0
 
@@ -15,10 +15,10 @@ export default function DaySummary({ dayNum, exercisesCount, lang }: { dayNum: n
         
         <div>
           <h2 className="text-3xl font-black text-white italic uppercase tracking-tight mb-2">
-            {lang === 'es' ? 'Â¡MisiÃ³n Cumplida!' : 'Mission Accomplished!'}
+            {lang === 'es' ? '¡Misión Cumplida!' : 'Mission Accomplished!'}
           </h2>
           <p className="text-zinc-400 font-medium leading-tight">
-            {lang === 'es' ? 'Has dado un paso mÃ¡s hacia tu mejor versiÃ³n.' : 'One step closer to your best version.'}
+            {lang === 'es' ? 'Has dado un paso más hacia tu mejor versión.' : 'One step closer to your best version.'}
           </p>
         </div>
 
@@ -38,8 +38,8 @@ export default function DaySummary({ dayNum, exercisesCount, lang }: { dayNum: n
       <div className="bg-copper/10 p-6 rounded-[2rem] border border-copper/30 text-center">
         <p className="text-white font-bold italic">
           {lang === 'es' 
-            ? 'â€œLa disciplina es el puente entre tus metas y tus logros.â€' 
-            : 'â€œDiscipline is the bridge between goals and accomplishment.â€'}
+            ? '“La disciplina es el puente entre tus metas y tus logros.”' 
+            : '“Discipline is the bridge between goals and accomplishment.”'}
         </p>
       </div>
     </div>

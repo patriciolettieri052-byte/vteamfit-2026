@@ -2,7 +2,7 @@
 
 import { useAppStore } from '@/store/appStore'
 
-export default function StreakCounter({ lang }: { lang: string }) {
+export default function StreakCounter({ lang }: { lang: 'es' | 'en' }) {
   const { progress } = useAppStore()
   
   // Logical Streak calculation from completedDays (sorted consecutive numbers)
@@ -34,21 +34,21 @@ export default function StreakCounter({ lang }: { lang: string }) {
     <div className="w-full bg-surface p-6 rounded-[2rem] border border-white/5 shadow-xl flex items-center justify-between">
       <div className="flex items-center gap-5">
         <div className="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(249,115,22,0.2)]">
-          ðŸ”¥
+          🔥
         </div>
         <div>
           <span className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-1 block">
             {lang === 'es' ? 'Racha Actual' : 'Current Streak'}
           </span>
           <h3 className="text-3xl font-black text-white italic uppercase leading-none">
-            {streak} {lang === 'es' ? 'DÃ­as' : 'Days'}
+            {streak} {lang === 'es' ? 'Días' : 'Days'}
           </h3>
         </div>
       </div>
       
       <div className="text-right">
         <span className="text-orange-500 font-bold text-xs uppercase tracking-widest">
-            {lang === 'es' ? 'Â¡Vas con todo!' : 'On fire!'}
+            {lang === 'es' ? '¡Vas con todo!' : 'On fire!'}
         </span>
       </div>
     </div>

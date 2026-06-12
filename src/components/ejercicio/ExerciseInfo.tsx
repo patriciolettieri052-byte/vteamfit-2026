@@ -2,14 +2,14 @@ import { Exercise } from '@/types'
 import IntensityBar from '@/components/rutina/IntensityBar'
 
 const CATEGORIA_LABELS: Record<string, string> = {
-  'gluteos': 'GlÃºteos',
-  'cuadriceps': 'CuÃ¡driceps',
+  'gluteos': 'Glúteos',
+  'cuadriceps': 'Cuádriceps',
   'isquios': 'Isquiotibiales',
   'espalda': 'Espalda',
   'pecho': 'Pecho',
   'hombros': 'Hombros',
-  'biceps': 'BÃ­ceps',
-  'triceps': 'TrÃ­ceps',
+  'biceps': 'Bíceps',
+  'triceps': 'Tríceps',
   'gemelos': 'Gemelos',
   'abdominales': 'Abdominales',
   'abductores': 'Abductores',
@@ -18,7 +18,7 @@ const CATEGORIA_LABELS: Record<string, string> = {
   'cardio': 'Cardio',
   'movilidad': 'Movilidad',
   'estiramientos': 'Estiramientos',
-  'padel': 'PÃ¡del',
+  'padel': 'Pádel',
   'funcional': 'Funcional',
 }
 
@@ -28,7 +28,7 @@ export default function ExerciseInfo({
   dayNumber
 }: { 
   exercise: Exercise, 
-  lang: string,
+  lang: 'es' | 'en',
   dayNumber: number
 }) {
   const categoryLabel = exercise.categoria ? (CATEGORIA_LABELS[exercise.categoria.toLowerCase()] || exercise.categoria) : null
@@ -45,7 +45,7 @@ export default function ExerciseInfo({
         </div>
       </div>
 
-      {/* Badge de categorÃ­a */}
+      {/* Badge de categoría */}
       {showBadge && categoryLabel && (
         <div className="mt-1">
           <span className="inline-block px-3 py-1 rounded-full text-[10px] 
@@ -56,7 +56,7 @@ export default function ExerciseInfo({
         </div>
       )}
       
-      {/* DescripciÃ³n */}
+      {/* Descripción */}
       {exercise.description_es && (
         <p className="text-zinc-400 font-medium leading-relaxed mt-2 text-sm">
           {lang === 'es' ? exercise.description_es : (exercise.description_en || exercise.description_es)}

@@ -15,7 +15,7 @@ const EQUIPAMIENTO_ES = ['Gimnasio completo', 'Equipamiento en casa', 'Solo peso
 const EQUIPAMIENTO_EN = ['Full gym', 'Home equipment', 'Bodyweight only']
 
 interface Props {
-  lang?: string
+  lang?: 'es' | 'en'
 }
 
 export default function CustomOnboarding({ lang = 'es' }: Props) {

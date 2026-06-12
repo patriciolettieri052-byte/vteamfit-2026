@@ -1,7 +1,7 @@
 import { PLANS } from '@/data/plans'
 import PlanCard from './PlanCard'
 
-export default function PlansGrid({ lang }: { lang: string }) {
+export default function PlansGrid({ lang }: { lang: 'es' | 'en' }) {
   return (
     <div className="w-full bg-carbon py-24 md:py-32 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-16">
