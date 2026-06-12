@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useAppStore } from '@/store/appStore'
+import LanguageSelector from '@/components/ui/LanguageSelector'
 
 export default function HeroSection() {
   const { lang, setLang } = useAppStore()
@@ -38,14 +39,7 @@ export default function HeroSection() {
       {/* Header Right (Language + Login) */}
       <div className="absolute top-6 right-4 md:right-6 z-[60] flex items-center gap-2">
         {/* Language Toggle */}
-        <button
-          onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-          className="flex items-center gap-1.5 bg-black/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 font-black text-[10px] tracking-tight hover:bg-black/30 cursor-pointer"
-        >
-          <span className={lang === 'es' ? 'text-copper' : 'text-zinc-500'}>ES</span>
-          <span className="text-zinc-700">|</span>
-          <span className={lang !== 'es' ? 'text-copper' : 'text-zinc-500'}>EN</span>
-        </button>
+        <LanguageSelector className="relative" />
 
         {/* Login Button */}
         <Link

@@ -22,7 +22,7 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
       <div className="relative w-[100px] h-[100px] rounded-[1rem] overflow-hidden shrink-0 bg-carbon shadow-inner">
         {exercise.thumbnail_url?.includes('.mp4') ? (
           <video
-            src={`${exercise.thumbnail_url}#t=0.001`}
+            src={`${exercise.thumbnail_url}#t=2`}
             className="w-[100px] h-[100px] object-cover"
             muted
             playsInline
@@ -59,11 +59,11 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
             </span>
           )}
           <p className="text-dim font-bold text-[11px] tracking-widest uppercase">
-            {sets} Series × {reps}
+            {sets} Series x {reps}
           </p>
         </div>
 
-        {/* Nota de Vicky — solo para planes personalizados */}
+        {/* Nota de Vicky - solo para planes personalizados */}
         {exercise.vickyNotes && (
           <div className="border border-copper/30 rounded-lg px-3 py-2 mt-2 bg-copper/5">
             <p className="text-[9px] text-copper uppercase tracking-wider font-black mb-0.5">

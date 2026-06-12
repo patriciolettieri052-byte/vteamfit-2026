@@ -3,8 +3,8 @@ import { UserProgress } from '@/types'
 
 interface AppState {
   // Configuración global
-  lang: 'es' | 'en'
-  setLang: (lang: 'es' | 'en') => void
+  lang: 'es' | 'en' | 'pt' | 'it' | 'ru'
+  setLang: (lang: 'es' | 'en' | 'pt' | 'it' | 'ru') => void
 
   // Usuario Real (Supabase)
   userId: string | null
@@ -133,3 +133,4 @@ export const useAppStore = create<AppState>((set) => ({
   
   resetProgress: () => set({ progress: initialProgress }),
 }))
+
