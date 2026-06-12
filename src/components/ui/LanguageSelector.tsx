@@ -13,11 +13,18 @@ const flags: Record<string, string> = {
 
 export default function LanguageSelector({ className = "absolute top-6 right-[130px] md:right-[150px] z-[60]" }: { className?: string }) {
   const { lang, setLang } = useAppStore()
+  const [visualLang, setVisualLang] = useState<string>(lang)
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  const handleSelect = (newLang: 'es' | 'en' | 'pt' | 'it' | 'ru') => {
-    setLang(newLang)
+  const handleSelect = (key: string) => {
+    // Solo estético: actualizamos el estado local
+    setVisualLang(key)
+    
+    // Si es un idioma soportado por la app, actualizamos el global
+    if (key === 'es' || key === 'en') {
+      setLang(key as 'es' | 'en')
+    }
     setIsOpen(false)
   }
 
@@ -39,8 +46,8 @@ export default function LanguageSelector({ className = "absolute top-6 right-[13
         className="flex items-center gap-1.5 bg-black/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/5 shadow-sm transition-all hover:bg-black/30 cursor-pointer"
       >
         <img 
-          src={flags[lang] || flags['es']} 
-          alt={lang} 
+          src={flags[visualLang] || flags['es']} 
+          alt={visualLang} 
           className="w-[18px] h-[18px] object-cover rounded-full shadow-sm"
         />
         <svg 
@@ -64,9 +71,9 @@ export default function LanguageSelector({ className = "absolute top-6 right-[13
           {Object.entries(flags).map(([key, url]) => (
             <button
               key={key}
-              onClick={() => handleSelect(key as any)}
+              onClick={() => handleSelect(key)}
               className={`flex items-center justify-center px-4 py-2.5 hover:bg-white/5 transition-colors ${
-                lang === key ? 'bg-white/5' : ''
+                visualLang === key ? 'bg-white/5' : ''
               }`}
             >
               <img 
