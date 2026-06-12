@@ -13,18 +13,18 @@ export const EXERCISE_INTENSITY_COLORS = {
 } as const
 
 export const MONTH_RECOMMENDATIONS = [
-  { days: [1, 28], text_es: '3 series · 12 repeticiones', text_en: '3 sets · 12 repetitions' },
-  { days: [29, 56], text_es: '4 series · 12 repeticiones · Aumenta el peso', text_en: '4 sets · 12 repetitions · Increase weight' },
-  { days: [57, 84], text_es: '4 series · 15 repeticiones · Aumenta el peso', text_en: '4 sets · 15 repetitions · Increase weight' },
+  { days: [1, 28], text_es: '3 series Â· 12 repeticiones', text_en: '3 sets Â· 12 repetitions' },
+  { days: [29, 56], text_es: '4 series Â· 12 repeticiones Â· Aumenta el peso', text_en: '4 sets Â· 12 repetitions Â· Increase weight' },
+  { days: [57, 84], text_es: '4 series Â· 15 repeticiones Â· Aumenta el peso', text_en: '4 sets Â· 15 repetitions Â· Increase weight' },
 ] as const
 
-export function getMonthRecommendation(dayNumber: number, lang: 'es' | 'en' = 'es'): string {
+export function getMonthRecommendation(dayNumber: number, lang: string = 'es'): string {
   for (const rec of MONTH_RECOMMENDATIONS) {
     if (dayNumber >= rec.days[0] && dayNumber <= rec.days[1]) {
       return lang === 'es' ? rec.text_es : rec.text_en
     }
   }
-  return lang === 'es' ? '3 series · 12 repeticiones' : '3 sets · 12 repetitions'
+  return lang === 'es' ? '3 series Â· 12 repeticiones' : '3 sets Â· 12 repetitions'
 }
 
 export function getDayIntensity(dayNumber: number): 'FUERTE' | 'MEDIO' | 'SUAVE' | null {

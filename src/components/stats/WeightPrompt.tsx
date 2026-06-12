@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useAppStore } from '@/store/appStore'
 import { persistWeight } from '@/lib/supabase/queries'
 
-export default function WeightPrompt({ lang }: { lang: 'es' | 'en' }) {
+export default function WeightPrompt({ lang }: { lang: string }) {
   const { progress, logWeight, userId } = useAppStore()
   const [show, setShow] = useState(false)
   const [newWeight, setNewWeight] = useState(0)
@@ -49,7 +49,7 @@ export default function WeightPrompt({ lang }: { lang: 'es' | 'en' }) {
         <div className="absolute -top-10 -right-10 w-24 h-24 bg-copper/20 blur-3xl rounded-full" />
         
         <div className="w-20 h-20 bg-copper/10 rounded-3xl flex items-center justify-center text-4xl shadow-xl ring-1 ring-copper/50">
-          ⚖️
+          âš–ï¸
         </div>
 
         <div>
@@ -58,7 +58,7 @@ export default function WeightPrompt({ lang }: { lang: 'es' | 'en' }) {
           </h2>
           <p className="text-zinc-500 text-sm font-medium leading-relaxed">
             {lang === 'es' 
-              ? 'Ha pasado una semana. Mantener el registro te ayuda a ver tu evolución.' 
+              ? 'Ha pasado una semana. Mantener el registro te ayuda a ver tu evoluciÃ³n.' 
               : "It's been a week. Keep logging to track your incredible progress."}
           </p>
         </div>

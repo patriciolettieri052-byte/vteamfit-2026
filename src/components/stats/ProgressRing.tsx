@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-export default function ProgressRing({ completed, total, lang }: { completed: number, total: number, lang: 'es' | 'en' }) {
+export default function ProgressRing({ completed, total, lang }: { completed: number, total: number, lang: string }) {
   const size = 160
   const percentage = Math.min(Math.round((completed / total) * 100), 100)
   const radius = (size - 20) / 2

@@ -11,7 +11,7 @@ interface ExerciseFormProps {
   defaultReps: string
   week: number
   day: number
-  lang: 'es' | 'en'
+  lang: string
 }
 
 export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day, lang }: ExerciseFormProps) {
@@ -23,7 +23,7 @@ export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day
   const [weight, setWeight] = useState(0)
 
   const handleSave = () => {
-    // 1. Guardar en Zustand inmediatamente (UX rápida)
+    // 1. Guardar en Zustand inmediatamente (UX rÃ¡pida)
     saveExerciseRecord(slug, sets, reps, weight)
 
     // 2. Persistir en Supabase en background (fire-and-forget)

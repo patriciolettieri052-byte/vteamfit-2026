@@ -2,7 +2,7 @@
 
 import { useAppStore } from '@/store/appStore'
 
-export default function UserCard({ lang }: { lang: 'es' | 'en' }) {
+export default function UserCard({ lang }: { lang: string }) {
   const { userName, progress } = useAppStore()
   const currentWeight = progress.weightHistory[progress.weightHistory.length - 1]?.weight || 0
   const initial = userName.charAt(0).toUpperCase()

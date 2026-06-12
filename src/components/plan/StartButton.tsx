@@ -5,17 +5,17 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { DiscountData } from '@/components/plan/DiscountCode'
 
-export default function StartButton({ lang, planSlug, discountData = null }: { lang: 'es' | 'en', planSlug: string, discountData?: DiscountData | null }) {
+export default function StartButton({ lang, planSlug, discountData = null }: { lang: string, planSlug: string, discountData?: DiscountData | null }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
   const [error, setError] = useState('')
-  // null = cargando, false = sin sesión, true = con sesión
+  // null = cargando, false = sin sesiÃ³n, true = con sesiÃ³n
   const [hasSession, setHasSession] = useState<boolean | null>(null)
   // null = cargando, false = no tiene este plan, true = ya lo tiene activo
   const [hasPlan, setHasPlan] = useState<boolean | null>(null)
 
-  // Verificar sesión y plan al montar el componente
+  // Verificar sesiÃ³n y plan al montar el componente
   useEffect(() => {
     async function checkSessionAndPlan() {
       const supabase = createClient()
@@ -74,7 +74,7 @@ export default function StartButton({ lang, planSlug, discountData = null }: { l
 
       if (user) {
         if (discountData?.type === 'free') {
-          // Código FREE → bypasseo, directo a assign-plan
+          // CÃ³digo FREE â†’ bypasseo, directo a assign-plan
           const res = await fetch('/api/assign-plan', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -100,7 +100,7 @@ export default function StartButton({ lang, planSlug, discountData = null }: { l
             }
           }
         } else {
-          // Usuario ya logueado → asignar plan directo vía API (Hoy directo, futuro paypal)
+          // Usuario ya logueado â†’ asignar plan directo vÃ­a API (Hoy directo, futuro paypal)
           const res = await fetch('/api/assign-plan', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -122,7 +122,7 @@ export default function StartButton({ lang, planSlug, discountData = null }: { l
           }
         }
       } else {
-        // No logueado → flujo de registro normal
+        // No logueado â†’ flujo de registro normal
         router.push(`/registro?plan=${planSlug}`)
       }
     } finally {
@@ -131,15 +131,15 @@ export default function StartButton({ lang, planSlug, discountData = null }: { l
     }
   }
 
-  // Derivar el label según el estado de sesión y plan
+  // Derivar el label segÃºn el estado de sesiÃ³n y plan
   const getLabel = () => {
     if (isProcessing) return lang === 'es' ? 'Procesando...' : 'Processing...'
     if (loading) return lang === 'es' ? 'Cargando...' : 'Loading...'
     // Mientras carga el estado inicial, mostrar label neutro
     if (hasSession === null) return lang === 'es' ? 'Comprar Plan' : 'Buy Plan'
-    // Tiene sesión Y ya tiene este plan asignado
+    // Tiene sesiÃ³n Y ya tiene este plan asignado
     if (hasSession && hasPlan) return lang === 'es' ? 'Continuar' : 'Continue'
-    // Cualquier otro caso (sin sesión, o sesión sin este plan)
+    // Cualquier otro caso (sin sesiÃ³n, o sesiÃ³n sin este plan)
     return lang === 'es' ? 'Comprar Plan' : 'Buy Plan'
   }
 

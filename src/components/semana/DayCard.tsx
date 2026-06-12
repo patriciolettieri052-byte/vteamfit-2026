@@ -2,15 +2,15 @@ import Link from 'next/link'
 import { Day } from '@/types'
 import { INTENSITY_COLORS } from '@/lib/constants'
 
-export default function DayCard({ day, isCompleted, lang, weekNumber }: { day: Day, isCompleted: boolean, lang: 'es' | 'en', weekNumber: number }) {
+export default function DayCard({ day, isCompleted, lang, weekNumber }: { day: Day, isCompleted: boolean, lang: string, weekNumber: number }) {
   
   // Fetch tailwind pre-mapped classes from constants
   const intensityStyle = day.intensity ? INTENSITY_COLORS[day.intensity] : ''
   
-  // Format day name. e.g "Semana 1 · Lunes" -> "Lunes"
+  // Format day name. e.g "Semana 1 Â· Lunes" -> "Lunes"
   const titleDisplay = lang === 'en' 
     ? `Day ${day.day_number}` 
-    : (day.title.includes('·') ? day.title.split('·')[1].trim() : day.title)
+    : (day.title.includes('Â·') ? day.title.split('Â·')[1].trim() : day.title)
 
   return (
     <Link 

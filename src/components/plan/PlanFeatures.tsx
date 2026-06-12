@@ -1,6 +1,6 @@
 import { Plan } from '@/types'
 
-export default function PlanFeatures({ plan, lang }: { plan: Plan; lang: 'es' | 'en' }) {
+export default function PlanFeatures({ plan, lang }: { plan: Plan; lang: string }) {
   const description = lang === 'es' ? plan.description_es : plan.description_en
   
   return (
@@ -23,7 +23,7 @@ export default function PlanFeatures({ plan, lang }: { plan: Plan; lang: 'es' | 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-surface/50 rounded-2xl p-8 border border-white/5 flex flex-col gap-4">
             <h3 className="text-copper font-black uppercase tracking-widest text-sm md:text-base">
-              {lang === 'es' ? 'Metodología' : 'Methodology'}
+              {lang === 'es' ? 'MetodologÃ­a' : 'Methodology'}
             </h3>
             <p className="text-zinc-400 font-medium leading-relaxed">
               {lang === 'es' 
@@ -38,7 +38,7 @@ export default function PlanFeatures({ plan, lang }: { plan: Plan; lang: 'es' | 
             </h3>
             <p className="text-zinc-400 font-medium leading-relaxed">
               {lang === 'es' 
-                ? 'Semanalmente tendrás nuevos retos a desbloquear, seguimiento de pesos e historial.' 
+                ? 'Semanalmente tendrÃ¡s nuevos retos a desbloquear, seguimiento de pesos e historial.' 
                 : 'Weekly you will have new challenges to unlock, weight tracking and history.'}
             </p>
           </div>

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function SemanaHero({ week, lang }: { week: number, lang: 'es' | 'en' }) {
+export default function SemanaHero({ week, lang }: { week: number, lang: string }) {
   const weekLabel = lang === 'es' ? `Semana ${week}` : `Week ${week}`
 
   return (

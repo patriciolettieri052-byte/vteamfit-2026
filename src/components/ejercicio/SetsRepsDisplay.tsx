@@ -1,6 +1,6 @@
 import { getMonthRecommendation } from '@/lib/constants'
 
-export default function SetsRepsDisplay({ sets, reps, dayNumber, lang }: { sets: number, reps: string, dayNumber: number, lang: 'es' | 'en' }) {
+export default function SetsRepsDisplay({ sets, reps, dayNumber, lang }: { sets: number, reps: string, dayNumber: number, lang: string }) {
   const monthRec = getMonthRecommendation(dayNumber, lang)
 
   return (
@@ -26,7 +26,7 @@ export default function SetsRepsDisplay({ sets, reps, dayNumber, lang }: { sets:
       {/* Mes Recommendation Box */}
       <div className="bg-copper/5 p-6 rounded-[2rem] border border-copper/20 shadow-xl flex flex-col justify-center">
         <span className="text-copper font-black tracking-widest uppercase text-[10px] mb-2 block">
-          {lang === 'es' ? 'Recomendación del Mes' : 'Monthly Tip'}
+          {lang === 'es' ? 'RecomendaciÃ³n del Mes' : 'Monthly Tip'}
         </span>
         <p className="text-white font-bold text-sm leading-tight italic">
           "{monthRec}"

@@ -16,7 +16,7 @@ interface DiscountCodeProps {
   planSlug: string;
   planPrice: number;
   onDiscountApplied: (data: DiscountData | null) => void;
-  lang?: 'es' | 'en';
+  lang?: string;
 }
 
 export default function DiscountCode({ planSlug, planPrice, onDiscountApplied, lang = 'es' }: DiscountCodeProps) {

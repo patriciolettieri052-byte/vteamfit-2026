@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function BioSection({ lang }: { lang: 'es' | 'en' }) {
+export default function BioSection({ lang }: { lang: string }) {
   return (
     <section className="bg-surface py-24 md:py-32 px-6 border-t border-white/5 relative overflow-hidden">
       {/* Ambient background flair */}
@@ -23,7 +23,7 @@ export default function BioSection({ lang }: { lang: 'es' | 'en' }) {
           <blockquote className="text-xl md:text-3xl text-zinc-300 font-medium leading-snug md:leading-normal border-l-0 md:border-l-4 border-copper/50 pl-0 md:pl-8 text-balance">
             {lang === 'es' ? (
               <p>
-                "Con VTeamFit quiero que logres tus objetivos, llegando al éxito. Y te aseguro, que ese éxito, ¡es la mayor satisfacción que puedes sentir! Solo cree en ti."
+                "Con VTeamFit quiero que logres tus objetivos, llegando al Ã©xito. Y te aseguro, que ese Ã©xito, Â¡es la mayor satisfacciÃ³n que puedes sentir! Solo cree en ti."
               </p>
             ) : (
               <p>

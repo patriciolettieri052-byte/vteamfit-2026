@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-export default function SessionTimer({ dayNumber, onTimeUpdate, lang }: { dayNumber: number, onTimeUpdate: (minutes: number) => void, lang: 'es' | 'en' }) {
+export default function SessionTimer({ dayNumber, onTimeUpdate, lang }: { dayNumber: number, onTimeUpdate: (minutes: number) => void, lang: string }) {
   const [isActive, setIsActive] = useState(false)
   const [seconds, setSeconds] = useState(0)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
@@ -38,7 +38,7 @@ export default function SessionTimer({ dayNumber, onTimeUpdate, lang }: { dayNum
     <div className="w-full bg-surface p-6 rounded-[2rem] border border-white/5 shadow-xl flex items-center justify-between">
       <div className="flex flex-col">
         <span className="text-zinc-500 font-black tracking-widest uppercase text-[10px] mb-1">
-          {lang === 'es' ? 'Cronómetro de Sesión' : 'Session Timer'}
+          {lang === 'es' ? 'CronÃ³metro de SesiÃ³n' : 'Session Timer'}
         </span>
         <span className={`text-4xl font-mono font-black italic ${isActive ? 'text-copper animate-pulse' : 'text-white'}`}>
           {formatTime(seconds)}
