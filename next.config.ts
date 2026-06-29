@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'vteamfit-june-2026.b-cdn.net',
+        hostname: 'vtemmfitpullzone.b-cdn.net',
         port: '',
         pathname: '/**',
       },
