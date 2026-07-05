@@ -22,8 +22,10 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
       <div className="relative w-[100px] h-[100px] rounded-[1rem] overflow-hidden shrink-0 bg-carbon shadow-inner">
         <Image
           src={
-            exercise.thumbnail_url && !exercise.thumbnail_url.includes('.mp4')
-              ? exercise.thumbnail_url
+            exercise.thumbnail_url
+              ? (exercise.thumbnail_url.startsWith('http')
+                ? exercise.thumbnail_url
+                : `${process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitnessapp.b-cdn.net'}/${exercise.thumbnail_url}`)
               : '/thumbnails/default.jpg'
           }
           alt={exercise.name_es}

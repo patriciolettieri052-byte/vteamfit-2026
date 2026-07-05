@@ -83,7 +83,7 @@ export default function EjercicioPage({ params }: { params: Promise<{ week: stri
   }
 
   // Construct Bunny URL
-  const bunnyBase = process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vtemmfitpullzone.b-cdn.net'
+  const bunnyBase = process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitnessapp.b-cdn.net'
   const finalVideoUrl = exercise.video_url.startsWith('http') 
     ? exercise.video_url 
     : `${bunnyBase}/${exercise.video_url}`
