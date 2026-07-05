@@ -27,31 +27,8 @@ export default function DayCard({ day, isCompleted, lang, weekNumber }: { day: D
       {/* Badge or Rest Icon */}
       <div className="shrink-0 flex items-center justify-end">
         {day.is_rest_day ? (
-          <div className="w-12 h-12 flex items-center justify-center text-copper" title={lang === 'es' ? 'Descanso' : 'Rest'}>
-            <svg 
-              className="w-10 h-10 animate-[spin_3s_linear_infinite]" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle 
-                cx="12" 
-                cy="12" 
-                r="10" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeDasharray="4 4" 
-                className="opacity-20" 
-              />
-              <path 
-                d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12" 
-                stroke="currentColor" 
-                strokeWidth="2.5" 
-                strokeLinecap="round" 
-                className="drop-shadow-[0_0_8px_rgba(137,116,73,0.8)]"
-              />
-              <circle cx="12" cy="2" r="2" fill="currentColor" />
-            </svg>
+          <div className="px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest uppercase text-copper bg-copper/10 border border-copper/20">
+            {lang === 'es' ? 'DESCANSO' : 'REST'}
           </div>
         ) : (
           <div className={`px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest uppercase ${intensityStyle}`}>
