@@ -153,7 +153,7 @@ function RegistroContent() {
           <p className="text-amber-400 text-sm text-center">
             Este email ya está registrado.{' '}
             <Link href="/login" className="underline font-bold hover:text-amber-300 transition-colors">
-              ¿Querés iniciar sesión?
+              ¿Quieres iniciar sesión?
             </Link>
           </p>
         ) : error ? (
@@ -170,9 +170,9 @@ function RegistroContent() {
       </form>
 
       <p className="text-center text-dim text-sm mt-4">
-        ¿Ya tenés cuenta?{' '}
+        ¿Ya tienes cuenta?{' '}
         <a href="/login" className="text-copper underline">
-          Iniciá sesión
+          Inicia sesión
         </a>
       </p>
 

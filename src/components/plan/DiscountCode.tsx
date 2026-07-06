@@ -58,7 +58,7 @@ export default function DiscountCode({ planSlug, planPrice, onDiscountApplied, l
   return (
     <div className="w-full max-w-sm mx-auto mt-6 pt-6 border-t border-white/10 flex flex-col items-center">
       <p className="text-sm tracking-widest uppercase font-bold text-dim mb-3">
-        {lang === 'es' ? '¿Tenés un código de descuento?' : 'Do you have a discount code?'}
+        {lang === 'es' ? '¿Tienes un código de descuento?' : 'Do you have a discount code?'}
       </p>
       <div className="flex gap-2 w-full">
         <input 

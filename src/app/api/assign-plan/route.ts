@@ -40,7 +40,7 @@ export async function POST(request: Request) {
   if (anyActivePlan) {
     // Ya tiene un plan activo — no asignar otro
     return NextResponse.json(
-      { error: 'Ya tenés un plan activo', alreadyAssigned: true },
+      { error: 'Ya tienes un plan activo', alreadyAssigned: true },
       { status: 400 }
     )
   }

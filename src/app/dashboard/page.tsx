@@ -158,7 +158,7 @@ export default function DashboardPage() {
       {!isTester && !currentPlanId && (
         <div className="mb-6 p-4 rounded-2xl border border-copper/30 bg-copper/5 flex items-center justify-between shadow-[0_0_24px_rgba(255,107,74,0.05)]">
           <span className="text-dim text-sm font-medium">
-            {lang === 'es' ? '¿Querés empezar a entrenar?' : 'Want to start training?'}
+            {lang === 'es' ? '¿Quieres empezar a entrenar?' : 'Want to start training?'}
           </span>
           <Link 
             href="/#planes" 

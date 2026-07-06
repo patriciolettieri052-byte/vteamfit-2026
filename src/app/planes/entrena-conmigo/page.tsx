@@ -145,7 +145,7 @@ export default function EntrenConmigoPage() {
               {
                 icon: '⚡',
                 title_es: 'Vicky diseña tu plan',
-                desc_es: 'En 24-48hs tenés tu entrenamiento 100% personalizado listo.',
+                desc_es: 'En 24-48hs tienes tu entrenamiento 100% personalizado listo.',
                 title_en: 'Vicky designs your plan',
                 desc_en: 'Within 24-48hs your 100% personalized training plan is ready.',
               },

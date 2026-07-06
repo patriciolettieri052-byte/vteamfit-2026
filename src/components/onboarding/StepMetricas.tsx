@@ -51,7 +51,7 @@ export default function StepMetricas({
           Tus métricas
         </h1>
         <p className="text-dim text-sm">
-          Estos datos nos ayudan a personalizar tu plan. Podés actualizarlos después.
+          Estos datos nos ayudan a personalizar tu plan. Puedes actualizarlos después.
         </p>
       </div>
 
@@ -79,7 +79,7 @@ export default function StepMetricas({
       )}
 
       <p className="text-dim text-xs text-center">
-        Todos los campos son opcionales — podés completarlos después
+        Todos los campos son opcionales — puedes completarlos después
       </p>
 
       <div className="flex gap-3">

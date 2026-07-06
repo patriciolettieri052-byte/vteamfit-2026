@@ -72,7 +72,7 @@ export default function CustomOnboarding({ lang = 'es' }: Props) {
           ENTRENA CONMIGO
         </p>
         <h1 className="text-3xl font-black text-white italic uppercase tracking-tight">
-          {isEs ? 'Contanos sobre vos' : 'Tell us about you'}
+          {isEs ? 'Cuéntanos sobre ti' : 'Tell us about you'}
         </h1>
         <p className="text-zinc-400 text-sm font-medium mt-2">
           {isEs
@@ -131,7 +131,7 @@ export default function CustomOnboarding({ lang = 'es' }: Props) {
         {step === 2 && (
           <div className="flex flex-col gap-6 relative z-10 flex-1">
             <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
-              {isEs ? '¿Cuántos días por semana podés entrenar?' : 'How many days per week can you train?'}
+              {isEs ? '¿Cuántos días por semana puedes entrenar?' : 'How many days per week can you train?'}
             </h2>
             <div className="flex gap-3 flex-wrap">
               {DIAS.map((d) => (
@@ -158,7 +158,7 @@ export default function CustomOnboarding({ lang = 'es' }: Props) {
         {step === 3 && (
           <div className="flex flex-col gap-6 relative z-10 flex-1">
             <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
-              {isEs ? '¿Tenés acceso a gimnasio?' : 'Do you have gym access?'}
+              {isEs ? '¿Tienes acceso a gimnasio?' : 'Do you have gym access?'}
             </h2>
             <div className="flex flex-col gap-3">
               {(isEs ? EQUIPAMIENTO_ES : EQUIPAMIENTO_EN).map((opcion, idx) => (

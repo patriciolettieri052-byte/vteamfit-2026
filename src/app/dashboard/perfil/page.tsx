@@ -51,7 +51,7 @@ export default function PerfilPage() {
   }, [router])
 
   const handleCerrarSesion = async () => {
-    const confirmar = window.confirm('¿Querés cerrar sesión?')
+    const confirmar = window.confirm('¿Quieres cerrar sesión?')
     if (!confirmar) return
 
     // 1. Limpiar store primero

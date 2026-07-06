@@ -18,7 +18,7 @@ export default function StepGenero({ value, onChange, onNext }: StepGeneroProps)
           Hola 👋
         </h1>
         <p className="text-dim text-sm">
-          Contanos un poco sobre vos para personalizar tu experiencia
+          Cuéntanos un poco sobre ti para personalizar tu experiencia
         </p>
       </div>
 

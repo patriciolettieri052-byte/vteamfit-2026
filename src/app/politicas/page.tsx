@@ -70,7 +70,7 @@ export default function PoliticasPage() {
         <div className="bg-surface rounded-2xl p-5 border border-white/5 flex flex-col gap-3">
           <PolicyItem text="Los pagos se procesan de forma segura a través de PayPal." />
           <p className="text-dim text-sm leading-relaxed">
-            Una vez activado el plan, no se realizan reembolsos. Si tenés un problema, contactanos a{' '}
+            Una vez activado el plan, no se realizan reembolsos. Si tienes un problema, contáctanos a{' '}
             <a
               href="mailto:soporte@vteamfit.app"
               className="text-copper hover:underline font-bold"
