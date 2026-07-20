@@ -20,19 +20,38 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
     >
       {/* PulseFit Style Thumbnail */}
       <div className="relative w-[100px] h-[100px] rounded-[1rem] overflow-hidden shrink-0 bg-carbon shadow-inner">
-        <Image
-          src={
-            exercise.thumbnail_url
-              ? (exercise.thumbnail_url.startsWith('http')
-                ? exercise.thumbnail_url
-                : `${process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitjuly2026.b-cdn.net'}/${exercise.thumbnail_url}`)
-              : '/thumbnails/default.jpg'
+        {(() => {
+          const rawUrl = exercise.thumbnail_url || exercise.video_url || ''
+          const fullUrl = rawUrl.startsWith('http')
+            ? rawUrl
+            : `${process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitjuly2026.b-cdn.net'}/${rawUrl.replace(/^\//, '')}`
+          
+          const isVideo = fullUrl.includes('.mp4')
+
+          if (isVideo) {
+            // Strip query params like ?thumbnail=1 for clean video source
+            const cleanVideoUrl = fullUrl.split('?')[0]
+            return (
+              <video
+                src={`${cleanVideoUrl}#t=0.5`}
+                preload="metadata"
+                muted
+                playsInline
+                className="w-full h-full object-cover pointer-events-none"
+              />
+            )
           }
-          alt={exercise.name_es}
-          fill
-          unoptimized={true}
-          className="object-cover"
-        />
+
+          return (
+            <Image
+              src={fullUrl || '/thumbnails/default.jpg'}
+              alt={exercise.name_es}
+              fill
+              unoptimized={true}
+              className="object-cover"
+            />
+          )
+        })()}
         <div className="absolute inset-0 flex items-center justify-center bg-black/10">
           <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-0.5">
