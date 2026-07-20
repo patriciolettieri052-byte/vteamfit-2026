@@ -22,7 +22,7 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 const MASTER_PATH = path.join(process.cwd(), 'VTEAMFIT_MASTER.json');
-const BUNNY_CDN_BASE = env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vtemmfitpullzone.b-cdn.net';
+const BUNNY_CDN_BASE = env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitjuly2026.b-cdn.net';
 
 async function main() {
   console.log('🚀 Starting ingestion process with UUID mapping...');
@@ -56,17 +56,17 @@ async function main() {
 
     combinedSource.forEach((ex: any) => {
       if (!ex.slug) return;
-      if (!allExercises.has(ex.slug)) {
-        const videoFilename = ex.archivo_destino || ex.slug + '.mp4';
-        allExercises.set(ex.slug, {
-          slug: ex.slug,
-          name_es: ex.nombre_oficial || ex.slug,
-          name_en: ex.nombre_oficial || ex.slug,
-          description_es: '', 
-          video_url: videoFilename,
-          thumbnail_url: `${BUNNY_CDN_BASE}/${videoFilename}?thumbnail=1`
-        });
-      }
+      const existing = allExercises.get(ex.slug) || {};
+      const videoFilename = ex.archivo_destino || ex.slug + '.mp4';
+      allExercises.set(ex.slug, {
+        slug: ex.slug,
+        name_es: ex.name_es || ex.nombre_oficial || existing.name_es || ex.slug,
+        name_en: ex.name_en || ex.nombre_oficial || existing.name_en || ex.slug,
+        description_es: ex.description_es || existing.description_es || '',
+        categoria: ex.categoria || existing.categoria || null,
+        video_url: videoFilename,
+        thumbnail_url: `${BUNNY_CDN_BASE}/${videoFilename}?thumbnail=1`
+      });
     });
   }
 

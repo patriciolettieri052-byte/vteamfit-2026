@@ -14,15 +14,34 @@ interface ExerciseFormProps {
   lang: 'es' | 'en'
 }
 
-export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day, lang }: ExerciseFormProps) {
-  const { saveExerciseRecord, userId } = useAppStore()
+export default function ExerciseForm({ slug, week, day, lang }: ExerciseFormProps) {
+  const { progress, saveExerciseRecord, userId } = useAppStore()
   const router = useRouter()
-  
-  const [sets, setSets] = useState(defaultSets)
-  const [reps, setReps] = useState(defaultReps)
-  const [weight, setWeight] = useState(0)
+
+  // Si el usuario ya guardó este ejercicio previamente, cargar sus valores guardados.
+  // De lo contrario, iniciar en 0 por defecto como requiere la regla.
+  const existingRecord = progress.exerciseRecords[slug]
+
+  const [sets, setSets] = useState<number>(existingRecord ? existingRecord.sets : 0)
+  const [reps, setReps] = useState<string>(existingRecord ? String(existingRecord.reps) : '0')
+  const [weight, setWeight] = useState<number>(existingRecord ? existingRecord.weight : 0)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSave = () => {
+    const parsedReps = parseInt(reps, 10)
+
+    // Validación para evitar guardar datos erróneos en 0
+    if (sets <= 0 || !reps || reps.trim() === '' || reps.trim() === '0' || isNaN(parsedReps) || parsedReps <= 0) {
+      setError(
+        lang === 'es'
+          ? '⚠️ Por favor, ingresa las series y repeticiones realizadas antes de guardar el ejercicio.'
+          : '⚠️ Please enter valid sets and reps before saving the exercise.'
+      )
+      return
+    }
+
+    setError(null)
+
     // 1. Guardar en Zustand inmediatamente (UX rápida)
     saveExerciseRecord(slug, sets, reps, weight)
 
@@ -37,11 +56,18 @@ export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day
   }
 
   return (
-    <div className="w-full flex flex-col gap-8 pb-32">
+    <div className="w-full flex flex-col gap-6 pb-32">
       <div className="bg-surface p-8 rounded-[2.5rem] border border-white/5 shadow-2xl flex flex-col gap-6">
         <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
-          {lang === 'es' ? 'Registra tu Serie' : 'Log your Set'}
+          {lang === 'es' ? 'Registra tu Entrenamiento' : 'Log your Workout'}
         </h2>
+
+        {/* Mensaje de aviso/error si intenta guardar sin modificar los ceros */}
+        {error && (
+          <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold leading-relaxed animate-pulse">
+            {error}
+          </div>
+        )}
 
         <div className="grid grid-cols-3 gap-4">
           <div className="flex flex-col gap-2">
@@ -51,21 +77,31 @@ export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day
             <input 
               type="number" 
               value={sets}
-              onChange={(e) => setSets(parseInt(e.target.value) || 0)}
+              onFocus={(e) => e.target.select()}
+              onChange={(e) => {
+                setError(null)
+                setSets(parseInt(e.target.value, 10) || 0)
+              }}
               className="w-full bg-carbon border border-white/10 rounded-2xl p-4 text-white font-black text-center focus:border-copper outline-none transition-colors"
             />
           </div>
+
           <div className="flex flex-col gap-2">
             <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">
               Reps
             </label>
             <input 
-              type="text" 
+              type="number" 
               value={reps}
-              onChange={(e) => setReps(e.target.value)}
+              onFocus={(e) => e.target.select()}
+              onChange={(e) => {
+                setError(null)
+                setReps(e.target.value)
+              }}
               className="w-full bg-carbon border border-white/10 rounded-2xl p-4 text-white font-black text-center focus:border-copper outline-none transition-colors"
             />
           </div>
+
           <div className="flex flex-col gap-2">
             <label className="text-[10px] font-black text-zinc-500 uppercase tracking-widest ml-1">
               {lang === 'es' ? 'Peso (kg)' : 'Weight (kg)'}
@@ -73,7 +109,11 @@ export default function ExerciseForm({ slug, defaultSets, defaultReps, week, day
             <input 
               type="number" 
               value={weight}
-              onChange={(e) => setWeight(parseInt(e.target.value) || 0)}
+              onFocus={(e) => e.target.select()}
+              onChange={(e) => {
+                setError(null)
+                setWeight(parseInt(e.target.value, 10) || 0)
+              }}
               className="w-full bg-carbon border border-white/10 rounded-2xl p-4 text-white font-black text-center focus:border-copper outline-none transition-colors"
             />
           </div>

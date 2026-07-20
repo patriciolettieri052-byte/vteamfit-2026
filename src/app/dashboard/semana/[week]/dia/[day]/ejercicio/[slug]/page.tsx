@@ -120,8 +120,8 @@ export default function EjercicioPage({ params }: { params: Promise<{ week: stri
         
         <ExerciseForm 
           slug={slug}
-          defaultSets={exercise.sets || 3}
-          defaultReps={exercise.reps || '12'}
+          defaultSets={0}
+          defaultReps="0"
           week={weekNum}
           day={dayNum}
           lang={lang}

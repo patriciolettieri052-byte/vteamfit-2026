@@ -25,7 +25,7 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
             exercise.thumbnail_url
               ? (exercise.thumbnail_url.startsWith('http')
                 ? exercise.thumbnail_url
-                : `${process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitnessapp.b-cdn.net'}/${exercise.thumbnail_url}`)
+                : `${process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitjuly2026.b-cdn.net'}/${exercise.thumbnail_url}`)
               : '/thumbnails/default.jpg'
           }
           alt={exercise.name_es}

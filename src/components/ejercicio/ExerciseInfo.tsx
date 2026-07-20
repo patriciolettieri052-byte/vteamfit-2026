@@ -18,7 +18,9 @@ const CATEGORIA_LABELS: Record<string, string> = {
   'cardio': 'Cardio',
   'movilidad': 'Movilidad',
   'estiramientos': 'Estiramientos',
-  'padel': 'Pádel',
+  'padel': 'Activación',
+  'activacion': 'Activación',
+  'activación': 'Activación',
   'funcional': 'Funcional',
 }
 

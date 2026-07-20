@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-let bunnyHost = 'vteamfitnessapp.b-cdn.net';
+let bunnyHost = 'vteamfitjuly2026.b-cdn.net';
 const bunnyUrl = process.env.NEXT_PUBLIC_BUNNY_CDN_URL;
 if (bunnyUrl) {
   try {
