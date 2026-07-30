@@ -8,7 +8,7 @@ export default function AdminPage() {
 
   async function handleLogout() {
     await fetch('/api/admin/auth/logout', { method: 'POST' })
-    router.refresh()
+    window.location.reload()
   }
 
   return (

@@ -20,7 +20,7 @@ function AdminLogin() {
         body: JSON.stringify({ password }),
       })
       if (res.ok) {
-        router.refresh()
+        window.location.reload()
       } else {
         setError('Contraseña incorrecta')
       }
