@@ -24,7 +24,7 @@ export default function ExerciseCard({ exercise, isCompleted, slugInfo }: { exer
           const rawUrl = exercise.thumbnail_url || exercise.video_url || ''
           const fullUrl = rawUrl.startsWith('http')
             ? rawUrl
-            : `${process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitjuly2026.b-cdn.net'}/${rawUrl.replace(/^\//, '')}`
+            : `${process.env.NEXT_PUBLIC_BUNNY_CDN_URL || 'https://vteamfitnessapp.b-cdn.net'}/${rawUrl.replace(/^\//, '')}`
           
           const isVideo = fullUrl.includes('.mp4')
 
