@@ -1,32 +1,1167 @@
 [
   {
-    "name": "Extensión En Polea Alta De Pie",
-    "id": "0a4cd8c9-7ed9-4a9e-bdd4-f781d01300b2",
-    "old": "General"
+    "slug": "calentamiento-pre-partido",
+    "name_es": "Calentamiento Pre-Partido",
+    "categoria": "calentamiento"
   },
   {
-    "name": "Barra Parte Trasera De Cabeza",
-    "id": "d50aa0b6-d46f-4cf5-a63d-85fbbd8dd5ea",
-    "old": "General"
+    "slug": "calentamiento-general",
+    "name_es": "Calentamiento General",
+    "categoria": "calentamiento"
   },
   {
-    "name": "Agache A La Inversa",
-    "id": "2afe1b13-1eaf-48b7-b599-3fbd6f48f4dd",
-    "old": "General"
+    "slug": "circuito-1-abdominales",
+    "name_es": "Circuito 1 Abdominales",
+    "categoria": "abdominales"
   },
   {
-    "name": "Extensión En Polea",
-    "id": "8143850a-cea5-4873-a32d-534d16aadba7",
-    "old": "General"
+    "slug": "circuito-2-abdominales",
+    "name_es": "Circuito 2 Abdominales",
+    "categoria": "abdominales"
   },
   {
-    "name": "Extensión A Un Brazo En Polea",
-    "id": "5ced93fa-2921-4e9f-bca8-432cefc197ee",
-    "old": "General"
+    "slug": "circuito-3-abdominales",
+    "name_es": "Circuito 3 Abdominales",
+    "categoria": "abdominales"
   },
   {
-    "name": "Movilidad De Rodilla",
-    "id": "ec0472e6-b75e-4ff7-8ed8-11c34f7bbcd0",
-    "old": "General"
+    "slug": "circuito-4-abdominales",
+    "name_es": "Circuito 4 Abdominales",
+    "categoria": "abdominales"
+  },
+  {
+    "slug": "circuito-5-abdominales",
+    "name_es": "Circuito 5 Abdominales",
+    "categoria": "abdominales"
+  },
+  {
+    "slug": "estiramiento",
+    "name_es": "Estiramiento",
+    "categoria": "estiramientos"
+  },
+  {
+    "slug": "spreen-max-velocidad",
+    "name_es": "Sprint Max. Velocidad",
+    "categoria": "activación"
+  },
+  {
+    "slug": "jalon-dorsal-pecho",
+    "name_es": "Jalón Dorsal Pecho",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-espalda",
+    "name_es": "Extensión de Espalda",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-con-barra",
+    "name_es": "Curl con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-martillo-con-mancuernas",
+    "name_es": "Curl Martillo con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-concentracion",
+    "name_es": "Curl Concentración",
+    "categoria": "activación"
+  },
+  {
+    "slug": "aductores-en-maquina",
+    "name_es": "Aductores en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-isquios-maquina",
+    "name_es": "Extensión de Isquios en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hip-thrust",
+    "name_es": "Hip Thrust",
+    "categoria": "activación"
+  },
+  {
+    "slug": "salto-en-cajon-a-2-pies",
+    "name_es": "Saltos en Cajón a 2 Pies",
+    "categoria": "activación"
+  },
+  {
+    "slug": "explosion-en-cajon-sentandote-con-una-pierna",
+    "name_es": "Explosión en Cajón Sentándote con 1 Pierna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "spreen-con-activacion-en-inicio",
+    "name_es": "Sprint con Activación en Inicio",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-banca-con-barra",
+    "name_es": "Press Banca con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "pecho-con-apertura-maquina",
+    "name_es": "Con Apertura Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-con-mancuerna",
+    "name_es": "Extensión con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "dips",
+    "name_es": "Dips",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-sentado-con-mancuernas",
+    "name_es": "Press Sentado con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "reversa-con-mancuernas",
+    "name_es": "Reversa con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-cuadriceps-maquiana",
+    "name_es": "Extensión de Cuádriceps Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "desplazamientos-laterales-y-spreen",
+    "name_es": "Desplazamientos Laterales y Sprint",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-explosiva",
+    "name_es": "Sentadillas Explosivas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "lat-pulldown-maquina",
+    "name_es": "Lat Pulldown Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-en-polea-baja",
+    "name_es": "Remo en Polea Baja",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-inversa-en-polea",
+    "name_es": "Curl Inversa en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-inclinado-mancuernas",
+    "name_es": "Curl Inclinado Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-con-cable",
+    "name_es": "Curl con Cable",
+    "categoria": "activación"
+  },
+  {
+    "slug": "peso-muerto-a-una-pierna",
+    "name_es": "Peso Muerto a 1 Pierna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-bulgara",
+    "name_es": "Sentadilla Búlgara en Banco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-piernas-juntas",
+    "name_es": "Sentadillas Piernas Juntas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "apertura-con-mancuernas",
+    "name_es": "Apertura con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hex-press-con-mancuernas",
+    "name_es": "Hex Press con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-triceps-con-polea-alta",
+    "name_es": "Extensión de Tríceps con Polea Alta",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-banca-agarre-estrecho",
+    "name_es": "Press Banca Agarre Estrecho",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-frontal-con-barra",
+    "name_es": "Press Frontal con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-al-cuello-con-barra",
+    "name_es": "Remo al Cuello con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "paso-arriba-o-step",
+    "name_es": "Paso Arriba o Step",
+    "categoria": "activación"
+  },
+  {
+    "slug": "spreen-media-velocidad",
+    "name_es": "Sprint Media Velocidad",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hip-thrust-en-maquina",
+    "name_es": "Peso Muerto con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "peso-muerto",
+    "name_es": "Peso Muerto",
+    "categoria": "activación"
+  },
+  {
+    "slug": "jalon-vertical-con-polea",
+    "name_es": "Jalón Vertical con Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-en-polea-alta-de-pie",
+    "name_es": "En Polea Alta",
+    "categoria": "activación"
+  },
+  {
+    "slug": "dominadas",
+    "name_es": "Dominadas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-en-polea-sentado",
+    "name_es": "Curl en Polea Sentado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "martillo-cerrado-de-rodillas",
+    "name_es": "Martillo Cerrado de Rodillas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-inclinado-con-barra",
+    "name_es": "Press Inclinado con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "pull-over-con-mancuerna-apoyado-en-banco",
+    "name_es": "Pull Over con Mancuerna Apoyando en Banco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-triceps-con-banda",
+    "name_es": "Extensión de Tríceps con Banda",
+    "categoria": "activación"
+  },
+  {
+    "slug": "elevaciones-laterales-con-mancuernas",
+    "name_es": "Elevaciones Laterales con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "elevaciones-en-polea-media",
+    "name_es": "Elevaciones en Polea Media",
+    "categoria": "activación"
+  },
+  {
+    "slug": "salto-cajon-dos-cae-uno",
+    "name_es": "Saltos en Cajón a 2 Pies y Caigo con 1",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-sumo-con-pesa",
+    "name_es": "Sentadilla Sumo con Pesa",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-polea-frontal",
+    "name_es": "Sentadilla Polea Frontal",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-inclinado-con-agarre",
+    "name_es": "Remo Inclinado con Agarre",
+    "categoria": "activación"
+  },
+  {
+    "slug": "apertura-en-polea",
+    "name_es": "Apertura en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "escalera-saltos-con-pies-juntos-subes-2-bajas-1",
+    "name_es": "Escalera Saltos con Pies Juntos,subes 2 Bajas 1",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hip-thrust-en-banco-con-barra",
+    "name_es": "Hip Thrust en Banco con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "ejercicio-del-gusano",
+    "name_es": "Ejercicio del Gusano",
+    "categoria": "activación"
+  },
+  {
+    "slug": "flexiones-con-rodillas-en-el-suelo",
+    "name_es": "Flexiones con Rodillas en El Suelo",
+    "categoria": "activación"
+  },
+  {
+    "slug": "pull-over-con-mancuernas",
+    "name_es": "Pull Over con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-con-polea",
+    "name_es": "Extensión con Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "maquina",
+    "name_es": "Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-en-maquina",
+    "name_es": "Press en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "spreen-a-media-velocidad",
+    "name_es": "Sprint a Media Velocidad",
+    "categoria": "activación"
+  },
+  {
+    "slug": "volea-de-derecha-y-reves",
+    "name_es": "Volea de Derecha y Revés",
+    "categoria": "activación"
+  },
+  {
+    "slug": "explosion-en-cajon-sentandote-a-1-pierna",
+    "name_es": "Explosión en Cajón Sentándote a 1 Pierna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "velocidad-max-en-step-apoyando-un-pie",
+    "name_es": "Velocidad Max. en Step Apoyando Un Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "polea-lateral",
+    "name_es": "Polea Lateral",
+    "categoria": "activación"
+  },
+  {
+    "slug": "polea-de-pie",
+    "name_es": "Polea de Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "dominadas-asistidas",
+    "name_es": "Dominadas Asistidas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-en-polea",
+    "name_es": "Curl en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "dumbell-curl",
+    "name_es": "Dumbell Curl",
+    "categoria": "activación"
+  },
+  {
+    "slug": "estocada-con-step-en-maquina",
+    "name_es": "Estocada con Step en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-en-polea-centradas",
+    "name_es": "Sentadillas en Polea Centradas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "giros-con-mancuernas",
+    "name_es": "Giros con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "agarre-de-pinzas-con-disco",
+    "name_es": "Agarre de Pinzas con Disco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "abductores-en-maquina",
+    "name_es": "Abductores en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "aductor-en-maquina",
+    "name_es": "Aductor en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-pecho-maquina",
+    "name_es": "Press Pecho Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-triceps-en-polea-alta-de-pie",
+    "name_es": "Extensión de Tríceps en Polea Alta de Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "estocada-bulgara",
+    "name_es": "Estocada Bulgara",
+    "categoria": "activación"
+  },
+  {
+    "slug": "zancadas-con-elevacion-de-rodilla",
+    "name_es": "Zancadas con Elevación de Rodilla",
+    "categoria": "activación"
+  },
+  {
+    "slug": "equilibrio-2-piernas-golpes-de-derecha-y-reves",
+    "name_es": "Equilibrio 2 Piernas,golpes de Derecha y Revés",
+    "categoria": "activación"
+  },
+  {
+    "slug": "defensa-laeral-ambos-lados",
+    "name_es": "Defensa Laeral Ambos Lados",
+    "categoria": "activación"
+  },
+  {
+    "slug": "flexiones-en-mancuernas",
+    "name_es": "Flexiones en Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-con-mancuerna",
+    "name_es": "Remo con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-con-barra-t",
+    "name_es": "Remo con Barra T",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-con-disco",
+    "name_es": "Sentadillas con Disco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "peso-muerto-con-mancuerna",
+    "name_es": "Peso Muerto con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "encogimiento-de-hombros",
+    "name_es": "Encogimiento de Hombros",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-de-muneca-inverso",
+    "name_es": "Curl de Muñeca Inverso",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hiperextension-con-disco",
+    "name_es": "Hiperextension con Disco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "pull-over-en-banco",
+    "name_es": "Pull Over en Banco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-inclinado-con-mancuernas",
+    "name_es": "Press Inclinado con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "rotaciones-laterales",
+    "name_es": "Rotaciones Laterales",
+    "categoria": "activación"
+  },
+  {
+    "slug": "barra-trasera-en-cabeza",
+    "name_es": "Barra Trasera en Cabeza",
+    "categoria": "activación"
+  },
+  {
+    "slug": "homros-press-en-maquina",
+    "name_es": "Press en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "estocada",
+    "name_es": "Estocada",
+    "categoria": "activación"
+  },
+  {
+    "slug": "estocada-con-step",
+    "name_es": "Estocada con Step",
+    "categoria": "activación"
+  },
+  {
+    "slug": "saltos-en-cajon-con-2-pies-y-caigo-con-2-pies",
+    "name_es": "Saltos en Cajón con 2 Pies y Caigo con 2 Pies",
+    "categoria": "activación"
+  },
+  {
+    "slug": "con-2-pies-intercalados-subes-2-y-bajas-1",
+    "name_es": "Con 2 Pies Intercalados, Subes 2 y Bajas 1",
+    "categoria": "activación"
+  },
+  {
+    "slug": "saltos-con-2-pies-juntos-subes-2-y-bajas-1",
+    "name_es": "Saltos con 2 Pies Juntos, Subes 2 y Bajas 1",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-sumo-con-pesa",
+    "name_es": "Sentadillas Sumo con Pesa",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-pierna-en-maquina",
+    "name_es": "Extensión de Pierna en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-reves",
+    "name_es": "Curl Revés",
+    "categoria": "activación"
+  },
+  {
+    "slug": "cross",
+    "name_es": "Cross",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hiperextension",
+    "name_es": "Hiperextension",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-con-barra-trasera",
+    "name_es": "Sentadilla con Barra Trasera",
+    "categoria": "activación"
+  },
+  {
+    "slug": "saltar-a-la-comba",
+    "name_es": "Saltar a La Comba",
+    "categoria": "activación"
+  },
+  {
+    "slug": "elevaciones-frontales-con-mancuernas",
+    "name_es": "Elevaciones Frontales con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "salto-en-cajon-con-2-pies-y-caigo-con-1",
+    "name_es": "Salto en Cajón con 2 Pies y Caigo con 1",
+    "categoria": "activación"
+  },
+  {
+    "slug": "martillo-cerrado",
+    "name_es": "Martillo Cerrado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "acticacion-de-espalda",
+    "name_es": "Activación de Espalda",
+    "categoria": "activación"
+  },
+  {
+    "slug": "zancadas-estaticas",
+    "name_es": "Zancadas Estáticas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "explosion-en-cajon-sentandose-con-1-pierna",
+    "name_es": "Explosión en Cajón Sentándose con 1 Pierna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-sumo-con-step",
+    "name_es": "Sentadillas Sumo con Step",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-con-mancuernas-en-banco-tumbado",
+    "name_es": "Press con Mancuernas en Banco Tumbado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "con-apertura-en-maquina",
+    "name_es": "Con Apertura en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "en-barra",
+    "name_es": "En Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "agache-a-inversa",
+    "name_es": "Agache a Inversa",
+    "categoria": "activación"
+  },
+  {
+    "slug": "movimiento-de-cintura-con-palo",
+    "name_es": "Movimiento de Cintura con Palo",
+    "categoria": "activación"
+  },
+  {
+    "slug": "giros-de-cadera-ambos-lados",
+    "name_es": "Giros de Cadera Ambos Lados",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hammer-curl",
+    "name_es": "Hammer Curl",
+    "categoria": "activación"
+  },
+  {
+    "slug": "abductores-en-polea",
+    "name_es": "Abductores en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "aductores-en-polea",
+    "name_es": "Aductores en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-sumo",
+    "name_es": "Sentadillas Sumo",
+    "categoria": "activación"
+  },
+  {
+    "slug": "estocada-con-mancuerna-en-banco",
+    "name_es": "Estocada con Mancuerna en Banco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "patada-en-polea-doblando-rodilla",
+    "name_es": "Patada en Polea Doblando Rodilla",
+    "categoria": "activación"
+  },
+  {
+    "slug": "empuje-de-cadera-con-mancuerna",
+    "name_es": "Empuje de Cadera con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-triceps-en-polea-alta",
+    "name_es": "Extensión de Tríceps en Polea Alta",
+    "categoria": "activación"
+  },
+  {
+    "slug": "salton-en-cajon-con-2-pies-y-caigo-con-1-pie",
+    "name_es": "Salto en Cajón con 2 Pies y Caigo con 1 Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-en-polea-centrada",
+    "name_es": "Sentadilla en Polea Centrada",
+    "categoria": "activación"
+  },
+  {
+    "slug": "peso-muerto-y-femoral-en-polea",
+    "name_es": "Peso Muerto y Femoral en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "esapalda-activacion-con-barra",
+    "name_es": "Esapalda Activación con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "oblicuos-con-disco",
+    "name_es": "Oblicuos con Disco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "comba",
+    "name_es": "Comba",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-nde-trieceps-con-banda",
+    "name_es": "Extensión Nde Trieceps con Banda",
+    "categoria": "activación"
+  },
+  {
+    "slug": "en-maquina",
+    "name_es": "En Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "salton-en-cajon-con-2-pies-y-caigo-con-1",
+    "name_es": "Salto en Cajón con 2 Pies y Caigo con 1",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-sumo",
+    "name_es": "Sentadilla Sumo",
+    "categoria": "activación"
+  },
+  {
+    "slug": "polea-alta",
+    "name_es": "Polea Alta",
+    "categoria": "activación"
+  },
+  {
+    "slug": "renegade-row",
+    "name_es": "Renegade Row",
+    "categoria": "activación"
+  },
+  {
+    "slug": "culr-con-cable",
+    "name_es": "Culr con Cable",
+    "categoria": "activación"
+  },
+  {
+    "slug": "spreen-a-max-velocidad",
+    "name_es": "Sprint a Max. Velocidad",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-con-elevaciones-de-talones",
+    "name_es": "Sentadillas con Elevaciones de Talones",
+    "categoria": "activación"
+  },
+  {
+    "slug": "aperturas-con-mancuernas-tumbado",
+    "name_es": "Aperturas con Mancuernas Tumbado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "en-banco-con-mancuerna",
+    "name_es": "En Banco con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-triceps-en-polea",
+    "name_es": "Extensión de Tríceps en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-de-pie",
+    "name_es": "Press de Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-hombros-en-maquina",
+    "name_es": "Press Hombros en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "calentamienmto",
+    "name_es": "Calentamiento",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-invertido-en-suelo",
+    "name_es": "Remo Invertido en Suelo",
+    "categoria": "activación"
+  },
+  {
+    "slug": "tren-inferir-extension-con-mancuerna",
+    "name_es": "Tren Inferior Extensión con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-triceps-con-mancuerna",
+    "name_es": "Extensión de Tríceps con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "apertura-girando",
+    "name_es": "Apertura Girando",
+    "categoria": "activación"
+  },
+  {
+    "slug": "reversa-sentado",
+    "name_es": "Reversa Sentado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-polea-en-maquina",
+    "name_es": "Extensión de Polea en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "zancada-estatica",
+    "name_es": "Zancada Estática",
+    "categoria": "activación"
+  },
+  {
+    "slug": "velocidad-a-max-en-step-apoyando-1-pie",
+    "name_es": "Velocidad a Max. en Step Apoyando 1 Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-con-mancuernas",
+    "name_es": "Curl con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "estocadas-con-step-en-maquina",
+    "name_es": "Estocadas con Step en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-sumo-con-2-mancuernas",
+    "name_es": "Sentadilla Sumo con 2 Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-triceps",
+    "name_es": "Extensión de Tríceps",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-cadera-en-polea-centreda",
+    "name_es": "Extensión de Cadera en Polea Centreda",
+    "categoria": "activación"
+  },
+  {
+    "slug": "step-up-en-banco",
+    "name_es": "Step Up en Banco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-bulgara-con-1-mancuerna",
+    "name_es": "Sentadilla Búlgara con 1 Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "puente-de-gluteos-con-mancuernas",
+    "name_es": "Puente de Gluteos con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "prensa-con-piernas-separadas",
+    "name_es": "Prensa con Piernas Separadas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "prensa-con-piernas-juntas",
+    "name_es": "Prensa con Piernas Juntas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "adutores-en-maquina",
+    "name_es": "Aductores en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "renegade-row-con-flexion",
+    "name_es": "Renegade Row con Flexión",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-al-cuello-con-mancuernas",
+    "name_es": "Remo al Cuello con Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "activacion-en-estep-a-max-velocidad-apoyando-2-pies",
+    "name_es": "Activación en Estep a Max. Velocidad Apoyando 2 Pies",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-cadera-en-polea-centrada",
+    "name_es": "Extensión de Cadera en Polea Centrada",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-invertido-piernas-estiradas",
+    "name_es": "Remo Invertido Piernas Estiradas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-con-mancuernas-con-pecho-en-banco",
+    "name_es": "Remo con Mancuernas con Pecho en Banco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "peso-muerto-a-1-pierna-con-mancuerna-y-1-pie-arriba",
+    "name_es": "Peso Muerto a 1 Pierna con Mancuerna y 1 Pie Arriba",
+    "categoria": "activación"
+  },
+  {
+    "slug": "subida-con-mancuerna",
+    "name_es": "Subida con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "press-pecho-en-maquina",
+    "name_es": "Press Pecho en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "barra-trasera-de-cabeza",
+    "name_es": "Barra Trasera de Cabeza",
+    "categoria": "activación"
+  },
+  {
+    "slug": "elevaciones-frontales-sentado",
+    "name_es": "Elevaciones Frontales Sentado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "activacion-de-espalda",
+    "name_es": "Activación de Espalda",
+    "categoria": "activación"
+  },
+  {
+    "slug": "saltos-en-cajon-con-2-pies-y-caigo-con-1-pie",
+    "name_es": "Saltos en Cajón con 2 Pies y Caigo con 1 Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "estocada-en-maquina",
+    "name_es": "Estocada en Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-mancuernas",
+    "name_es": "Curl Mancuernas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-con-t",
+    "name_es": "Remo con T",
+    "categoria": "activación"
+  },
+  {
+    "slug": "polea-a-1-brazo",
+    "name_es": "Polea a 1 Brazo",
+    "categoria": "activación"
+  },
+  {
+    "slug": "aductor-en-polea",
+    "name_es": "Aductor en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "defensa-de-derecha-y-reves",
+    "name_es": "Defensa de Derecha y Revés",
+    "categoria": "activación"
+  },
+  {
+    "slug": "saltos-con-los-2-pies-juntos-de-2-en-2-escalones",
+    "name_es": "Saltos con Los 2 Pies Juntos, de 2 en 2 Escalones",
+    "categoria": "activación"
+  },
+  {
+    "slug": "lat-pulldouwn-maquina",
+    "name_es": "Lat Pulldouwn Máquina",
+    "categoria": "activación"
+  },
+  {
+    "slug": "renegade-row-de-pie",
+    "name_es": "Renegade Row de Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-invertido",
+    "name_es": "Remo Invertido",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-con-discos",
+    "name_es": "Sentadillas con Discos",
+    "categoria": "activación"
+  },
+  {
+    "slug": "regadew-row-con-flexion",
+    "name_es": "Regadew Row con Flexión",
+    "categoria": "activación"
+  },
+  {
+    "slug": "zancadas-con-salto",
+    "name_es": "Zancadas con Salto",
+    "categoria": "activación"
+  },
+  {
+    "slug": "remo-trx",
+    "name_es": "Remo Trx",
+    "categoria": "activación"
+  },
+  {
+    "slug": "peso-muerto-con-barra",
+    "name_es": "Peso Muerto con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas-con-piernas-juntas",
+    "name_es": "Sentadillas con Piernas Juntas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "step-up-con-mancuerna",
+    "name_es": "Step Up con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hex-press-inclinado-con-barra",
+    "name_es": "Hex Press Inclinado con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "flexiones-en-step",
+    "name_es": "Flexiones en Step",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-clasica",
+    "name_es": "Sentadilla Clásica",
+    "categoria": "activación"
+  },
+  {
+    "slug": "activacion-con-barra",
+    "name_es": "Activación con Barra",
+    "categoria": "activación"
+  },
+  {
+    "slug": "prensa-piernas-separadas",
+    "name_es": "Prensa Piernas Separadas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-con-elevaciones-de-talones",
+    "name_es": "Sentadilla con Elevaciones de Talones",
+    "categoria": "activación"
+  },
+  {
+    "slug": "subida-con-mancuena-de-pie",
+    "name_es": "Subida con Mancuerna de Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "activacion-deltoides",
+    "name_es": "Activación Deltoides",
+    "categoria": "activación"
+  },
+  {
+    "slug": "estocada-bulgara-en-banco",
+    "name_es": "Estocada Bulgara en Banco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "pull-over-con-mancuernas-apoyando-en-banco",
+    "name_es": "Pull Over con Mancuernas Apoyando en Banco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "mancuernas-banco-inclinado",
+    "name_es": "Mancuernas Banco Inclinado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "zancada-con-salto",
+    "name_es": "Zancada con Salto",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadillas",
+    "name_es": "Sentadillas",
+    "categoria": "activación"
+  },
+  {
+    "slug": "puente-de-gluteos-con-mancuerna",
+    "name_es": "Puente de Gluteos con Mancuerna",
+    "categoria": "activación"
+  },
+  {
+    "slug": "mancuernas-en-banco-inclinado",
+    "name_es": "Mancuernas en Banco Inclinado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "subida-con-mancuerna-de-pie",
+    "name_es": "Subida con Mancuerna de Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "cross-en-polea",
+    "name_es": "Cross en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "subida-frontal-con-disco",
+    "name_es": "Subida Frontal con Disco",
+    "categoria": "activación"
+  },
+  {
+    "slug": "movimiento-con-palo",
+    "name_es": "Movimiento con Palo",
+    "categoria": "activación"
+  },
+  {
+    "slug": "curl-en-polea-senatado",
+    "name_es": "Curl en Polea Senatado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "sentadilla-sumo-con-steps",
+    "name_es": "Sentadilla Sumo con Steps",
+    "categoria": "activación"
+  },
+  {
+    "slug": "peso-muerto-con-1mancuerna-a-1-pie",
+    "name_es": "Peso Muerto con 1mancuerna a 1 Pie",
+    "categoria": "activación"
+  },
+  {
+    "slug": "hex-press-con-mancuernas-en-banco-tumbado",
+    "name_es": "Hex Press con Mancuernas en Banco Tumbado",
+    "categoria": "activación"
+  },
+  {
+    "slug": "extension-de-triceps-a-un-brazo-en-polea",
+    "name_es": "Extensión de Tríceps a Un Brazo en Polea",
+    "categoria": "activación"
+  },
+  {
+    "slug": "equilibrio-a-2-piernas-golpes-de-derecha-y-reves",
+    "name_es": "Equilibrio a 2 Piernas, Golpes de Derecha y Revés",
+    "categoria": "activación"
+  },
+  {
+    "slug": "salto-en-cajon-con-2-pies-y-caigo-con-1-pie",
+    "name_es": "Salto en Cajón con 2 Pies y Caigo con 1 Pie",
+    "categoria": "activación"
   }
 ]
