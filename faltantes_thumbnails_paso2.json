@@ -1,0 +1,644 @@
+[
+  {
+    "slug": "saltos-laterales-a-1-perna-y-avanzando",
+    "name": "Saltos Laterales a 1 Pierna y Avanzando",
+    "video_filename": "saltos-laterales-a-1-perna-y-avanzando.mp4",
+    "expected_jpg": "saltos-laterales-a-1-perna-y-avanzando.jpg"
+  },
+  {
+    "slug": "equilibrio-a-1-pierna-golde-de-dercha-y-reves",
+    "name": "Equilibrio a 1 Pierna, Golpe de Derecha y Revés",
+    "video_filename": "equilibrio-a-1-pierna-golde-de-dercha-y-reves.mp4",
+    "expected_jpg": "equilibrio-a-1-pierna-golde-de-dercha-y-reves.jpg"
+  },
+  {
+    "slug": "sentadilla-sumo-con-pesa",
+    "name": "Sentadilla Sumo con Pesa",
+    "video_filename": "sentadilla-sumo-con-pesa.mp4",
+    "expected_jpg": "sentadilla-sumo-con-pesa.jpg"
+  },
+  {
+    "slug": "escalera-con-pies-intercalados-subes-2-y-bajas-1",
+    "name": "Escalera con Pies Intercalados Subes 2 y Bajas 1",
+    "video_filename": "escalera-con-pies-intercalados-subes-2-y-bajas-1.mp4",
+    "expected_jpg": "escalera-con-pies-intercalados-subes-2-y-bajas-1.jpg"
+  },
+  {
+    "slug": "escalera-saltos-con-pies-juntos-subes-2-bajas-1",
+    "name": "Escalera Saltos con Pies Juntos,subes 2 Bajas 1",
+    "video_filename": "escalera-saltos-con-pies-juntos-subes-2-bajas-1.mp4",
+    "expected_jpg": "escalera-saltos-con-pies-juntos-subes-2-bajas-1.jpg"
+  },
+  {
+    "slug": "escalera-saltos-con-2-pies-juntos-de-2-en-2-escalones",
+    "name": "Escalera Saltos con 2 Pies Juntos,de 2 en 2 Escalones",
+    "video_filename": "escalera-saltos-con-2-pies-juntos-de-2-en-2-escalones.mp4",
+    "expected_jpg": "escalera-saltos-con-2-pies-juntos-de-2-en-2-escalones.jpg"
+  },
+  {
+    "slug": "ejercicio-del-gusano",
+    "name": "Ejercicio del Gusano",
+    "video_filename": "ejercicio-del-gusano.mp4",
+    "expected_jpg": "ejercicio-del-gusano.jpg"
+  },
+  {
+    "slug": "maquina",
+    "name": "Máquina",
+    "video_filename": "maquina.mp4",
+    "expected_jpg": "maquina.jpg"
+  },
+  {
+    "slug": "press-en-maquina",
+    "name": "Press en Máquina",
+    "video_filename": "press-en-maquina.mp4",
+    "expected_jpg": "press-en-maquina.jpg"
+  },
+  {
+    "slug": "spreen-a-media-velocidad",
+    "name": "Sprint a Media Velocidad",
+    "video_filename": "spreen-a-media-velocidad.mp4",
+    "expected_jpg": "spreen-a-media-velocidad.jpg"
+  },
+  {
+    "slug": "volea-de-derecha-y-reves",
+    "name": "Volea de Derecha y Revés",
+    "video_filename": "volea-de-derecha-y-reves.mp4",
+    "expected_jpg": "volea-de-derecha-y-reves.jpg"
+  },
+  {
+    "slug": "explosion-en-cajon-sentandote-a-1-pierna",
+    "name": "Explosión en Cajón Sentándote a 1 Pierna",
+    "video_filename": "explosion-en-cajon-sentandote-a-1-pierna.mp4",
+    "expected_jpg": "explosion-en-cajon-sentandote-a-1-pierna.jpg"
+  },
+  {
+    "slug": "velocidad-max-en-step-apoyando-un-pie",
+    "name": "Velocidad Max. en Step Apoyando Un Pie",
+    "video_filename": "velocidad-max-en-step-apoyando-un-pie.mp4",
+    "expected_jpg": "velocidad-max-en-step-apoyando-un-pie.jpg"
+  },
+  {
+    "slug": "agarre-de-pinzas-con-disco",
+    "name": "Agarre de Pinzas con Disco",
+    "video_filename": "agarre-de-pinzas-con-disco.mp4",
+    "expected_jpg": "agarre-de-pinzas-con-disco.jpg"
+  },
+  {
+    "slug": "aductor-en-maquina",
+    "name": "Aductor en Máquina",
+    "video_filename": "aductor-en-maquina.mp4",
+    "expected_jpg": "aductor-en-maquina.jpg"
+  },
+  {
+    "slug": "extension-de-triceps-en-polea-alta-de-pie",
+    "name": "Extensión de Tríceps en Polea Alta de Pie",
+    "video_filename": "extension-de-triceps-en-polea-alta-de-pie.mp4",
+    "expected_jpg": "extension-de-triceps-en-polea-alta-de-pie.jpg"
+  },
+  {
+    "slug": "zancadas-con-elevacion-de-rodilla",
+    "name": "Zancadas con Elevación de Rodilla",
+    "video_filename": "zancadas-con-elevacion-de-rodilla.mp4",
+    "expected_jpg": "zancadas-con-elevacion-de-rodilla.jpg"
+  },
+  {
+    "slug": "equilibrio-2-piernas-golpes-de-derecha-y-reves",
+    "name": "Equilibrio 2 Piernas,golpes de Derecha y Revés",
+    "video_filename": "equilibrio-2-piernas-golpes-de-derecha-y-reves.mp4",
+    "expected_jpg": "equilibrio-2-piernas-golpes-de-derecha-y-reves.jpg"
+  },
+  {
+    "slug": "defensa-laeral-ambos-lados",
+    "name": "Defensa Laeral Ambos Lados",
+    "video_filename": "defensa-laeral-ambos-lados.mp4",
+    "expected_jpg": "defensa-laeral-ambos-lados.jpg"
+  },
+  {
+    "slug": "peso-muerto-con-mancuerna",
+    "name": "Peso Muerto con Mancuerna",
+    "video_filename": "peso-muerto-con-mancuerna.mp4",
+    "expected_jpg": "peso-muerto-con-mancuerna.jpg"
+  },
+  {
+    "slug": "barra-trasera-en-cabeza",
+    "name": "Barra Trasera en Cabeza",
+    "video_filename": "barra-trasera-en-cabeza.mp4",
+    "expected_jpg": "barra-trasera-en-cabeza.jpg"
+  },
+  {
+    "slug": "homros-press-en-maquina",
+    "name": "Press en Máquina",
+    "video_filename": "homros-press-en-maquina.mp4",
+    "expected_jpg": "homros-press-en-maquina.jpg"
+  },
+  {
+    "slug": "saltos-en-cajon-con-2-pies-y-caigo-con-2-pies",
+    "name": "Saltos en Cajón con 2 Pies y Caigo con 2 Pies",
+    "video_filename": "saltos-en-cajon-con-2-pies-y-caigo-con-2-pies.mp4",
+    "expected_jpg": "saltos-en-cajon-con-2-pies-y-caigo-con-2-pies.jpg"
+  },
+  {
+    "slug": "con-2-pies-intercalados-subes-2-y-bajas-1",
+    "name": "Con 2 Pies Intercalados, Subes 2 y Bajas 1",
+    "video_filename": "con-2-pies-intercalados-subes-2-y-bajas-1.mp4",
+    "expected_jpg": "con-2-pies-intercalados-subes-2-y-bajas-1.jpg"
+  },
+  {
+    "slug": "saltos-con-2-pies-juntos-subes-2-y-bajas-1",
+    "name": "Saltos con 2 Pies Juntos, Subes 2 y Bajas 1",
+    "video_filename": "saltos-con-2-pies-juntos-subes-2-y-bajas-1.mp4",
+    "expected_jpg": "saltos-con-2-pies-juntos-subes-2-y-bajas-1.jpg"
+  },
+  {
+    "slug": "extension-de-gemelos",
+    "name": "Extensión de Gemelos",
+    "video_filename": "extension-de-gemelos.mp4",
+    "expected_jpg": "extension-de-gemelos.jpg"
+  },
+  {
+    "slug": "saltos-laterales-saltos-cajon",
+    "name": "Saltos Laterales + Saltos Cajón",
+    "video_filename": "saltos-laterales-saltos-cajon.mp4",
+    "expected_jpg": "saltos-laterales-saltos-cajon.jpg"
+  },
+  {
+    "slug": "salto-en-cajon-con-2-pies-y-caigo-con-1",
+    "name": "Salto en Cajón con 2 Pies y Caigo con 1",
+    "video_filename": "salto-en-cajon-con-2-pies-y-caigo-con-1.mp4",
+    "expected_jpg": "salto-en-cajon-con-2-pies-y-caigo-con-1.jpg"
+  },
+  {
+    "slug": "acticacion-de-espalda",
+    "name": "Activación de Espalda",
+    "video_filename": "acticacion-de-espalda.mp4",
+    "expected_jpg": "acticacion-de-espalda.jpg"
+  },
+  {
+    "slug": "saltos-laterales-a-1-pierna-y-avanzo",
+    "name": "Saltos Laterales a 1 Pierna y Avanzo",
+    "video_filename": "saltos-laterales-a-1-pierna-y-avanzo.mp4",
+    "expected_jpg": "saltos-laterales-a-1-pierna-y-avanzo.jpg"
+  },
+  {
+    "slug": "explosion-en-cajon-sentandose-con-1-pierna",
+    "name": "Explosión en Cajón Sentándose con 1 Pierna",
+    "video_filename": "explosion-en-cajon-sentandose-con-1-pierna.mp4",
+    "expected_jpg": "explosion-en-cajon-sentandose-con-1-pierna.jpg"
+  },
+  {
+    "slug": "sentadillas-sumo-con-step",
+    "name": "Sentadillas Sumo con Step",
+    "video_filename": "sentadillas-sumo-con-step.mp4",
+    "expected_jpg": "sentadillas-sumo-con-step.jpg"
+  },
+  {
+    "slug": "cambios-de-ritmo-cinta",
+    "name": "Cambios de Ritmo Cinta",
+    "video_filename": "cambios-de-ritmo-cinta.mp4",
+    "expected_jpg": "cambios-de-ritmo-cinta.jpg"
+  },
+  {
+    "slug": "giros-de-cadera-ambos-lados",
+    "name": "Giros de Cadera Ambos Lados",
+    "video_filename": "giros-de-cadera-ambos-lados.mp4",
+    "expected_jpg": "giros-de-cadera-ambos-lados.jpg"
+  },
+  {
+    "slug": "extension-de-triceps-en-polea-alta",
+    "name": "Extensión de Tríceps en Polea Alta",
+    "video_filename": "extension-de-triceps-en-polea-alta.mp4",
+    "expected_jpg": "extension-de-triceps-en-polea-alta.jpg"
+  },
+  {
+    "slug": "salton-lateral-salto-cajon",
+    "name": "Salto Lateral + Salto Cajón",
+    "video_filename": "salton-lateral-salto-cajon.mp4",
+    "expected_jpg": "salton-lateral-salto-cajon.jpg"
+  },
+  {
+    "slug": "salton-en-cajon-con-2-pies-y-caigo-con-1-pie",
+    "name": "Salto en Cajón con 2 Pies y Caigo con 1 Pie",
+    "video_filename": "salton-en-cajon-con-2-pies-y-caigo-con-1-pie.mp4",
+    "expected_jpg": "salton-en-cajon-con-2-pies-y-caigo-con-1-pie.jpg"
+  },
+  {
+    "slug": "salton-en-cajon-a-2-pies",
+    "name": "Salto en Cajón a 2 Pies",
+    "video_filename": "salton-en-cajon-a-2-pies.mp4",
+    "expected_jpg": "salton-en-cajon-a-2-pies.jpg"
+  },
+  {
+    "slug": "sentadilla-en-polea-centrada",
+    "name": "Sentadilla en Polea Centrada",
+    "video_filename": "sentadilla-en-polea-centrada.mp4",
+    "expected_jpg": "sentadilla-en-polea-centrada.jpg"
+  },
+  {
+    "slug": "esapalda-activacion-con-barra",
+    "name": "Esapalda Activación con Barra",
+    "video_filename": "esapalda-activacion-con-barra.mp4",
+    "expected_jpg": "esapalda-activacion-con-barra.jpg"
+  },
+  {
+    "slug": "comba",
+    "name": "Comba",
+    "video_filename": "comba.mp4",
+    "expected_jpg": "comba.jpg"
+  },
+  {
+    "slug": "extension-nde-trieceps-con-banda",
+    "name": "Extensión Nde Trieceps con Banda",
+    "video_filename": "extension-nde-trieceps-con-banda.mp4",
+    "expected_jpg": "extension-nde-trieceps-con-banda.jpg"
+  },
+  {
+    "slug": "en-maquina",
+    "name": "En Máquina",
+    "video_filename": "en-maquina.mp4",
+    "expected_jpg": "en-maquina.jpg"
+  },
+  {
+    "slug": "salton-en-cajon-con-2-pies-y-caigo-con-1",
+    "name": "Salto en Cajón con 2 Pies y Caigo con 1",
+    "video_filename": "salton-en-cajon-con-2-pies-y-caigo-con-1.mp4",
+    "expected_jpg": "salton-en-cajon-con-2-pies-y-caigo-con-1.jpg"
+  },
+  {
+    "slug": "sentadilla-sumo",
+    "name": "Sentadilla Sumo",
+    "video_filename": "sentadilla-sumo.mp4",
+    "expected_jpg": "sentadilla-sumo.jpg"
+  },
+  {
+    "slug": "culr-con-cable",
+    "name": "Culr con Cable",
+    "video_filename": "culr-con-cable.mp4",
+    "expected_jpg": "culr-con-cable.jpg"
+  },
+  {
+    "slug": "spreen-a-max-velocidad",
+    "name": "Sprint a Max. Velocidad",
+    "video_filename": "spreen-a-max-velocidad.mp4",
+    "expected_jpg": "spreen-a-max-velocidad.jpg"
+  },
+  {
+    "slug": "sentadillas-con-elevaciones-de-talones",
+    "name": "Sentadillas con Elevaciones de Talones",
+    "video_filename": "sentadillas-con-elevaciones-de-talones.mp4",
+    "expected_jpg": "sentadillas-con-elevaciones-de-talones.jpg"
+  },
+  {
+    "slug": "extension-de-triceps-en-polea",
+    "name": "Extensión de Tríceps en Polea",
+    "video_filename": "extension-de-triceps-en-polea.mp4",
+    "expected_jpg": "extension-de-triceps-en-polea.jpg"
+  },
+  {
+    "slug": "calentamienmto",
+    "name": "Calentamiento",
+    "video_filename": "calentamienmto.mp4",
+    "expected_jpg": "calentamienmto.jpg"
+  },
+  {
+    "slug": "tren-inferir-extension-con-mancuerna",
+    "name": "Tren Inferior Extensión con Mancuerna",
+    "video_filename": "tren-inferir-extension-con-mancuerna.mp4",
+    "expected_jpg": "tren-inferir-extension-con-mancuerna.jpg"
+  },
+  {
+    "slug": "extension-de-triceps-con-mancuerna",
+    "name": "Extensión de Tríceps con Mancuerna",
+    "video_filename": "extension-de-triceps-con-mancuerna.mp4",
+    "expected_jpg": "extension-de-triceps-con-mancuerna.jpg"
+  },
+  {
+    "slug": "apertura-girando",
+    "name": "Apertura Girando",
+    "video_filename": "apertura-girando.mp4",
+    "expected_jpg": "apertura-girando.jpg"
+  },
+  {
+    "slug": "extension-de-polea-en-maquina",
+    "name": "Extensión de Polea en Máquina",
+    "video_filename": "extension-de-polea-en-maquina.mp4",
+    "expected_jpg": "extension-de-polea-en-maquina.jpg"
+  },
+  {
+    "slug": "zancada-estatica",
+    "name": "Zancada Estática",
+    "video_filename": "zancada-estatica.mp4",
+    "expected_jpg": "zancada-estatica.jpg"
+  },
+  {
+    "slug": "flexiones",
+    "name": "Flexiones",
+    "video_filename": "flexiones.mp4",
+    "expected_jpg": "flexiones.jpg"
+  },
+  {
+    "slug": "velocidad-a-max-en-step-apoyando-1-pie",
+    "name": "Velocidad a Max. en Step Apoyando 1 Pie",
+    "video_filename": "velocidad-a-max-en-step-apoyando-1-pie.mp4",
+    "expected_jpg": "velocidad-a-max-en-step-apoyando-1-pie.jpg"
+  },
+  {
+    "slug": "estocadas-con-step-en-maquina",
+    "name": "Estocadas con Step en Máquina",
+    "video_filename": "estocadas-con-step-en-maquina.mp4",
+    "expected_jpg": "estocadas-con-step-en-maquina.jpg"
+  },
+  {
+    "slug": "sentadilla-sumo-con-2-mancuernas",
+    "name": "Sentadilla Sumo con 2 Mancuernas",
+    "video_filename": "sentadilla-sumo-con-2-mancuernas.mp4",
+    "expected_jpg": "sentadilla-sumo-con-2-mancuernas.jpg"
+  },
+  {
+    "slug": "extension-de-triceps",
+    "name": "Extensión de Tríceps",
+    "video_filename": "extension-de-triceps.mp4",
+    "expected_jpg": "extension-de-triceps.jpg"
+  },
+  {
+    "slug": "extension-de-cadera-en-polea-centreda",
+    "name": "Extensión de Cadera en Polea Centreda",
+    "video_filename": "extension-de-cadera-en-polea-centreda.mp4",
+    "expected_jpg": "extension-de-cadera-en-polea-centreda.jpg"
+  },
+  {
+    "slug": "sentadilla-bulgara-con-1-mancuerna",
+    "name": "Sentadilla Búlgara con 1 Mancuerna",
+    "video_filename": "sentadilla-bulgara-con-1-mancuerna.mp4",
+    "expected_jpg": "sentadilla-bulgara-con-1-mancuerna.jpg"
+  },
+  {
+    "slug": "puente-de-gluteos-con-mancuernas",
+    "name": "Puente de Gluteos con Mancuernas",
+    "video_filename": "puente-de-gluteos-con-mancuernas.mp4",
+    "expected_jpg": "puente-de-gluteos-con-mancuernas.jpg"
+  },
+  {
+    "slug": "prensa-con-piernas-separadas",
+    "name": "Prensa con Piernas Separadas",
+    "video_filename": "prensa-con-piernas-separadas.mp4",
+    "expected_jpg": "prensa-con-piernas-separadas.jpg"
+  },
+  {
+    "slug": "prensa-con-piernas-juntas",
+    "name": "Prensa con Piernas Juntas",
+    "video_filename": "prensa-con-piernas-juntas.mp4",
+    "expected_jpg": "prensa-con-piernas-juntas.jpg"
+  },
+  {
+    "slug": "adutores-en-maquina",
+    "name": "Aductores en Máquina",
+    "video_filename": "adutores-en-maquina.mp4",
+    "expected_jpg": "adutores-en-maquina.jpg"
+  },
+  {
+    "slug": "activacion-en-estep-a-max-velocidad-apoyando-2-pies",
+    "name": "Activación en Estep a Max. Velocidad Apoyando 2 Pies",
+    "video_filename": "activacion-en-estep-a-max-velocidad-apoyando-2-pies.mp4",
+    "expected_jpg": "activacion-en-estep-a-max-velocidad-apoyando-2-pies.jpg"
+  },
+  {
+    "slug": "extension-de-cadera-en-polea-centrada",
+    "name": "Extensión de Cadera en Polea Centrada",
+    "video_filename": "extension-de-cadera-en-polea-centrada.mp4",
+    "expected_jpg": "extension-de-cadera-en-polea-centrada.jpg"
+  },
+  {
+    "slug": "remo-con-mancuernas-con-pecho-en-banco",
+    "name": "Remo con Mancuernas con Pecho en Banco",
+    "video_filename": "remo-con-mancuernas-con-pecho-en-banco.mp4",
+    "expected_jpg": "remo-con-mancuernas-con-pecho-en-banco.jpg"
+  },
+  {
+    "slug": "peso-muerto-a-1-pierna-con-mancuerna-y-1-pie-arriba",
+    "name": "Peso Muerto a 1 Pierna con Mancuerna y 1 Pie Arriba",
+    "video_filename": "peso-muerto-a-1-pierna-con-mancuerna-y-1-pie-arriba.mp4",
+    "expected_jpg": "peso-muerto-a-1-pierna-con-mancuerna-y-1-pie-arriba.jpg"
+  },
+  {
+    "slug": "elevaciones-frontales-sentado",
+    "name": "Elevaciones Frontales Sentado",
+    "video_filename": "elevaciones-frontales-sentado.mp4",
+    "expected_jpg": "elevaciones-frontales-sentado.jpg"
+  },
+  {
+    "slug": "saltos-en-cajon-con-2-pies-y-caigo-con-1-pie",
+    "name": "Saltos en Cajón con 2 Pies y Caigo con 1 Pie",
+    "video_filename": "saltos-en-cajon-con-2-pies-y-caigo-con-1-pie.mp4",
+    "expected_jpg": "saltos-en-cajon-con-2-pies-y-caigo-con-1-pie.jpg"
+  },
+  {
+    "slug": "estocada-en-maquina",
+    "name": "Estocada en Máquina",
+    "video_filename": "estocada-en-maquina.mp4",
+    "expected_jpg": "estocada-en-maquina.jpg"
+  },
+  {
+    "slug": "curl-mancuernas",
+    "name": "Curl Mancuernas",
+    "video_filename": "curl-mancuernas.mp4",
+    "expected_jpg": "curl-mancuernas.jpg"
+  },
+  {
+    "slug": "remo-con-t",
+    "name": "Remo con T",
+    "video_filename": "remo-con-t.mp4",
+    "expected_jpg": "remo-con-t.jpg"
+  },
+  {
+    "slug": "polea-a-1-brazo",
+    "name": "Polea a 1 Brazo",
+    "video_filename": "polea-a-1-brazo.mp4",
+    "expected_jpg": "polea-a-1-brazo.jpg"
+  },
+  {
+    "slug": "aductor-en-polea",
+    "name": "Aductor en Polea",
+    "video_filename": "aductor-en-polea.mp4",
+    "expected_jpg": "aductor-en-polea.jpg"
+  },
+  {
+    "slug": "defensa-de-derecha-y-reves",
+    "name": "Defensa de Derecha y Revés",
+    "video_filename": "defensa-de-derecha-y-reves.mp4",
+    "expected_jpg": "defensa-de-derecha-y-reves.jpg"
+  },
+  {
+    "slug": "saltos-con-los-2-pies-juntos-de-2-en-2-escalones",
+    "name": "Saltos con Los 2 Pies Juntos, de 2 en 2 Escalones",
+    "video_filename": "saltos-con-los-2-pies-juntos-de-2-en-2-escalones.mp4",
+    "expected_jpg": "saltos-con-los-2-pies-juntos-de-2-en-2-escalones.jpg"
+  },
+  {
+    "slug": "lat-pulldouwn-maquina",
+    "name": "Lat Pulldouwn Máquina",
+    "video_filename": "lat-pulldouwn-maquina.mp4",
+    "expected_jpg": "lat-pulldouwn-maquina.jpg"
+  },
+  {
+    "slug": "regadew-row-con-flexion",
+    "name": "Regadew Row con Flexión",
+    "video_filename": "regadew-row-con-flexion.mp4",
+    "expected_jpg": "regadew-row-con-flexion.jpg"
+  },
+  {
+    "slug": "saltos-laterales-a-1pierna-y-avanzando",
+    "name": "Saltos Laterales a 1pierna y Avanzando",
+    "video_filename": "saltos-laterales-a-1pierna-y-avanzando.mp4",
+    "expected_jpg": "saltos-laterales-a-1pierna-y-avanzando.jpg"
+  },
+  {
+    "slug": "zancadas-con-salto",
+    "name": "Zancadas con Salto",
+    "video_filename": "zancadas-con-salto.mp4",
+    "expected_jpg": "zancadas-con-salto.jpg"
+  },
+  {
+    "slug": "remo-trx",
+    "name": "Remo Trx",
+    "video_filename": "remo-trx.mp4",
+    "expected_jpg": "remo-trx.jpg"
+  },
+  {
+    "slug": "peso-muerto-con-barra",
+    "name": "Peso Muerto con Barra",
+    "video_filename": "peso-muerto-con-barra.mp4",
+    "expected_jpg": "peso-muerto-con-barra.jpg"
+  },
+  {
+    "slug": "sentadillas-con-piernas-juntas",
+    "name": "Sentadillas con Piernas Juntas",
+    "video_filename": "sentadillas-con-piernas-juntas.mp4",
+    "expected_jpg": "sentadillas-con-piernas-juntas.jpg"
+  },
+  {
+    "slug": "step-up-con-mancuerna",
+    "name": "Step Up con Mancuerna",
+    "video_filename": "step-up-con-mancuerna.mp4",
+    "expected_jpg": "step-up-con-mancuerna.jpg"
+  },
+  {
+    "slug": "hex-press-inclinado-con-barra",
+    "name": "Hex Press Inclinado con Barra",
+    "video_filename": "hex-press-inclinado-con-barra.mp4",
+    "expected_jpg": "hex-press-inclinado-con-barra.jpg"
+  },
+  {
+    "slug": "flexiones-en-step",
+    "name": "Flexiones en Step",
+    "video_filename": "flexiones-en-step.mp4",
+    "expected_jpg": "flexiones-en-step.jpg"
+  },
+  {
+    "slug": "saltos-laterales-salto-cajon",
+    "name": "Saltos Laterales + Salto Cajón",
+    "video_filename": "saltos-laterales-salto-cajon.mp4",
+    "expected_jpg": "saltos-laterales-salto-cajon.jpg"
+  },
+  {
+    "slug": "sentadilla-con-elevaciones-de-talones",
+    "name": "Sentadilla con Elevaciones de Talones",
+    "video_filename": "sentadilla-con-elevaciones-de-talones.mp4",
+    "expected_jpg": "sentadilla-con-elevaciones-de-talones.jpg"
+  },
+  {
+    "slug": "subida-con-mancuena-de-pie",
+    "name": "Subida con Mancuerna de Pie",
+    "video_filename": "subida-con-mancuena-de-pie.mp4",
+    "expected_jpg": "subida-con-mancuena-de-pie.jpg"
+  },
+  {
+    "slug": "estocada-bulgara-en-banco",
+    "name": "Estocada Bulgara en Banco",
+    "video_filename": "estocada-bulgara-en-banco.mp4",
+    "expected_jpg": "estocada-bulgara-en-banco.jpg"
+  },
+  {
+    "slug": "pull-over-con-mancuernas-apoyando-en-banco",
+    "name": "Pull Over con Mancuernas Apoyando en Banco",
+    "video_filename": "pull-over-con-mancuernas-apoyando-en-banco.mp4",
+    "expected_jpg": "pull-over-con-mancuernas-apoyando-en-banco.jpg"
+  },
+  {
+    "slug": "mancuernas-banco-inclinado",
+    "name": "Mancuernas Banco Inclinado",
+    "video_filename": "mancuernas-banco-inclinado.mp4",
+    "expected_jpg": "mancuernas-banco-inclinado.jpg"
+  },
+  {
+    "slug": "sentadillas",
+    "name": "Sentadillas",
+    "video_filename": "sentadillas.mp4",
+    "expected_jpg": "sentadillas.jpg"
+  },
+  {
+    "slug": "mancuernas-en-banco-inclinado",
+    "name": "Mancuernas en Banco Inclinado",
+    "video_filename": "mancuernas-en-banco-inclinado.mp4",
+    "expected_jpg": "mancuernas-en-banco-inclinado.jpg"
+  },
+  {
+    "slug": "subida-con-mancuerna-de-pie",
+    "name": "Subida con Mancuerna de Pie",
+    "video_filename": "subida-con-mancuerna-de-pie.mp4",
+    "expected_jpg": "subida-con-mancuerna-de-pie.jpg"
+  },
+  {
+    "slug": "subida-frontal-con-disco",
+    "name": "Subida Frontal con Disco",
+    "video_filename": "subida-frontal-con-disco.mp4",
+    "expected_jpg": "subida-frontal-con-disco.jpg"
+  },
+  {
+    "slug": "saltos-laterlaes-2-piernas-juntas",
+    "name": "Saltos Laterales, 2 Piernas Juntas",
+    "video_filename": "saltos-laterlaes-2-piernas-juntas.mp4",
+    "expected_jpg": "saltos-laterlaes-2-piernas-juntas.jpg"
+  },
+  {
+    "slug": "movimiento-con-palo",
+    "name": "Movimiento con Palo",
+    "video_filename": "movimiento-con-palo.mp4",
+    "expected_jpg": "movimiento-con-palo.jpg"
+  },
+  {
+    "slug": "curl-en-polea-senatado",
+    "name": "Curl en Polea Senatado",
+    "video_filename": "curl-en-polea-senatado.mp4",
+    "expected_jpg": "curl-en-polea-senatado.jpg"
+  },
+  {
+    "slug": "peso-muerto-con-1mancuerna-a-1-pie",
+    "name": "Peso Muerto con 1mancuerna a 1 Pie",
+    "video_filename": "peso-muerto-con-1mancuerna-a-1-pie.mp4",
+    "expected_jpg": "peso-muerto-con-1mancuerna-a-1-pie.jpg"
+  },
+  {
+    "slug": "hex-press-con-mancuernas-en-banco-tumbado",
+    "name": "Hex Press con Mancuernas en Banco Tumbado",
+    "video_filename": "hex-press-con-mancuernas-en-banco-tumbado.mp4",
+    "expected_jpg": "hex-press-con-mancuernas-en-banco-tumbado.jpg"
+  },
+  {
+    "slug": "extension-de-triceps-a-un-brazo-en-polea",
+    "name": "Extensión de Tríceps a Un Brazo en Polea",
+    "video_filename": "extension-de-triceps-a-un-brazo-en-polea.mp4",
+    "expected_jpg": "extension-de-triceps-a-un-brazo-en-polea.jpg"
+  },
+  {
+    "slug": "equilibrio-a-2-piernas-golpes-de-derecha-y-reves",
+    "name": "Equilibrio a 2 Piernas, Golpes de Derecha y Revés",
+    "video_filename": "equilibrio-a-2-piernas-golpes-de-derecha-y-reves.mp4",
+    "expected_jpg": "equilibrio-a-2-piernas-golpes-de-derecha-y-reves.jpg"
+  },
+  {
+    "slug": "salto-en-cajon-con-2-pies-y-caigo-con-1-pie",
+    "name": "Salto en Cajón con 2 Pies y Caigo con 1 Pie",
+    "video_filename": "salto-en-cajon-con-2-pies-y-caigo-con-1-pie.mp4",
+    "expected_jpg": "salto-en-cajon-con-2-pies-y-caigo-con-1-pie.jpg"
+  }
+]
